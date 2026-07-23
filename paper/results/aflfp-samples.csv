@@ -1,0 +1,1137 @@
+subject,movement,sample_id,detected,nme
+64,brow raise,64-brow raise/key frames/64-brow raise_50.jpg,True,0.05820892659718068
+77,frown,77-frown/key frames/77-frown_121.jpg,True,0.06819784948790589
+70,funny,70-funny/key frames/70-funny_682.jpg,True,0.06591894759640927
+98,gentle eyes closure,98-gentle eyes closure/key frames/98-gentle eyes closure_119.jpg,True,0.06404202993160141
+28,right eyebrow,28-right eyebrow/key frames/28-right eyebrow_1.jpg,True,0.06074281152597389
+78,right wink,78-right wink/key frames/78-right wink_1.jpg,True,0.05591414659872733
+11,snarl,11-snarl/key frames/11-snarl_79.jpg,True,0.0671894103449024
+86,close smile,86-close smile/key frames/86-close smile_137.jpg,True,0.07027508374903832
+20,open smile,20-open smile/key frames/20-open smile_79.jpg,True,0.06507630470000515
+7,left wink,7-left wink/key frames/7-left wink_224.jpg,True,0.0652346418039172
+5,left smile,5-left smile/key frames/5-left smile_51.jpg,True,0.06099210412245889
+37,right smile,37-right smile/key frames/37-right smile_230.jpg,True,0.06709942464441516
+30,left snarl,30-left snarl/key frames/30-left snarl_94.jpg,True,0.06683397545456152
+49,tight eyes closure,49-tight eyes closure/key frames/49-tight eyes closure_65.jpg,True,0.06809709975321014
+73,left eyebrow,73-left eyebrow/key frames/73-left eyebrow_66.jpg,True,0.062451796534970544
+68,right snarl,68-right snarl/key frames/68-right snarl_57.jpg,True,0.06311610633969698
+96,right eyebrow,96-right eyebrow/key frames/96-right eyebrow_100.jpg,True,0.06201228608719779
+72,right smile,72-right smile/key frames/72-right smile_116.jpg,True,0.06276570285104535
+80,open smile,80-open smile/key frames/80-open smile_90.jpg,True,0.06473187916365998
+75,gentle eyes closure,75-gentle eyes closure/key frames/75-gentle eyes closure_115.jpg,True,0.06140067068943753
+69,brow raise,69-brow raise/key frames/69-brow raise_25.jpg,True,0.06806915049236469
+50,close smile,50-close smile/key frames/50-close smile_150.jpg,True,0.06665296353004348
+10,left smile,10-left smile/key frames/10-left smile_196.jpg,True,0.0600488165998813
+79,funny,79-funny/key frames/79-funny_28.jpg,True,0.05849454737376445
+66,left wink,66-left wink/key frames/66-left wink_107.jpg,True,0.0666041658194682
+63,frown,63-frown/key frames/63-frown_60.jpg,True,0.060363734009642275
+48,left snarl,48-left snarl/key frames/48-left snarl_76.jpg,True,0.06169137846522326
+59,left eyebrow,59-left eyebrow/key frames/59-left eyebrow_88.jpg,True,0.06068913930613379
+1,right wink,1-right wink/key frames/1-right wink_1.jpg,True,0.06239299398542921
+33,tight eyes closure,33-tight eyes close/key frames/33-tight eyes close_388.jpg,True,0.06960730634090202
+16,right snarl,16-right snarl/key frames/16-right snarl_70.jpg,True,0.06784896050301367
+56,snarl,56-snarl/key frames/56-snarl_84.jpg,True,0.05212566744506019
+83,tight eyes closure,83-tight eyes closure/key frames/83-tight eyes closure_80.jpg,True,0.06436648893194599
+100,left smile,100-left smile/key frames/100-left smile_59.jpg,True,0.062355724556830444
+65,right snarl,AFLFP/65/65-right snarl_63.jpg,True,0.06416573285909301
+74,gentle eyes closure,74-gentle eyes closure/key frames/74-gentle eyes closure_80.jpg,True,0.062255673237408646
+32,left wink,32-left wink/key frames/32-left wink_1.jpg,True,0.0659348853869443
+84,left snarl,84-left snarl/key frames/84-left snarl_133.jpg,True,0.061011769839236216
+8,funny,8-funny/key frames/8-funny_1.jpg,True,0.06557464299569937
+87,open smile,87-open smile/key frames/87-open smile_65.jpg,True,0.06709154054973132
+24,frown,24-frown/key frames/24-frown_70.jpg,True,0.057146599622867854
+51,left eyebrow,51-left eyebrow/key frames/51-left eyebrow_95.jpg,True,0.06251265221691962
+53,right eyebrow,53/53-right eyebrow_key frames/53-right eyebrow_10.jpg,True,0.06268426417309216
+88,right wink,88-right wink/key frames/88-right wink_64.jpg,True,0.06402908609982591
+81,close smile,81-close smile/key frames/81-close smile_12.jpg,True,0.06479925918746045
+41,snarl,41-snarl/key frames/41-snarl_1.jpg,True,0.0665816324261027
+55,brow raise,55-brow raise/key frames/55-brow raise_2.jpg,True,0.06018313099168678
+94,right smile,94-right smile/key frames/94-right smile_60.jpg,True,0.068496240584373
+92,left eyebrow,92-left eyebrow/key frames/92-left eyebrow_110.jpg,True,0.05927078086116594
+26,gentle eyes closure,26-gentle eys closure/key frames/26-gentle eys closure_399.jpg,True,0.06237258559880966
+22,open smile,22-open smile/key frames/22-open smile_48.jpg,True,0.060606012069239996
+58,right eyebrow,58-right eyebrow/key frames/58-right eyebrow_134.jpg,True,0.06349871606481435
+35,right smile,35-right smile/key frames/35-right smile_13.jpg,True,0.06339151988114966
+62,left snarl,62-left snarl/key frames/62-left snarl_47.jpg,True,0.05802007945800753
+85,left smile,85-left smile/key frames/85-left smile_352.jpg,True,0.06281986182391364
+17,snarl,17-snarl/key frames/17-snarl_17.jpg,True,0.0590009698151276
+13,tight eyes closure,13/13-tight eyes closure_key frames/13-tight eyes closure_64.jpg,True,0.0647790531390376
+27,funny,27-funny/key frames/27-funny_141.jpg,True,0.06851726665029109
+67,left wink,67-left wink/key frames/67-left wink_88.jpg,True,0.06869737034004103
+57,right snarl,57-right snarl/key frames/57-right snarl_3.jpg,True,0.0627957682516121
+97,brow raise,97-brow raise/key frames/97-brow raise_1.jpg,True,0.06625654020925432
+14,right wink,14-right wink/key frames/14-right wink_291.jpg,True,0.0687486323144771
+6,frown,6-close smile/key frames/6-frown_101.jpg,True,0.05923509031043835
+71,close smile,71-close smile/key frames/71-close smile_8.jpg,True,0.06351330875815889
+99,left wink,99-left wink/key frames/99-left wink_160.jpg,True,0.06978494685364679
+91,snarl,91-snarl/key frames/91-snarl_118.jpg,True,0.06998242201848076
+12,funny,12-funny/key frames/12-funny_620.jpg,True,0.0641284245179825
+19,right eyebrow,19-right eyebrow/key frames/19-right eyebrow_72.jpg,True,0.05773229885351952
+47,right wink,47-right wink/key frames/47-right wink_182.jpg,True,0.056842534590597994
+95,frown,95-frown/key frames/95-frown_1.jpg,True,0.06566091054471763
+4,left snarl,4-left snarl/key frames/4-left snarl_24.jpg,True,0.0587794918888027
+29,brow raise,29-brow raise/key frames/29-brow raise_52.jpg,True,0.062330484751989226
+3,right smile,AFLFP/3/3-right smile_53.jpg,True,0.06497397668414163
+23,gentle eyes closure,23-gentle eyes closure/key frames/23-gentle eyes closure_89.jpg,True,0.06277981568367035
+76,open smile,76-open smile/key frames/76-open smile_265.jpg,True,0.06523056694778483
+9,right snarl,9-right snarl/key frames/9-right snarl_46.jpg,True,0.06729590788928222
+61,left smile,61-left smile/key frames/61-left smile_54.jpg,True,0.06366166695561995
+18,close smile,AFLFP/18/18-close smile_138.jpg,True,0.07129739562003114
+82,tight eyes closure,82-tight eyes closure/key frames/82-tight eyes closure_50.jpg,True,0.06401867540260052
+52,left eyebrow,52-left eyebrow/key frames/52-left eyebrow_113.jpg,True,0.05982702842424851
+36,funny,36/36-funny_key frames/36-funny_1.jpg,True,0.06512780730506997
+31,brow raise,31-brow raise/key frames/31-brow raise_1.jpg,True,0.06634805538492332
+34,left eyebrow,34-left eyebrow/key frames/34-left eyebrow_368.jpg,True,0.06306431556966843
+25,tight eyes closure,25/25-tight eye closure_key frames/25-tight eye closure_74.jpg,True,0.06237420844881705
+15,right smile,15-right smile/key frames/15-right smile_45.jpg,True,0.060598488783050915
+21,left snarl,21-left snarl/key frames/21-left snarl_22.jpg,True,0.061832452524530616
+46,close smile,46-close smile/key frames/46-close smile_20.jpg,True,0.0628407667024207
+54,left smile,54-left smile/key frames/54-left smile_1.jpg,True,0.060840868117265405
+88,left wink,88-left wink/key frames/88-left wink_19.jpg,True,0.06744556486784861
+56,open smile,56-open smile/key frames/56-open smile_115.jpg,True,0.061211031354494926
+97,right eyebrow,97-right eyebrow/key frames/97-right eyebrow_33.jpg,True,0.06363042857400794
+59,gentle eyes closure,59-gentle eyes closure/key frames/59-gentle eyes closure_102.jpg,True,0.06446311182215068
+4,right wink,4-right wink/key frames/4-right wink_30.jpg,True,0.05190746656050783
+35,frown,35-frown/key frames/35-frown_81.jpg,True,0.062458651545379475
+78,snarl,78-snarl/key frames/78-snarl_105.jpg,True,0.06441324933957306
+52,right snarl,52-right snarl/key frames/52-right snarl_12.jpg,True,0.06347817438574321
+8,left smile,8-left smile/key frames/8-left smile_3.jpg,True,0.06178324706217754
+9,funny,9-funny/key frames/9-funny_100.jpg,True,0.06424240989989956
+6,right eyebrow,6-right eyebrow/key frames/6-right eyebrow_353.jpg,True,0.06314311322841765
+36,brow raise,36/36-brow raise_key frames/36-brow raise_19.jpg,True,0.056735216319209233
+41,right smile,41-right smile/key frames/41-right smile_92.jpg,True,0.05982535098228757
+46,right snarl,46-right snarl/key frames/46-right snarl_73.jpg,True,0.06421360227520877
+20,gentle eyes closure,20-gentle eyes closure/key frames/20-gentle eyes closure_105.jpg,True,0.05862157856494968
+80,close smile,80-close smile/key frames/80-close smile_70.jpg,True,0.06478065056347176
+23,snarl,23-snarl/key frames/23-snarl_107.jpg,True,0.06292327400099565
+64,left eyebrow,64-left eyebrow/key frames/64-left eyebrow_85.jpg,True,0.059834189453453354
+37,left snarl,37-left snarl/key frames/37-left snarl_1.jpg,True,0.05473874165692766
+72,left wink,72-left wink/key frames/72-left wink_42.jpg,True,0.06005269679276805
+29,right wink,29-right wink/key frames/29-right wink_47.jpg,True,0.06669839340925207
+33,open smile,33-open smile/key frames/33-open smile_1.jpg,True,0.06185822887496257
+47,tight eyes closure,47-tight eyes closure/key frames/47-tight eyes closure_155.jpg,True,0.060657501002983914
+1,frown,1-frown/key frames/1-frown_325.jpg,True,0.062000161488845504
+26,snarl,26-snarl/key frames/26-snarl_419.jpg,True,0.06562350521686042
+49,left eyebrow,49-left eyebrow/key frames/49-left eyebrow_228.jpg,True,0.060460072998591186
+7,brow raise,7-brow raise/key frames/7-brow raise_257.jpg,True,0.06209027078832843
+58,left wink,58-left wink/key frames/58-left wink_253.jpg,True,0.06717124945222772
+81,open smile,81-open smile/key frames/81-open smile_60.jpg,True,0.06786499836800813
+76,right snarl,76-right snarl/key frames/76-right snarl_1.jpg,True,0.06643859271261159
+99,right wink,99-right wink/key frames/99-right wink_1.jpg,True,0.06953955555026207
+13,left smile,13/13-left smile_key frames/13-left smile_60.jpg,True,0.060981335965722985
+5,right eyebrow,5-right eyebrow/key frames/5-right eyebrow_8.jpg,True,0.0662698973953019
+53,frown,53/53-frown_key frames/53-frown_96.jpg,True,0.06394202778005588
+65,close smile,AFLFP/65/65-close smile_128.jpg,True,0.0596221564593905
+18,right smile,AFLFP/18/18-right smile_80.jpg,True,0.0618920881027234
+91,tight eyes closure,91-tight eyes closure/key frames/91-tight eyes closure_7.jpg,True,0.06280053433231429
+68,left snarl,68-left snarl/key frames/68-left snarl_55.jpg,True,0.05838572643231282
+92,funny,92-funny/key frames/92-funny_239.jpg,True,0.061743293409955755
+61,gentle eyes closure,61-gentle eyes closure/key frames/61-gentle eyes closure_67.jpg,True,0.06044725223575197
+55,left smile,55-left smile/key frames/55-left smile_34.jpg,True,0.05877585959911335
+11,funny,11-funny/key frames/11-funny_498.jpg,True,0.06204308824777147
+87,snarl,87-snarl/key frames/87-snarl_33.jpg,True,0.061691541132511026
+16,left eyebrow,16-left eyebrow/key frames/16-left eyebrow_75.jpg,True,0.06224712383708275
+50,right wink,50-right wink/key frames/50-right wink_108.jpg,True,0.06408682287766808
+32,tight eyes closure,32-tight eyes closure/key frames/32-tight eyes closure_50.jpg,True,0.06024994070854242
+84,right snarl,84-right snarl/key frames/84-right snarl_160.jpg,True,0.06544580313165949
+25,gentle eyes closure,25/25-gentle eye closure_key frames/25-gentle eye closure_43.jpg,True,0.06301101710601244
+100,right smile,100-right smile/key frames/100-right smile_112.jpg,True,0.06934260050682599
+96,brow raise,96-brow raise/key frames/96-brow raise_66.jpg,True,0.06003839856429152
+19,close smile,19-close smile/key frames/19-close smile_1.jpg,True,0.06428242921344149
+67,left snarl,67-left snarl/key frames/67-left snarl_1.jpg,True,0.06814463010291348
+85,right eyebrow,85-right eyebrow/key frames/85-right eyebrow_399.jpg,True,0.06726379940721808
+95,open smile,95-open smile/key frames/95-open smile_44.jpg,True,0.06244752313207699
+31,frown,31-frown/key frames/31-frown_87.jpg,True,0.063532617699361
+51,left wink,51-left wink/key frames/51-left wink_66.jpg,True,0.060777046036952
+24,left smile,24-left smile/key frames/24-left smile_1.jpg,True,0.06153136578530677
+63,funny,63-funny/key frames/63-funny_1406.jpg,True,0.0614121325481774
+71,left snarl,71-left snarl/key frames/71-left snarl_1.jpg,True,0.07430445692511682
+94,brow raise,94-brow raise/key frames/94-brow raise_55.jpg,True,0.06498053949482618
+66,close smile,66-close smile/key frames/66-close smile_19.jpg,True,0.06277731827763752
+54,right wink,54-right wink/key frames/54-right wink_352.jpg,True,0.07093950560848672
+21,gentle eyes closure,21-gentle eyes closure/key frames/21-gentle eyes closure_61.jpg,True,0.056564590425320076
+98,right snarl,98-right snarl/key frames/98-right snarl_74.jpg,True,0.06595656852197782
+12,tight eyes closure,12-tight eyes closure/key frames/12-tight eyes closure_1.jpg,True,0.06274151107906643
+82,right eyebrow,82-right eyebrow/key frames/82-right eyebrow_94.jpg,True,0.06089113274795776
+34,snarl,34-snarl/key frames/34-snarl_204.jpg,True,0.06866404524208004
+15,left eyebrow,15-left eyebrow/key frames/15-left eyebrow_18.jpg,True,0.06515688541169307
+14,left wink,14-left wink/key frames/14-left wink_184.jpg,True,0.0666644522969033
+77,open smile,77-open smile/key frames/77-open smile_111.jpg,True,0.06660301595975202
+28,right smile,29-right smile/key frames/29-right smile_80.jpg,True,0.06640345702647442
+57,left smile,57-left smile/key frames/57-left smile_92.jpg,True,0.06411946292806563
+75,frown,75-frown/key frames/75-frown_100.jpg,True,0.06438328998862225
+27,frown,27-frown/key frames/27-frown_78.jpg,True,0.0698405445653356
+86,open smile,86-open smile/key frames/86-open smile_98.jpg,True,0.06532105149483136
+48,left eyebrow,48-left eyebrow/key frames/48-left eyebrow_90.jpg,True,0.06364652067359224
+70,snarl,70-snarl/key frames/70-snarl_23.jpg,True,0.07238404684926769
+3,tight eyes closure,AFLFP/3/3-tight eyes closure_274.jpg,True,0.06102175226548618
+22,right eyebrow,22-right eyebrow/key frames/22-right eyebrow_299.jpg,True,0.0546434907476723
+69,right smile,69-right smile/key frames/69-right smile_45.jpg,True,0.06755691096556737
+83,left wink,83-left wink/key frames/83-left wink_64.jpg,True,0.06505297589145019
+73,brow raise,73-brow raise/key frames/73-brow raise_51.jpg,True,0.060012868852276385
+10,gentle eyes closure,10-gentle eyes closure/key frames/10-gentle eyes closure_197.jpg,True,0.06033406334720086
+62,right snarl,62-right snarl/key frames/62-right snarl_53.jpg,True,0.06562395410277891
+17,close smile,17-close smile/key frames/17-close smile_133.jpg,True,0.05586174350181053
+79,left snarl,79-left snarl/key frames/79-left snarl_1.jpg,True,0.06285788687937403
+74,funny,74-funny/key frames/74-funny_916.jpg,True,0.06853423902644921
+30,right wink,30-right wink/key frames/30-right wink_56.jpg,True,0.06340902419397526
+78,frown,78-frown/key frames/78-frown_68.jpg,True,0.05711963383558609
+63,right smile,63-right smile/key frames/63-right smile_41.jpg,True,0.06210008980183673
+32,close smile,32-close smile/key frames/32-close smile_1.jpg,True,0.06711693302533622
+86,brow raise,86-brow raise/key frames/86-brow raise_110.jpg,True,0.06794516947808635
+34,gentle eyes closure,34-gentle eyes closure/key frames/34-gentle eyes closure_145.jpg,True,0.05898190350879832
+51,funny,51-funny/key frames/51-funny_178.jpg,True,0.06125494406708427
+13,left wink,13/13-left wink_key frames/13-left wink_48.jpg,True,0.06384709682360973
+58,left snarl,58-left snarl/key frames/58-left snarl_57.jpg,True,0.06934161974613232
+49,open smile,49-open smile/key frames/49-open smile_60.jpg,True,0.06429983042211718
+84,right eyebrow,84-right eyebrow/key frames/84-right eyebrow_46.jpg,True,0.05795303325099373
+46,left eyebrow,46-left eyebrow/key frames/46-left eyebrow_101.jpg,True,0.06501165266172884
+70,tight eyes closure,70-tight eyes closure/key frames/70-tight eyes closure_80.jpg,True,0.06763097069184845
+16,right wink,16-right wink/key frames/16-right wink_85.jpg,True,0.0606320983833084
+14,left smile,14-left smile/key frames/14-left smile_98.jpg,True,0.061757022626855056
+48,right snarl,48-right snarl/key frames/48-right snarl_107.jpg,True,0.06451283468646062
+79,snarl,79-snarl/key frames/79-snarl_100.jpg,True,0.06735047629778775
+57,tight eyes closure,57-tight eyes closure/key frames/57-tight eyes closure_78.jpg,True,0.0684641878781828
+92,right eyebrow,92-right eyebrow/key frames/92-right eyebrow_93.jpg,True,0.05954317632963646
+65,gentle eyes closure,AFLFP/65/65-gentle eyes closure_172.jpg,True,0.062178601701925365
+68,open smile,68-open smile/key frames/68-open smile_44.jpg,True,0.055196361761682904
+55,close smile,55-close smile/key frames/55-close smile_97.jpg,True,0.06353599689797165
+98,brow raise,98-brow raise/key frames/98-brow raise_107.jpg,True,0.06860535668044766
+12,left smile,12-left smile/key frames/12-left smile_52.jpg,True,0.06216428866033648
+25,funny,25/25-funny_key frames/25-funny_160.jpg,True,0.06353648781871997
+8,snarl,8-snarl/key frames/8-snarl_105.jpg,True,0.06120173942833738
+23,left snarl,23-left snarl/key frames/23-left snarl_100.jpg,True,0.06560465831986104
+66,right snarl,66-right snarl/key frames/66-right snarl_60.jpg,True,0.0713703155148672
+22,right wink,22-right wink/key frames/22-right wink_53.jpg,True,0.055095056791165296
+10,left eyebrow,10-left eyebrow/key frames/10-left eyebrow_145.jpg,True,0.06238899840800757
+87,left wink,87-left wink/key frames/87-left wink_100.jpg,True,0.07170573982897344
+18,frown,AFLFP/18/18-frown_354.jpg,True,0.0716986511474999
+29,right smile,29-right smile/key frames/29-right smile_137.jpg,True,0.07100084168581629
+41,right wink,41-right wink/key frames/41-right wink_1.jpg,True,0.06156622997189585
+97,tight eyes closure,97-tight eyes closure/key frames/97-tight eyes closure_1.jpg,True,0.06649789047000344
+3,right eyebrow,AFLFP/3/3-right eyebrow_268.jpg,True,0.062361740054106815
+88,close smile,88-close smile/key frames/88-close smile_43.jpg,True,0.06751862010376472
+99,open smile,99-open smile/key frames/99-open smile_52.jpg,True,0.06430324202854869
+27,brow raise,27-brow raise/key frames/27-brow raise_65.jpg,True,0.06336237036298895
+21,frown,21-frown/key frames/21-frown_48.jpg,True,0.05878063375577379
+6,right smile,6-right smile/key frames/6-right smile_62.jpg,True,0.06483561242103925
+15,gentle eyes closure,15-gentle eyes closure/key frames/15-gentle eyes closure_7.jpg,True,0.06134673336248092
+19,left smile,19-left smile/key frames/19-left smile_47.jpg,True,0.06387270595527413
+74,left wink,74-left wink/key frames/74-left wink_63.jpg,True,0.06994876079782546
+47,right snarl,47-right snarl/key frames/47-right snarl_104.jpg,True,0.06303730191037928
+73,left snarl,73-left snarl/key frames/73-left snarl_83.jpg,True,0.06608602879327644
+35,snarl,35-snarl/key frames/35-snarl_112.jpg,True,0.06547771608347719
+62,left eyebrow,62-left eyebrow/key frames/62-left eyebrow_105.jpg,True,0.060304519876491165
+54,funny,54-funny/key frames/54-funny_1708.jpg,True,0.07276340055049135
+72,brow raise,72-brow raise/key frames/72-brow raise_37.jpg,True,0.06523515637606037
+96,snarl,96-snarl/key frames/96-snarl_135.jpg,True,0.060231631044317877
+37,right eyebrow,37-right eyebrow/key frames/37-right eyebrow_1.jpg,True,0.06596881863959658
+85,funny,85-funny/key frames/85-funny_1805.jpg,True,0.06651429856375142
+59,open smile,59-open smile/key frames/59-open smile_58.jpg,True,0.06449863253578313
+20,tight eyes closure,20-tight eyes closure/key frames/20-tight eyes closure_84.jpg,True,0.060631412243870884
+76,gentle eyes closure,76-gentle eyes closure/key frames/76-gentle eyes closure_385.jpg,True,0.06415643281288179
+52,left smile,52-left smile/key frames/52-left smile_99.jpg,True,0.06332280102032407
+1,left eyebrow,1-left eyeborw/key frames/1-left eyeborw_1.jpg,True,0.06502073671704299
+80,left wink,80-left wink/key frames/80-left wink_293.jpg,True,0.06001411412205727
+71,right snarl,71-right snarl/key frames/71-right snarl_28.jpg,True,0.06842235727365657
+50,right smile,50-right smile/key frames/50-right smile_13.jpg,True,0.0652151878024357
+33,close smile,33-close smile/key frames/33-close smile_265.jpg,True,0.06758227973960937
+56,frown,56-frown/key frames/56-frown_130.jpg,True,0.05279573407915739
+17,left snarl,17-left snarl/key frames/17-left snarl_86.jpg,True,0.055267558108931594
+64,right wink,64-right wink/key frames/64-right wink_35.jpg,True,0.06241239076686085
+81,right snarl,81-right snarl/key frames/81-right snarl_73.jpg,True,0.06787626314949806
+94,left snarl,94-left snarl/key frames/94-left snarl_58.jpg,True,0.06502182041706749
+75,left smile,75-left smile/key frames/75-left smile_38.jpg,True,0.058002233132660064
+26,right wink,26-right wink/key frames/26-right wink_336.jpg,True,0.06239850966595923
+91,left wink,91-left wink/key frames/91-left wink_17.jpg,True,0.06221579089005029
+69,right eyebrow,69-right eyebrow/key frames/69-right eyebrow_139.jpg,True,0.06882586906771235
+36,close smile,36/36-close smile_key frames/36-close smile_1.jpg,True,0.06515383620698346
+61,snarl,61-snarl/key frames/61-snarl_135.jpg,True,0.0595321988521925
+82,frown,82-frown/key frames/82-frown_102.jpg,True,0.06115656265802894
+67,right smile,67-right smile/key frames/67-right smile_70.jpg,True,0.06600937466906295
+100,brow raise,100-brow raise/key frames/100-brow raise_90.jpg,True,0.0661341672978931
+9,tight eyes closure,9-tight eues closure/key frames/9-tight eues closure_87.jpg,True,0.06442545275663206
+31,gentle eyes closure,31-gentle eyes closure/key frames/31-gentle eyes closure_80.jpg,True,0.06851338280563676
+5,funny,5-funny/key frames/5-funny_136.jpg,True,0.06381711740915208
+28,left eyebrow,28-left eyebrow/key frames/28-left eyebrow_23.jpg,True,0.061338754671380266
+7,open smile,7-open smile/key frames/7-open smile_189.jpg,True,0.06925971270054285
+77,left eyebrow,77-left eyebrow/key frames/77-left eyebrow_113.jpg,True,0.06767046022570918
+83,left snarl,83-left snarl/key frames/83-left snarl_63.jpg,True,0.05945893469762975
+24,close smile,24-close smile/key frames/24-close smile_104.jpg,True,0.05736793100475526
+30,right snarl,30-right snarl/key frames/30-right snarl_1.jpg,True,0.06802998542378666
+95,brow raise,95-brow raise/key frames/95-brow raise_1.jpg,True,0.0666881203849972
+4,left wink,4-left wink/key frames/4-left wink_9.jpg,True,0.05710657391326974
+53,funny,53/53-funny_key frames/53-funny_1544.jpg,True,0.06434197075991058
+11,right wink,11-right wink/key frames/11-right wink_70.jpg,True,0.06670177931545403
+61,right smile,61-right smile/key frames/61-right smile_38.jpg,True,0.06718114866898381
+19,gentle eyes closure,19-gentle eyes closure/key frames/19-gentle eyes closure_71.jpg,True,0.0616481752489542
+79,right eyebrow,79-right eyebrow/key frames/79-right eyebrow_348.jpg,True,0.05792841390575846
+52,open smile,52-open smile/key frames/52-open smile_61.jpg,True,0.058582534876381355
+15,tight eyes closure,15-tight eyes closure/key frames/15-tight eyes closure_135.jpg,True,0.06342888664270205
+99,frown,99-frowm/key frames/99-frowm_46.jpg,True,0.06944485726641586
+25,left smile,25/25-left smile_key frames/25-left smile_76.jpg,True,0.061850048964323355
+30,snarl,30-snarl/key frames/30-snarl_102.jpg,True,0.0713433968687941
+26,frown,26-frown/key frames/26-frown_184.jpg,True,0.06326279941440768
+87,funny,87-funny/key frames/87-funny_117.jpg,True,0.06713231610624827
+21,right snarl,21-right snarl/key frames/21-right snarl_1.jpg,True,0.057501429691412066
+70,right smile,70-right smile/key frames/70-right smile_58.jpg,True,0.0665859602876323
+3,open smile,AFLFP/3/3-open smile_73.jpg,True,0.06252509607438705
+37,close smile,37-close smile/key frames/37-close smile_290.jpg,True,0.05712153038351671
+41,tight eyes closure,41-tight eyes closure/key frames/41-tight eyes closure_1.jpg,True,0.06294785723598008
+4,brow raise,4-brow raise/key frames/4-brow raise_129.jpg,True,0.061390836883011744
+9,left wink,9-left wink/key frames/9-left wink_108.jpg,True,0.064574455433572
+50,right eyebrow,50-right eyebrow/key frames/50-right eyebrow_62.jpg,True,0.06462416215022661
+1,snarl,1-snarl/key frames/1-snarl_1.jpg,True,0.06230132834632616
+86,left snarl,86-left snarl/key frames/86-left snarl_101.jpg,True,0.06546498248006297
+29,gentle eyes closure,29-gentle eyes closure/key frames/29-gentle eyes closure_159.jpg,True,0.06448873020282443
+65,left smile,AFLFP/65/65-left smile_5.jpg,True,0.060362781253764326
+81,left eyebrow,81-left eyebrow/key frames/81-left eyebrow_87.jpg,True,0.06511574017529867
+83,right wink,83-right wink/key frames/83-right wink_46.jpg,True,0.06724290685581204
+27,right wink,27-right wink/key frames/27-right wink_52.jpg,True,0.061367797289894804
+18,brow raise,AFLFP/18/18-brow raise_260.jpg,True,0.06682930807667511
+20,funny,20-funny/key frames/20-funny_113.jpg,True,0.062011969772920846
+75,tight eyes closure,75-tight eyes closure/key frames/75-tight eyes closure_68.jpg,True,0.06366275569902502
+69,left snarl,69-left snarl/key frames/69-left snarl_121.jpg,True,0.06779759374865846
+73,right eyebrow,73-right eyebrow/key frames/73-right eyebrow_48.jpg,True,0.062204684375145654
+28,gentle eyes closure,28-gentle eyes closure/key frames/28-gentle eyes closure_145.jpg,True,0.06449773244447504
+68,left smile,68-left smile/key frames/68-left smile_46.jpg,True,0.058110866545513874
+35,left eyebrow,35-left eyebrow/key frames/35-left eyebrow_19.jpg,True,0.06453123307592382
+12,open smile,12-open smile/key frames/12-open smile_1.jpg,True,0.06351468808867049
+10,left wink,10-left wink/key frames/10-left wink_363.jpg,True,0.06314647104289853
+17,frown,17-frown/key frames/17-frown_16.jpg,True,0.05899410894801207
+78,close smile,78-close smile/key frames/78-close smile_118.jpg,True,0.05425150458330105
+22,snarl,22-snarl/key frames/22-snarl_117.jpg,True,0.06233841681146014
+74,right smile,74-right smile/key frames/74-right smile_1.jpg,True,0.06484364264751188
+59,right snarl,59-right snarl/key frames/59-right snarl_34.jpg,True,0.06456654298205154
+71,tight eyes closure,71-tight eyes closure/key frames/71-tight eyes closure_36.jpg,True,0.06976416298006552
+11,right snarl,11-right snarl/key frames/11-right snarl_50.jpg,True,0.06364246859427612
+8,left eyebrow,8-left eyebrow/key frames/8-left eyebrow_111.jpg,True,0.06480601449571126
+14,open smile,14-open smile/key frames/14-open smile_1.jpg,True,0.06164412727257619
+95,snarl,95-snarl/key frames/95-snarl_95.jpg,True,0.0652097331735885
+6,left snarl,6-right snarl/key frames/6-left snarl_80.jpg,True,0.0598071045974524
+80,right smile,80-right smile/key frames/80-right smile_45.jpg,True,0.062147927232189155
+85,right wink,85-right wink/key frames/85-right wink_1.jpg,True,0.0601607864246894
+32,funny,32-funny/key frames/32-funny_231.jpg,True,0.06597445495852641
+48,close smile,48-close smile/key frames/48-close smile_110.jpg,True,0.06297515733083954
+62,right eyebrow,62-right eyebrow/key frames/62-right eyebrow_65.jpg,True,0.062311727989545485
+13,brow raise,13/13-brow raise_key frames/13-brow raise_122.jpg,True,0.06155575374455598
+34,frown,34-frown/key frames/34-frown_1.jpg,True,0.06667981610945269
+63,left smile,63-left smile/key frames/63-left smile_56.jpg,True,0.06079535893327485
+92,left wink,92-left wink/key frames/92-left wink_10.jpg,True,0.05678453872201052
+84,gentle eyes closure,84-gentle eyes closure/key frames/84-gentle eyes closure_4.jpg,True,0.059534015998792225
+91,left smile,91-left smile/key frames/91-left smile_81.jpg,True,0.06070333558259208
+53,left wink,53/53-left wink_key frames/53-left wink_69.jpg,True,0.06737041582523755
+47,close smile,47-close smile/key frames/47-close smile_141.jpg,True,0.06436869209524528
+76,snarl,76-snarl/key frames/76-snarl_416.jpg,True,0.06502389408063201
+49,right snarl,49-right snarl/key frames/49-right snarl_91.jpg,True,0.0574467770133684
+94,gentle eyes closure,94-gentle eyes closure/key frames/94-gentle eyes closure_33.jpg,True,0.06128669785327775
+56,right eyebrow,56-right eyebrow/key frames/56-right eyebrow_88.jpg,True,0.06140508470094581
+54,open smile,54-open smile/key frames/54-open smile_278.jpg,True,0.07067499977987309
+96,funny,96-funny/key frames/96-funny_120.jpg,True,0.05998064068791128
+67,frown,67-frown/key frames/67-frown_102.jpg,True,0.07123518590241175
+82,right wink,82-right wink/key frames/82-right wink_1.jpg,True,0.06550493567733226
+64,tight eyes closure,64-tight eyes closure/key frames/64-tight eyes closure_65.jpg,True,0.07010813931226939
+58,right smile,58-right smile/key frames/58-right smile_40.jpg,True,0.0650903146719002
+46,left snarl,46-left snarl/key frames/46-left snarl_51.jpg,True,0.06325364609642774
+66,brow raise,66-brow raise/key frames/66-brow raise_50.jpg,True,0.0627502526415551
+98,left eyebrow,98-left eyebrow/key frames/98-left eyebrow_135.jpg,True,0.07032586071582425
+31,close smile,31-close smile/key frames/31-close smile_104.jpg,True,0.06567863239538443
+51,left smile,51-left smile/key frames/51-left smile_54.jpg,True,0.06014348617908228
+7,right smile,7-right smile/key frames/7-right smile_228.jpg,True,0.06478871357981614
+36,left wink,36/36-left wink_key frames/36-left wink_66.jpg,True,0.06294537896097309
+100,frown,100-frown/key frames/100-frown_49.jpg,True,0.06659984414375072
+23,tight eyes closure,23-tight eyes closure/key frames/23-tight eyes closure_85.jpg,True,0.0645022726903803
+5,left snarl,5-left snarl/key frames/5-left snarl_9.jpg,True,0.06351795294544049
+72,right snarl,72-right snarl/key frames/72-right snarl_165.jpg,True,0.07747867794622432
+33,right eyebrow,33-right eyebrow/key frames/33-right eyebrow_321.jpg,True,0.06806820467724416
+55,snarl,55-snarl/key frames/55-snarl_63.jpg,True,0.05986533678314005
+16,gentle eyes closure,16-gentle eyes closure/key frames/16-gentle eyes closure_150.jpg,True,0.06325149269560346
+77,brow raise,77-brow raise/key frames/77-brow raise_196.jpg,True,0.0670644488866637
+57,left eyebrow,57-left eyebrow/key frames/57-left eyebrow_124.jpg,True,0.06260817729413991
+97,open smile,97-open smile/key frames/97-open smile_30.jpg,True,0.06636984035580863
+88,funny,88-funny/key frames/88-funny_25.jpg,True,0.06925317715448684
+24,right wink,24-right wink/key frames/24-right wink_1.jpg,True,0.06453661744194425
+88,right smile,88-right smile/key frames/88-right smile_1.jpg,True,0.06794508257494657
+72,gentle eyes closure,72-gentle eyes closure/key frames/72-gentle eyes closure_101.jpg,True,0.06424663441581872
+35,right wink,35-right wink/key frames/32-right wink_24.jpg,True,0.06597112063360816
+46,left wink,46-left wink/key frames/46-left wink_12.jpg,True,0.06092957339652699
+52,tight eyes closure,52-tight eyes closure/key frames/52-tight eyes closure_18.jpg,True,0.061690205688429194
+76,frown,76-frown/key frames/76-frown_1.jpg,True,0.06934211581917134
+13,snarl,13/13-snarl_key frames/13-snarl_80.jpg,True,0.06418154192198852
+74,left eyebrow,74-left eyebrow/key frames/74-left eyebrow_102.jpg,True,0.0637265747257357
+49,left smile,49-left smile/key frames/49-left smile_53.jpg,True,0.06256135868455363
+24,open smile,24-open smile/key frames/24-open smile_1.jpg,True,0.060100072920505676
+21,close smile,21-close smile/key frames/21-close smile_259.jpg,True,0.057055939601778786
+94,funny,94-funny/key frames/94-funny_395.jpg,True,0.06430548149200019
+70,left snarl,70-left snarl/key frames/70-left snarl_91.jpg,True,0.05984502261301544
+79,right snarl,79-right snarl/key frames/79-right snarl_96.jpg,True,0.05921821556320661
+6,brow raise,6-brow raise/key frames/6-brow raise_56.jpg,True,0.061875076335623315
+91,right eyebrow,91-right eyebrow/key frames/91-right eyebrow_122.jpg,True,0.060721211976115394
+31,funny,31-funny/key frames/31-funny_272.jpg,True,0.06741727057404547
+87,right eyebrow,87-right eyebrow/key frames/87-right eyebrow_150.jpg,True,0.06634774587150027
+3,right wink,AFLFP/3/3-right wink_105.jpg,True,0.06219561596848601
+64,open smile,64-open smile/key frames/64-open smile_60.jpg,True,0.05999903951352795
+63,close smile,63-close smile/key frames/63-close smile_95.jpg,True,0.061174361384190495
+30,left wink,30-left wink/key frames/30-left wink_78.jpg,True,0.07342161938352469
+57,left snarl,57-left snarl/key frames/57-left snarl_28.jpg,True,0.07177809237660168
+71,right smile,71-right smile/key frames/71-right smile_21.jpg,True,0.06424474083096604
+14,right snarl,14-right snarl/key frames/14-right snarl_186.jpg,True,0.062267176527120334
+33,frown,33-frown/key frames/33-frown_1.jpg,True,0.06385042690361212
+56,tight eyes closure,56-tight eyes closure/key frames/56-tight eyes closure_84.jpg,True,0.05882462607684892
+26,left smile,26-left smile/key frames/26-left smile_392.jpg,True,0.0594394782675782
+34,brow raise,34-brow raise/key frames/34-brow raise_205.jpg,True,0.062203126671387485
+27,left eyebrow,27-left eyebrow/key frames/27-left eyebrow_160.jpg,True,0.06910374151281302
+9,gentle eyes closure,9-gentle eyes closure/key frames/9-gentle eyes closure_122.jpg,True,0.06768776468280001
+100,snarl,100-snarl/key frames/100-snarl_60.jpg,True,0.06456397086819118
+5,right smile,5-right smile/key frames/5-right smile_80.jpg,True,0.0642130571777246
+83,close smile,83-close smile/key frames/83-close smile_114.jpg,True,0.059097462519064475
+28,open smile,28-open smile/key frames/28-open smile_1.jpg,True,0.06600029015776782
+84,brow raise,84-brow raise/key frames/84-brow raise_10.jpg,True,0.070560270003874
+96,gentle eyes closure,96-gentle eyes closure/key frames/96-gentle eyes closure_85.jpg,True,0.059279690958461584
+36,left snarl,36/36-left snarl_key frames/36-left snarl_183.jpg,True,0.0626764852100544
+81,left smile,81-left smile/key frames/81-left smile_35.jpg,True,0.06444886293900927
+47,left eyebrow,47-left eyebrow/key frames/47-left eyebrow_68.jpg,True,0.06006177853695636
+4,frown,4-frown/key frames/4-frown_17.jpg,True,0.05559455666801859
+29,tight eyes closure,29-tight eyes closure/key frames/29-tight eyes closure_73.jpg,True,0.06519685192630091
+22,right snarl,22-right snarl/key frames/22-right snarl_77.jpg,True,0.056085409932191035
+73,snarl,73-snarl/key frames/73-snarl_107.jpg,True,0.06408543840605266
+41,left wink,41-left wink/key frames/41-left wink_1.jpg,True,0.05998822637539531
+80,funny,80-funny/key frames/80-funny_139.jpg,True,0.06477480989734881
+32,right eyebrow,32-right eyebrow/key frames/32-right eyebrow_1.jpg,True,0.06477251509445275
+82,left wink,82-left wink/key frames/82-left wink_58.jpg,True,0.06247469592261425
+23,right wink,23-right wink/key frames/23-right wink_47.jpg,True,0.06189743103588255
+8,close smile,8-close smile/key frames/8-close smile_116.jpg,True,0.06580941471650334
+17,right snarl,17-right snarl/key frames/17-right snarl_70.jpg,True,0.060817817849113026
+77,tight eyes closure,77-tight eyes closure/key frames/77-tight eyes closure_74.jpg,True,0.06197120845545047
+97,left smile,97-left smile/key frames/97-left smile_88.jpg,True,0.06205625077945794
+86,funny,86-funny/key frames/86-funny_3.jpg,True,0.06679707304567012
+59,frown,59-frown/key frames/59-frown_96.jpg,True,0.06544203080507903
+37,gentle eyes closure,37-gentle eyes closure/key frames/37-gentle eyes closure_191.jpg,True,0.055710072604652355
+25,right smile,25/25-right smile_key frames/25-right smile_1.jpg,True,0.06116739071264823
+51,right wink,51-right wink/key frames/51-right wink_15.jpg,True,0.0653559346281866
+75,brow raise,75-brow raise/key frames/75-brow raise_30.jpg,True,0.06388693444413693
+58,snarl,58-snarl/key frames/58-snarl_102.jpg,True,0.06930492634861686
+98,right eyebrow,98-right eyebrow/key frames/98-right eyebrow_109.jpg,True,0.06281215034824394
+16,left snarl,16-left snarl/key frames/16-left snarl_150.jpg,True,0.06500073601560181
+67,left eyebrow,67-left eyebrow/key frames/67-left eyebrow_74.jpg,True,0.06693512391603557
+54,right eyebrow,54-right eyebrow/key frames/54-right eyebrow_234.jpg,True,0.06555756686354464
+95,funny,95-funny/key frames/95-funny_2.jpg,True,0.056838784697233545
+55,open smile,55-open smile/key frames/55-open smile_80.jpg,True,0.06221693738606059
+78,left eyebrow,78-left eyebrow/key frames/78-left eyebrow_96.jpg,True,0.06799168184054505
+85,gentle eyes closure,85-gentle eyes closure/key frames/85-gentle eyes closure_1.jpg,True,0.0675491174999188
+69,left smile,69-left smile/key frames/69-left smile_83.jpg,True,0.06911057439110077
+50,open smile,50-open smile/key frames/50-open smile_79.jpg,True,0.0672850631810318
+11,tight eyes closure,11-tight eyes closure/key frames/11-tight eyes closure_46.jpg,True,0.0669943492570479
+10,snarl,10-snarl/key frames/10-snarl_153.jpg,True,0.06445041432276398
+18,left wink,AFLFP/18/18-left wink_17.jpg,True,0.05235292197500744
+12,right smile,12-right smile/key frames/12-right smile_52.jpg,True,0.0602943011414588
+92,frown,92-frown/key frames/92-frown_14.jpg,True,0.05992810888943017
+66,right wink,66-right wink/key frames/66-right wink_69.jpg,True,0.06644214718167143
+53,left snarl,53/53-left snarl_key frames/53-left snarl_90.jpg,True,0.0629327968377252
+61,brow raise,61-brow raise/key frames/61-brow raise_28.jpg,True,0.061867477867575744
+68,close smile,68-close smile/key frames/68-close smile_130.jpg,True,0.06056098065207097
+20,right snarl,20-right snarl/key frames/20-right snarl_75.jpg,True,0.06316706506276393
+7,right eyebrow,7-right eyebrow/key frames/7-right eyebrow_1.jpg,True,0.06665342577694475
+99,left smile,99-left smile/key frames/99-left smile_1.jpg,True,0.06782664034582406
+48,snarl,48-snarl/key frames/48-snarl_73.jpg,True,0.06302955534109032
+15,brow raise,15-brow raise/key frames/15-brow raise_5.jpg,True,0.06246676896580247
+65,open smile,AFLFP/65/65-open smile_35.jpg,True,0.06292937855056235
+19,left eyebrow,19-left eyebrow/key frames/19-left eyebrow_1.jpg,True,0.058718105239505776
+1,left wink,1-left wink/key frames/1-left wink_179.jpg,True,0.06567072035885545
+62,close smile,62-close smile/key frames/62-close smile_130.jpg,True,0.06055209309049681
+50,frown,50-frown/key frames/50-frown_73.jpg,True,0.07043024090632484
+16,right smile,16-right smile/key frames/16-right smile_45.jpg,True,0.06853622518972607
+41,left snarl,41-left snarl/key frames/41-left snarl_70.jpg,True,0.06284069771790521
+33,gentle eyes closure,33-gentle eyes closure/key frames/33-gentle eyes closure_386.jpg,True,0.0709077254922935
+78,right snarl,78-right snarl/key frames/78-right snarl_1.jpg,True,0.056313063741438754
+22,tight eyes closure,22-tight eyes closure/key frames/22-tight eyes closure_61.jpg,True,0.05610112105283431
+21,right wink,21-right wink/key frames/21-right wink_1.jpg,True,0.06041150576078333
+32,left smile,32-left smile/key frames/32-left smile_37.jpg,True,0.061035940657640085
+6,funny,6-funny/key frames/6-funny_643.jpg,True,0.05926782766680931
+54,snarl,54-snarl/key frames/54-snarl_352.jpg,True,0.08088533025611254
+18,funny,AFLFP/18/18-funny_170.jpg,True,0.058033145703969786
+76,brow raise,76-brow raise/key frames/76-brow raise_1.jpg,True,0.06573211604886028
+88,open smile,88-open smile/key frames/88-open smile_63.jpg,True,0.07048228480763684
+20,right eyebrow,20-right eyebrow/key frames/20-right eyebrow_77.jpg,True,0.060377570467874266
+24,right smile,24-right smile/key frames/24-right smile_34.jpg,True,0.05821259855743866
+94,right wink,94-right wink/key frames/94-right wink_18.jpg,True,0.06076548601849478
+27,right snarl,27-right snarl/key frames/27-right snarl_85.jpg,True,0.06664790061601253
+23,frown,23-frown/key frames/23-frown_100.jpg,True,0.06993720012710397
+9,close smile,9-close smile/key frames/9-close smile_106.jpg,True,0.06001977200289212
+1,gentle eyes closure,1-gentle eye closure/key frames/1-gentle eye closure_240.jpg,True,0.065759695484054
+47,left wink,47-left wink/key frames/47-left wink_255.jpg,True,0.05854257921932858
+25,left snarl,25/25-left snarl_key frames/25-left snarl_66.jpg,True,0.07089273957029395
+56,left eyebrow,56-left eyebrow/key frames/56-left eyebrow_146.jpg,True,0.06331827097461523
+12,left snarl,12-left snarl/key frames/12-left snarl_79.jpg,True,0.058824385643829094
+8,tight eyes closure,8-tight eyes closure/key frames/8-tight eyes closure_100.jpg,True,0.06673606070128679
+82,gentle eyes closure,82-close eyes gently/key frames/82-close eyes gently_96.jpg,True,0.06388777045033357
+91,left eyebrow,91-left eyebrow/key frames/91-left eyebrow_121.jpg,True,0.05861167488095846
+51,frown,51-frown/key frames/51-frown_70.jpg,True,0.06277285680815535
+49,right wink,49-right wink/key frames/49-right wink_41.jpg,True,0.06539086225382454
+85,close smile,85-close smile/key frames/85-close smile_214.jpg,True,0.0664680423274897
+57,brow raise,57-brow raise/key frames/57-brow raise_53.jpg,True,0.0655248656118798
+69,snarl,69-snarl/key frames/69-snarl_62.jpg,True,0.0695650903949447
+13,funny,13/13-funny_key frames/13-funny_42.jpg,True,0.06200956193169403
+65,right eyebrow,AFLFP/65/65-right eyebrow_126.jpg,True,0.055362049847687896
+52,right smile,52-right smile/key frames/52-right smile_13.jpg,True,0.05807106411289068
+87,left smile,87-left smile/key frames/87-left smile_1.jpg,True,0.06765029445991605
+81,left wink,81-left wink/key frames/81-left wink_59.jpg,True,0.06901263179090761
+73,open smile,73-open smile/key frames/73-open smile_105.jpg,True,0.06370597240693787
+95,right snarl,95-right snarl/key frames/95-right snarl_1.jpg,True,0.06553647486202785
+70,right eyebrow,70-right eyebrow/key frames/70-right eyebrow_230.jpg,True,0.0568258661708608
+97,right snarl,97-right snarl/key frames/97-right snarl_1.jpg,True,0.06409829217618043
+75,open smile,75-open smile/key frames/75-open smile_68.jpg,True,0.06700078090318634
+59,right smile,59-right smile/key frames/59-right smile_36.jpg,True,0.07054712067820094
+86,tight eyes closure,86-tight eyes closure/key frames/86-tight eyes closure_46.jpg,True,0.06412736988308186
+72,left smile,72-left smile/key frames/72-left smile_78.jpg,True,0.05994820005989199
+34,left snarl,34-left snarl/key frames/34-left snarl_234.jpg,True,0.06258688333312434
+99,snarl,99-snarl/key frames/99-snarl_1.jpg,True,0.06192538228120781
+26,tight eyes closure,26-tight eyes closure/key frames/26-tight eyes closure_1.jpg,True,0.07092824505430384
+58,frown,58-frown/key frames/58-frown_124.jpg,True,0.0655015513931514
+63,gentle eyes closure,63-gentle eyes closure/key frames/63-gentle eyes closure_88.jpg,True,0.06274967846337051
+7,close smile,7-close smile/key frames/7-close smile_372.jpg,True,0.06813398333712405
+19,left wink,19-left wink/key frames/19-left wink_1.jpg,True,0.06311909658854664
+98,funny,98-funny/key frames/98-funny_445.jpg,True,0.0689521976537787
+61,left eyebrow,61-left eyebrow/key frames/61-left eyebrow_109.jpg,True,0.058693058129844614
+77,right wink,77-right wink/key frames/77-right wink_98.jpg,True,0.06849132208848849
+71,brow raise,71-brow raise/key frames/71-brow raise_65.jpg,True,0.06341860771474235
+28,close smile,28-close smile/key frames/28-close smile_1.jpg,True,0.06284231048535363
+53,tight eyes closure,53/53_tight eyes closure_key frames/53-tight eyes closure_100.jpg,True,0.07889174596032598
+4,left smile,4-left smile/key frames/4-left smile_42.jpg,True,0.057271624071303165
+10,left snarl,10-left snarl/key frames/10-left snarl_313.jpg,True,0.06418441961529965
+31,open smile,31-open smile/key frames/31-open smile_51.jpg,True,0.06495714114315233
+68,gentle eyes closure,68-gentle eyes closure/key frames/68-gentle eyes closure_49.jpg,True,0.055856896835815954
+62,frown,62-frown/key frames/62-frown_92.jpg,True,0.06542324818697735
+46,right smile,46-right smile/key frames/46-right smile_25.jpg,True,0.0625914622369793
+29,right snarl,29-right snarl/key frames/29-right snarl_52.jpg,True,0.06937924060895023
+35,funny,35-funny/key frames/35-funny_144.jpg,True,0.06486830935851177
+17,left wink,17-left wink/key frames/17-left wink_29.jpg,True,0.060410013910706925
+74,right eyebrow,74-right eyebrow/key frames/74-right eyebrow_53.jpg,True,0.06400364521044848
+84,right wink,84-right wink/key frames/84-right wink_1.jpg,True,0.06025682259994107
+66,snarl,66-snarl/key frames/66-snarl_31.jpg,True,0.0653380306833288
+15,frown,15-frown/key frames/15-frown_2.jpg,True,0.05998315223848436
+5,brow raise,5-brow raise/key frames/5-brow raise_109.jpg,True,0.06162909946937459
+79,left eyebrow,79-left eyebrow/key frames/79-left eyebrow_18.jpg,True,0.05698338075434959
+96,left eyebrow,96-left eyebrow/key frames/96-left eyebrow_1.jpg,True,0.06500429246439947
+67,right snarl,67-right snarl/key frames/67-right snarl_70.jpg,True,0.05427406214846274
+36,right smile,36/36-right smile_key frames/36-right smile_54.jpg,True,0.06443722464438567
+55,gentle eyes closure,55-gentle eyes closure/key frames/55-gentle eyes closure_73.jpg,True,0.0591090777114507
+64,left smile,64-left smile/key frames/64-left smile_100.jpg,True,0.05751075875947473
+48,right eyebrow,48-right eyebrow/key frames/48-right eyebrow_65.jpg,True,0.0683208653022092
+100,right wink,100-right wink/key frames/100-right wink_70.jpg,True,0.06403298077503446
+92,snarl,92-snarl/key frames/92-snarl_24.jpg,True,0.05797691859967083
+11,left snarl,11-left snarl/key frames/11-left snarl_122.jpg,True,0.06250264042446325
+83,brow raise,83-brow raise/key frames/83-brow raise_1.jpg,True,0.06055170135229636
+3,left wink,AFLFP/3/3-left wink_268.jpg,True,0.06251283018008985
+14,funny,14-funny/key frames/14-funny_1.jpg,True,0.06315037200549801
+37,open smile,37-open smile/key frames/37-open smile_1.jpg,True,0.057487010984237724
+80,tight eyes closure,80-tight eyes closure/key frames/80-tight eyes closure_62.jpg,True,0.06432106758401081
+30,close smile,30-close smile/key frames/30-close smile_58.jpg,True,0.06317027795996275
+51,right eyebrow,51-right eyebrow/key frames/51-right eyebrow_97.jpg,True,0.0640739779142236
+22,right smile,22-right smile/key frames/22-right smile_58.jpg,True,0.06309941508113452
+24,left wink,24-left wink/key frames/24-left wink_84.jpg,True,0.05783994857282211
+16,frown,16-frown/key frames/16-frown_1.jpg,True,0.06322781145172716
+10,open smile,10-open smile/key frames/10-open smile_1.jpg,True,0.06268277014894222
+23,left smile,23-left smile/key frames/23-left smile_167.jpg,True,0.06912773374283447
+83,gentle eyes closure,83-gentle eyes closure/key frames/83-gentle eyes closure_103.jpg,True,0.06260799840106025
+71,left eyebrow,71-left eyebrow/key frames/71-left eyebrow_151.jpg,True,0.0642991576074164
+86,right snarl,86-right snarl/key frames/86-right snarl_77.jpg,True,0.07000191524156121
+25,right wink,25/25-right wink_key frames/25-right wink_48.jpg,True,0.061969611422136896
+68,brow raise,68-brow raise/key frames/68-brow raise_67.jpg,True,0.05313971507756148
+92,close smile,92-gentle smile/key frames/92-gentle smile_96.jpg,True,0.05876561248589192
+99,funny,99-funny/key frames/99-funny_55.jpg,True,0.06393646403452617
+6,tight eyes closure,6-tight eyes closure/key frames/6-tight eyes closure_64.jpg,True,0.06171528244666225
+66,left snarl,66-left snarl/key frames/66-left snarl_85.jpg,True,0.06621634308520429
+7,snarl,7-snarl/key frames/7-snarl_240.jpg,True,0.06564838815167821
+37,right snarl,37-right snarl/key frames/37-right snarl_1.jpg,True,0.06237379498277674
+4,tight eyes closure,4-tight eyes closure/key frames/4-tight eyes closure_41.jpg,True,0.057235533274554225
+56,right smile,56-right smile/key frames/56-right smile_110.jpg,True,0.05790385709922013
+61,close smile,61-close smile/key frames/61-close smile_232.jpg,True,0.06415203013313348
+94,left smile,94-left smile/key frames/94-left smile_94.jpg,True,0.06614225799744898
+46,snarl,46-snarl/key frames/46-snarl_28.jpg,True,0.07000741499580253
+21,right eyebrow,21-right eyebrow/key frames/21-right eyebrow_1.jpg,True,0.06339808670040065
+88,gentle eyes closure,88-gentle eyes closure/key frames/88-gentle eyes closure_13.jpg,True,0.07302383951362285
+9,left eyebrow,9-left eyebrow/key frames/9-left eyebrow_101.jpg,True,0.06155926501370718
+12,frown,12-frown/key frames/12-frown_1.jpg,True,0.0629032951189042
+78,open smile,78-open smile/key frames/78-open smile_1.jpg,True,0.06334378670607688
+36,right wink,36/36-right wink_key frames/36-right wink_10.jpg,True,0.05991291946523773
+8,left snarl,8-left snarl/key frames/8-left snarl_40.jpg,True,0.06387530072699654
+81,funny,81-funny/key frames/81-funny_111.jpg,True,0.06914626830758007
+98,left wink,98-left wink/key frames/98-left wink_80.jpg,True,0.06764689343416755
+59,left snarl,59-left snarl/key frames/59-left snarl_73.jpg,True,0.06324003283956188
+67,brow raise,67-brow raise/key frames/67-brow raise_38.jpg,True,0.06351057284330139
+54,left eyebrow,54-left eyebrow/key frames/54-left eyebrow_1.jpg,True,0.06509549479831496
+5,close smile,5-close smile/key frames/5-close smile_118.jpg,True,0.0634853826171935
+53,brow raise,53/53-brow raise_key frames/53-brow raise_10.jpg,True,0.06007778177094069
+57,right eyebrow,57-right eyebrow/key frames/57-right eyebrow_91.jpg,True,0.06134306557675762
+63,right snarl,63-right snarl/key frames/63-right snarl_50.jpg,True,0.06032084075047726
+72,snarl,72-snarl/key frames/72-snarl_117.jpg,True,0.06446883530798046
+13,open smile,13/13-open smile_key frames/13-open smile_33.jpg,True,0.06367982770602945
+41,left smile,41-left smile/key frames/41-left smile_63.jpg,True,0.06400216882243961
+58,gentle eyes closure,58-gentle eyes closure/key frames/58-gentle eyes closure_51.jpg,True,0.06676338250025803
+62,left wink,62-left wink/key frames/62-left wink_19.jpg,True,0.06241871197387625
+33,right smile,33-right smile/key frames/33-right smile_1.jpg,True,0.06996230539673444
+15,right wink,15-right wink/key frames/15-right wink_90.jpg,True,0.060029039785886744
+32,frown,32-frown/key frames/32-frown_106.jpg,True,0.06223252844488072
+100,tight eyes closure,100-tight eyes closure/key frames/100-tight eyes closure_67.jpg,True,0.06738891438412198
+75,funny,75-funny/key frames/75-funny_1283.jpg,True,0.05898143232624593
+28,left smile,28-left smile/key frames/28-left smile_80.jpg,True,0.06448242620543744
+52,gentle eyes closure,52-gentle eyes closure/key frames/52-gentle eyes closure_67.jpg,True,0.0574611613909736
+91,brow raise,91-brow raise/key frames/91-brow raise_13.jpg,True,0.060231190178373355
+87,right smile,87-right smile/key frames/87-right smile_80.jpg,True,0.06814898705449991
+26,open smile,26-open smile/key frames/26-open smile_379.jpg,True,0.06420860931619529
+11,close smile,11-close smile/key frames/11-close smile_135.jpg,True,0.06569312992541608
+27,snarl,27-snarl/key frames/27-snarl_129.jpg,True,0.06575385763282279
+77,right eyebrow,77-right eyebrow/key frames/77-right eyebrow_84.jpg,True,0.0710873916791792
+76,right wink,76-right wink/key frames/76-right wink_390.jpg,True,0.06271112589717857
+29,funny,29-funny/key frames/29-funny_9.jpg,True,0.07056740963841351
+65,left snarl,AFLFP/65/65-left snarl_100.jpg,True,0.06179772530922825
+70,right snarl,70-right snarl/key frames/70-right snarl_60.jpg,True,0.06009887313417886
+49,left wink,49-left wink/key frames/49-left wink_76.jpg,True,0.061859212204213705
+80,frown,80-frown/key frames/80-frown_110.jpg,True,0.062386587194546594
+64,funny,64-funny/key frames/64-funny_650.jpg,True,0.062436651413992406
+30,left eyebrow,30-left eyebrow/key frames/30-left eyebrow_39.jpg,True,0.06919003009199469
+20,right smile,20-right smile/key frames/20-right smile_46.jpg,True,0.06120427614771635
+79,tight eyes closure,79-tight eyes closure/key frames/79-tight eyes closure_54.jpg,True,0.060725863769835006
+19,right snarl,19-right snarl/key frames/19-right snarl_57.jpg,True,0.06704927932146533
+47,gentle eyes closure,47-gentle eyes closure/key frames/47-gentle eyes closure_398.jpg,True,0.05814917430469495
+31,snarl,31-snarl/key frames/31-snarl_52.jpg,True,0.07053539922966469
+74,frown,74-frown/key frames/74-frown_115.jpg,True,0.06877162752380564
+95,left snarl,95-left snarl/key frames/95-left snarl_77.jpg,True,0.06136550110510079
+97,left wink,97-left wink/key frames/97-left wink_130.jpg,True,0.06770612097902604
+3,close smile,AFLFP/3/3-close smile_293.jpg,True,0.06253944208013484
+69,tight eyes closure,69-tight eyes closure/key frames/69-tight eyes closure_59.jpg,True,0.07146976011815363
+34,right eyebrow,34-right eyebrow/key frames/34-right eyebrow_374.jpg,True,0.06411887035638965
+14,left eyebrow,14-left eyebrow/key frames/14-left eyebrow_1.jpg,True,0.0631277376740591
+35,left smile,35-left smile/key frames/35-left smile_76.jpg,True,0.06537701643400795
+17,brow raise,17-brow raise/key frames/17-brow raise_72.jpg,True,0.05671818615711236
+82,open smile,82-open smile/key frames/82-open smile_1.jpg,True,0.059942477788675605
+73,right wink,73-right wink/key frames/73-right wink_94.jpg,True,0.06402976656944576
+18,right eyebrow,AFLFP/18/18-right eyebrow_78.jpg,True,0.07149825377095213
+84,tight eyes closure,84-tight eyes closure/key frames/84-tight eyes closure_29.jpg,True,0.07002194468686068
+96,right smile,96-right smile/key frames/96-right smile_1.jpg,True,0.06371867222937724
+1,right snarl,1-right snarl/key frames/1-right snarl_289.jpg,True,0.06774374706233474
+85,frown,85-frown/key frames/85-frown_1.jpg,True,0.06156106185437171
+50,left snarl,50-left snarl/key frames/50-left snarl_74.jpg,True,0.07366827886019457
+55,right wink,55-right wink/key frames/55-right wink_50.jpg,True,0.06180946813554623
+48,brow raise,48-brow raise/key frames/48-brow raise_67.jpg,True,0.06448042949350179
+70,open smile,70-open smile/key frames/70-open smile_46.jpg,True,0.06421244084742665
+84,snarl,84-snarl/key frames/84-snarl_63.jpg,True,0.0626492296102207
+33,left eyebrow,33-left eyrbrow/key frames/33-left eyrbrow_1.jpg,True,0.06761763350781737
+8,left wink,8-left wink/key frames/8-left wink_4.jpg,True,0.06333089960172592
+32,gentle eyes closure,32-gentle eyes closure/key frames/32-gentle eyes closure_216.jpg,True,0.06312993616835852
+57,funny,57-funny/key frames/57-funny_53.jpg,True,0.06972081166045031
+76,left smile,76-left smile/key frames/76-left smile_1.jpg,True,0.06994857223996195
+10,close smile,10-close smile/key frames/10-close smile_1.jpg,True,0.062027539731678384
+23,left eyebrow,23-left eyebrow/key frames/23-left eyebrow_199.jpg,True,0.06499677352148149
+53,right wink,53/53-right wink_key frames/53-right wink_10.jpg,True,0.06050420511346218
+61,right eyebrow,61-right eyebrow/key frames/61-right eyebrow_75.jpg,True,0.05990308775291686
+100,funny,100-funny/key frames/100-funny_86.jpg,True,0.06744220506477551
+67,gentle eyes closure,67-gentle eyes closure/key frames/67-gentle eyes closure_73.jpg,True,0.06662756067597667
+21,left smile,21-left smile/key frames/21-left smile_49.jpg,True,0.05840780968689995
+62,brow raise,62-brow raise/key frames/62-brow raise_1.jpg,True,0.06489781684447471
+26,right smile,26-right smile/key frames/26-right smile_328.jpg,True,0.06659579495192366
+18,tight eyes closure,AFLFP/18/18-tight eyes closure_102.jpg,True,0.061485713403798915
+95,left wink,95-left wink/key frames/95-left wink_110.jpg,True,0.06342501699867314
+66,open smile,66-open smile/key frames/66-open smile_34.jpg,True,0.06586823581084371
+79,frown,79-frown/key frames/79-frown_82.jpg,True,0.06634957125150336
+74,snarl,74-snarl/key frames/74-snarl_1.jpg,True,0.06386764473002349
+64,right snarl,64-right snarl/key frames/64-right snarl_1.jpg,True,0.0623984090408578
+47,left snarl,47-left snarl/key frames/47-left snarl_212.jpg,True,0.05413414399576088
+16,close smile,16-close smile/key frames/16-close smile_142.jpg,True,0.0673199317071588
+87,frown,87-frown/key frames/87-frown_140.jpg,True,0.06514913715438418
+49,gentle eyes closure,49-gentle eyes closure/key frames/49-gentle eyes closure_114.jpg,True,0.06288738431529642
+77,right smile,77-right smile/key frames/77-right smile_63.jpg,True,0.06267315503416541
+78,tight eyes closure,78-tight eyes closure/key frames/78-tight eyes closure_1.jpg,True,0.05944707461746528
+63,open smile,63-open smile/key frames/63-open smile_10.jpg,True,0.059910129579658154
+59,snarl,59-tight eyes closure/key frames/59-snarl_67.jpg,True,0.06425285258295095
+92,right snarl,92-right snarl/key frames/92-right snarl_66.jpg,True,0.06216996778859938
+31,right wink,31-right wink/key frames/31-right wink_54.jpg,True,0.06584942767980052
+98,close smile,98-close smile/key frames/98-close smile_66.jpg,True,0.06802362479876133
+11,brow raise,11-brow raise/key frames/11-brow raise_123.jpg,True,0.06603714005778742
+82,left eyebrow,82-left eyebrow/key frames/82-left eyebrow_122.jpg,True,0.06191190994601746
+27,left smile,27-left smile/key frames/27-left smile_77.jpg,True,0.06773232548848584
+14,left snarl,14-left snarl/key frames/14-left snarl_184.jpg,True,0.061246948597278215
+55,left wink,55-left wink/key frames/55-left wink_17.jpg,True,0.062354044451168225
+35,right eyebrow,35-right eyebrow/key frames/35-right eyebrow_95.jpg,True,0.063234135685233
+9,right eyebrow,9-right eyebrow/key frames/9-right eyebrow_105.jpg,True,0.06529114196634137
+99,gentle eyes closure,99-gentle eyes closure/key frames/99-gentle eyes closure_1.jpg,True,0.06382748675891649
+24,funny,24-funny/key frames/24-funny_126.jpg,True,0.05850504399647085
+94,tight eyes closure,94-tight eyes closure/key frames/94-tight eyes closure_57.jpg,True,0.06411299313732567
+80,left snarl,80-left snarl/key frames/80-left snarl_88.jpg,True,0.06573386602136147
+86,right wink,86-right wink/key frames/86-right wink_91.jpg,True,0.06319441765674427
+71,frown,71-frown/key frames/71-frown_163.jpg,True,0.06612321318999673
+15,snarl,15-snarl/key frames/15-snarl_203.jpg,True,0.06373714508593105
+85,left wink,85-left wink/key frames/85-left wink_1.jpg,True,0.06233042716825415
+20,close smile,20-close smile/key frames/20-close smile_93.jpg,True,0.056686557184096056
+83,left eyebrow,83-left eyebrow/key frames/83-left eyebrow_191.jpg,True,0.062391886732743054
+7,funny,7-funny/key frames/7-funny_1455.jpg,True,0.06613983736313418
+69,open smile,69-open smile/key frames/69-open smile_31.jpg,True,0.07041032669217799
+4,right smile,4-right smile/key frames/4-right smile_56.jpg,True,0.06295585877350607
+73,left smile,73-left smile/key frames/73-left smile_60.jpg,True,0.06415034969505541
+34,right snarl,34-right snarl/key frames/34-right snarl_389.jpg,True,0.06157293157341509
+25,brow raise,25/25-brow raise_key frames/25-brow raise_36.jpg,True,0.06850766185758346
+1,right eyebrow,1-right eyebrow/key frames/1-right eyebrow_1.jpg,True,0.06500681304238287
+96,frown,96-frown/key frames/96-frown_140.jpg,True,0.06064904212333101
+3,right snarl,AFLFP/3/3-right snarl_213.jpg,True,0.06585296592115163
+72,open smile,72-open smile/key frames/72-open smile_70.jpg,True,0.0636812538616663
+65,snarl,AFLFP/65/65-snarl_56.jpg,True,0.06252203330056073
+97,right wink,97-right wink/key frames/97-right wink_1.jpg,True,0.058452301614857184
+75,left eyebrow,75-left eyebrow/key frames/75-left eyebrow_89.jpg,True,0.06173343322475078
+41,brow raise,41-brow raise/key frames/41-brow raise_70.jpg,True,0.06448921521494747
+46,funny,46-funny/key frames/46-funny_12.jpg,True,0.0654552003491067
+68,right smile,68-right smile/key frames/68-right smile_50.jpg,True,0.061150202529020294
+22,left smile,22-left smile/key frames/22-left smile_40.jpg,True,0.05986131419727892
+30,gentle eyes closure,30-gentle eyes closure/key frames/30-gentle eyes closure_93.jpg,True,0.0732886272038177
+36,tight eyes closure,36/36-tight eyes closure_key frames/36-tight eyes closure_30.jpg,True,0.06223548756867178
+58,close smile,58-close smile/key frames/58-close smile_133.jpg,True,0.06636832652447677
+88,left snarl,88-left snarl/key frames/88-left snarl_31.jpg,True,0.06955380360915613
+28,left wink,28-left wink/key frames/28-left wink_87.jpg,True,0.07267965727633934
+29,left wink,29-left wink/key frames/29-left wink_75.jpg,True,0.06820418895171665
+19,open smile,19-open smile/key frames/19-open smile_98.jpg,True,0.062225992974055844
+48,right smile,48-right smile/key frames/48-right smile_31.jpg,True,0.06557913859223113
+6,gentle eyes closure,6-frown/key frames/6-gentle eyes closure_65.jpg,True,0.056985964949526936
+50,right snarl,50-right snarl/key frames/50-right snarl_86.jpg,True,0.07178704101147443
+13,left snarl,13/13-left snarl_key frames/13-left snarl_334.jpg,True,0.06193887409493176
+52,close smile,52-close smile/key frames/52-close smile_100.jpg,True,0.060112070996986317
+5,left eyebrow,5-left eyebrow/key frames/5-left eyebrow_108.jpg,True,0.06209512179168158
+56,right wink,56-right wink/key frames/56-right wink_100.jpg,True,0.04994876358008066
+54,tight eyes closure,54-tight eyes closure/key frames/54-tight eyes closure_1.jpg,True,0.06963943671378421
+37,snarl,37-snarl/key frames/37-snarl_282.jpg,True,0.05977286279680613
+17,left smile,17-left smile/key frames/17-left smile_69.jpg,True,0.05964561658533463
+51,brow raise,51-brow raise/key frames/51-brow raise_35.jpg,True,0.05804310692266233
+81,right eyebrow,81-right eyebrow/key frames/81-right eyebrow_104.jpg,True,0.06075406285951401
+12,left eyebrow,12-left eyebrow/key frames/12-left eyebrow_1.jpg,True,0.06296900846534348
+91,frown,91-frown/key frames/91-frown_115.jpg,True,0.06280481682287688
+75,right snarl,75-right snarl/key frames/75-right snarl_69.jpg,True,0.06126696705027363
+28,left snarl,28-left snarl/key frames/28-left snarl_1.jpg,True,0.0712784057004699
+7,frown,7-frown/key frames/7-frown_251.jpg,True,0.06393197725748428
+51,tight eyes closure,51-tight eyes closure/key frames/51-tight eyes closure_121.jpg,True,0.06214726455448299
+50,funny,50-funny/key frames/50-funny_202.jpg,True,0.06359840482173107
+83,snarl,83-snarl/key frames/83-snarl_107.jpg,True,0.05873266939188441
+25,open smile,25/25-open smile_key frames/25-open smile_53.jpg,True,0.06489889151783372
+58,brow raise,58-brow raise/key frames/58-brow raise_63.jpg,True,0.06127105155111031
+73,funny,73-funny/key frames/73-funny_670.jpg,True,0.063012606774062
+86,right eyebrow,86-right eyebrow/key frames/86-right eyebrow_86.jpg,True,0.06485864440638706
+4,gentle eyes closure,4-gentle eyes closure/key frames/4-gentle eyes closure_39.jpg,True,0.05927877937245433
+48,left smile,48-left smile/key frames/48-left smile_44.jpg,True,0.06427891073827517
+10,right wink,10-right wink/key frames/10-right wink_384.jpg,True,0.06594412065134535
+67,close smile,67-close smile/key frames/67-close smile_1.jpg,True,0.0662932557170544
+57,right smile,57-right smile/key frames/57-right smile_77.jpg,True,0.0691565304499221
+61,left wink,61-left wink/key frames/61-left wink_32.jpg,True,0.061886048889907015
+91,funny,91-funny/key frames/91-funny_13.jpg,True,0.06959317371935848
+47,frown,47-frown/key frames/47-frown_80.jpg,True,0.05918949072427778
+71,open smile,71-open smile/key frames/71-open smile_28.jpg,True,0.06564385965561477
+64,close smile,64-close smile/key frames/64-close smile_145.jpg,True,0.061607699920461424
+46,right wink,46-right wink/key frames/46-right wink_65.jpg,True,0.06621750970306246
+92,brow raise,92-brow raise/key frames/92-brow raise_9.jpg,True,0.05764728831946094
+65,left wink,AFLFP/65/65-left wink_56.jpg,True,0.06134813348185776
+52,right eyebrow,52-right eyebrow/key frames/52-right eyebrow_21.jpg,True,0.06163589338683499
+1,left smile,1-left smile/key frames/1-left smile_80.jpg,True,0.06705257369618661
+54,left snarl,54-left snarl/key frames/54-left snarl_259.jpg,True,0.06440433325711037
+31,left eyebrow,31-left eyebrow/key frames/31-left eyebrow_303.jpg,True,0.06348053644653479
+62,snarl,62-snarl/key frames/62-snarl_95.jpg,True,0.0629224223328559
+21,tight eyes closure,21-tight eues closure/key frames/21-tight eues closure_171.jpg,True,0.0659966387053738
+68,right eyebrow,68-right eyebrow/key frames/68-right eyebrow_106.jpg,True,0.06174791298404921
+79,gentle eyes closure,79-gentle eyes closure/key frames/79-gentle eyes closure_115.jpg,True,0.0685772574172026
+24,right snarl,24-right snarl/key frames/24-right snarl_45.jpg,True,0.05702499965954309
+78,right smile,78-right smile/key frames/78-right smile_1.jpg,True,0.050292194916241637
+85,tight eyes closure,85-tight eyes closure/key frames/85-tight eyes closure_369.jpg,True,0.06127149690555389
+13,right snarl,13/13-right snarl_key frames/13-right snarl_57.jpg,True,0.06381661752710131
+98,left smile,98-left smile/key frames/98-left smile_51.jpg,True,0.07198578421553604
+14,gentle eyes closure,14-gentle eyes closure/key frames/14-gentle eyes closure_120.jpg,True,0.0644307756614178
+36,snarl,36/36-snarl_key frames/36-snarl_115.jpg,True,0.06276356041248178
+59,funny,59-funny/key frames/59-funny_662.jpg,True,0.06995005240982058
+94,left eyebrow,94-left eyebrow/key frames/94-left eyebrow_118.jpg,True,0.06138486281544143
+88,frown,88-frown/key frames/88-frown_12.jpg,True,0.07130729889009305
+32,left snarl,32-left snarl/key frames/32-left snarl_1.jpg,True,0.06196512673771219
+33,right wink,33-right wink/key frames/33-right wink_354.jpg,True,0.07165667554339968
+56,close smile,56-close smile/key frames/56-close smile_1.jpg,True,0.05107379791651548
+23,left wink,23-left wink/key frames/23-left wink_35.jpg,True,0.06518437724324827
+15,open smile,15-open smile/key frames/15-open smile_65.jpg,True,0.06053641264885645
+20,brow raise,20-brow raise/key frames/20-brow raise_75.jpg,True,0.0583836226352764
+63,brow raise,63-brow raise/key frames/63-brow raise_53.jpg,True,0.06468859589983438
+19,right smile,19-right smile/key frames/19-right smile_58.jpg,True,0.06992628674934624
+70,left wink,70-left wink/key frames/70-left wink_35.jpg,True,0.06564802978219987
+3,gentle eyes closure,AFLFP/3/3-gentle eyes closure_77.jpg,True,0.06427445469044663
+97,snarl,97-snarl/key frames/97-snarl_30.jpg,True,0.06842089510583042
+69,left eyebrow,69-left eyebrow/key frames/69-left eyebrow_286.jpg,True,0.07112796296120284
+6,right wink,6-right wink/key frames/6-right wink_46.jpg,True,0.06043409663201695
+8,frown,8-frown/key frames/8-frown_3.jpg,True,0.0587970981989294
+29,open smile,29-open smile/key frames/29-open smile_85.jpg,True,0.06231853475179401
+9,right smile,9-right smile/key frames/9-right smile_36.jpg,True,0.06858592343798539
+11,right eyebrow,11-right eyebrow/key frames/11-right eyebrow_94.jpg,True,0.06581768316740093
+26,right snarl,26-right snarl/key frames/26-right snarl_1.jpg,True,0.06385191154078083
+74,left smile,74-left smile/key frames/74-left smile_1.jpg,True,0.06751790909376831
+5,tight eyes closure,5-tight eyes closure/key frames/5-tight eyes closure_37.jpg,True,0.058547939515111856
+84,close smile,84-close smile/key frames/84-close smile_25.jpg,True,0.06404372532901909
+72,left snarl,72-left snarl/key frames/72-left snarl_6.jpg,True,0.06270431845180736
+82,funny,82-funny/key frames/82-funny_1.jpg,True,0.060553425977605095
+35,brow raise,35-brow raise/key frames/35-brow raise_81.jpg,True,0.06640226540643987
+66,tight eyes closure,66-tight eye closure/key frames/66-tight eye closure_43.jpg,True,0.06270404180252599
+87,close smile,87-close smile/key frames/87-close smile_85.jpg,True,0.06547607706362173
+77,snarl,77-snarl/key frames/77-snarl_111.jpg,True,0.06995953905733535
+41,right snarl,41-right snarl/key frames/41-right snarl_1.jpg,True,0.06433470005384123
+96,left wink,96-left wink/key frames/96-left wink_1.jpg,True,0.06481252238736772
+81,frown,81-frown/key frames/81-frown_72.jpg,True,0.06868078618677508
+17,left eyebrow,17-left eyebrow/key frames/17-left eyebrow_145.jpg,True,0.058914406713783604
+37,right wink,37-right wink/key frames/37-right wink_315.jpg,True,0.055466979930173736
+12,gentle eyes closure,12-gentle eyes closure/key frames/12-gentle eyes closure_110.jpg,True,0.06444390613727641
+30,right smile,30-right smile/key frames/30-right smile_50.jpg,True,0.07463220417880881
+76,right eyebrow,76-right eyebrow/key frames/76-right eyebrow_252.jpg,True,0.06650048206022473
+100,open smile,100-open smile/key frames/100-open smile_78.jpg,True,0.06806213327672556
+55,left snarl,55-left snarl/key frames/55-left snarl_21.jpg,True,0.06195580374979734
+80,left smile,80-left smile/key frames/80-left smile_33.jpg,True,0.061636300756987616
+18,snarl,AFLFP/18/18-snarl_95.jpg,True,0.05186225670411966
+34,funny,34-funny/key frames/34-funny_1.jpg,True,0.06708053012139505
+99,tight eyes closure,99-tight eyes closure/key frames/99-tight eyes closure_39.jpg,True,0.06307998499071624
+27,right eyebrow,27-right eyebrow/key frames/27-right eyebrow_122.jpg,True,0.06867163656237242
+16,brow raise,16-brow raise/key frames/16-brow raise_1.jpg,True,0.06150401966903704
+49,frown,49-frown/key frames/49-frown_96.jpg,True,0.061914075148532144
+22,left wink,22-left wink/key frames/22-left wink_80.jpg,True,0.05813648000375309
+53,close smile,53/53-close smile_key frames/53-close smile_10.jpg,True,0.06117945633285485
+95,left eyebrow,95-left eyebrow/key frames/95-left eyebrow_115.jpg,True,0.062200235716234197
+15,funny,15-funny/key frames/15-funny_1022.jpg,True,0.06421300988612837
+58,left smile,58-left smile/key frames/58-left smile_37.jpg,True,0.06328547625943343
+57,open smile,57-open smile/key frames/57-open smile_56.jpg,True,0.06538964484747899
+76,right smile,76-right smile/key frames/76-right smile_340.jpg,True,0.06367000291806214
+36,gentle eyes closure,36/36-gentle eyes closure_key frames/36-gentle eyes closure_78.jpg,True,0.06112239082290406
+21,left wink,21-left wink/key frames/21-left wink_181.jpg,True,0.05878276075038505
+25,right snarl,25/25-right snarl_key frames/25-right snarl_76.jpg,True,0.06356255814286621
+12,right wink,12-right wink/key frames/12-right wink_85.jpg,True,0.06034553906417053
+34,close smile,34-close smile/key frames/34-close smile_1.jpg,True,0.05751324124781523
+18,left snarl,AFLFP/18/18-left snarl_29.jpg,True,0.06737853283903511
+35,left snarl,35-left snarl/key frames/35-left snarl_37.jpg,True,0.06413757395815824
+55,right snarl,55-right snarl/key frames/55-right snarl_73.jpg,True,0.05837741605616748
+47,left smile,47-left smile/key frames/47-left smile_240.jpg,True,0.062401430832309056
+64,right smile,64-right smile/key frames/64-right smile_1.jpg,True,0.06094611260288785
+46,open smile,46-open smile/key frames/46-open smile_61.jpg,True,0.06363167365441603
+91,gentle eyes closure,91-gentle eyes closure/key frames/91-gentle eyes closure_97.jpg,True,0.0623211655211796
+48,funny,48-funny/key frames/48-funny_197.jpg,True,0.0570643470116158
+77,left smile,77-left smile/key frames/77-left smile_50.jpg,True,0.06723883924961159
+62,right wink,62-right wink/key frames/62-right wink_39.jpg,True,0.06360352683058719
+5,frown,5-frow/key frames/5-frow_89.jpg,True,0.06074395121404592
+17,tight eyes closure,17-tight eyes closure/key frames/17-tight eyes closure_59.jpg,True,0.06104244027387604
+28,brow raise,28-brow raise/key frames/28-brow raise_28.jpg,True,0.05766318101172261
+73,left wink,73-left wink/key frames/73-left wink_34.jpg,True,0.060802311855027796
+37,left eyebrow,37-left eyebrow/key frames/37-left eyebrow_269.jpg,True,0.06371626720791482
+100,right eyebrow,100-right eyebrow/key frames/100-right eyebrow_54.jpg,True,0.0714252399538152
+69,gentle eyes closure,69-gentle eyes closure/key frames/69-gentle eyes closure_122.jpg,True,0.06612075830654747
+98,snarl,98-snarl/key frames/98-snarl_113.jpg,True,0.07074864351774454
+29,left snarl,29-left snarl/key frames/29-left snarl_95.jpg,True,0.06661645922367196
+22,left eyebrow,22-left eyebrow/key frames/22-left eyebrow_106.jpg,True,0.05442985644276456
+79,open smile,79-open smile/key frames/79-open smile_3.jpg,True,0.059273827609800975
+92,right smile,92-right smile/key frames/92-right smile_46.jpg,True,0.06117804799638504
+83,right snarl,83-right snarl/key frames/83-right snarl_59.jpg,True,0.06586405137316206
+52,snarl,52-snarl/key frames/52-snarl_12.jpg,True,0.06251583166647051
+99,close smile,99-close smile/key frames/99-close smile_197.jpg,True,0.06413333715390018
+97,frown,97-frown/key frames/97-frown_61.jpg,True,0.07297717914046441
+54,brow raise,54-brow raise/key frames/54-brow raise_1.jpg,True,0.06712931724296639
+1,tight eyes closure,1-tight eye closure/key frames/1-tight eye closure_60.jpg,True,0.06139922813757744
+19,funny,19-funny/key frames/19-funny_110.jpg,True,0.06238284235294036
+68,right wink,68-right wink/key frames/68-right wink_34.jpg,True,0.05980137789465523
+56,left wink,56-left wink/key frames/56-left wink_88.jpg,True,0.06315285705903487
+9,frown,9-frown/key frames/9-frown_42.jpg,True,0.06282587286184962
+14,right eyebrow,14-right eyebrow/key frames/14-right eyebrow_1.jpg,True,0.06555780709002679
+80,right snarl,80-right snarl/key frames/80-right snarl_68.jpg,True,0.06834531822781367
+26,right eyebrow,26-right eyebrow/key frames/26-right eyebrow_1.jpg,True,0.06286950874931031
+94,open smile,94-open smile/key frames/94-open smile_52.jpg,True,0.06612462848723948
+8,gentle eyes closure,8-gentle eye closure/key frames/8-gentle eye closure_81.jpg,True,0.06601961798343098
+41,left eyebrow,41-left eyebrow/key frames/41-left eyebrow_70.jpg,True,0.0626631011266794
+66,right smile,66-right smile/key frames/66-right smile_34.jpg,True,0.062071524764071954
+96,right wink,96-right wink/key frames/96-right wink_1.jpg,True,0.05985782153778345
+65,funny,AFLFP/65/65-funny_246.jpg,True,0.059908450287156086
+32,snarl,32-snarl/key frames/32-snarl_129.jpg,True,0.06451651705519294
+3,brow raise,AFLFP/3/3-brow raise_394.jpg,True,0.0647295968187578
+27,close smile,27-close smile/key frames/27-close smile_235.jpg,True,0.06607923561344974
+71,left smile,71-left smile/key frames/71-left smile_1.jpg,True,0.06675404782386841
+16,tight eyes closure,16-tight eyes closure/key frames/16-tight eyes closure_1.jpg,True,0.06422528379605973
+61,left snarl,61-left snarl/key frames/61-left snarl_39.jpg,True,0.058950464346944606
+59,right eyebrow,59-right eyebrow/key frames/59-right eyebrow_108.jpg,True,0.0635873782482733
+10,funny,10-funny/key frames/10-funny_1.jpg,True,0.059258339665953216
+30,open smile,30-open smile/key frames/30-open smile_1.jpg,True,0.06397916664620934
+24,gentle eyes closure,24-gentle eye closure/key frames/24-gentle eye closure_1.jpg,True,0.06412746203938006
+49,right smile,49-right smile/key frames/49-right smile_30.jpg,True,0.05406133384674399
+23,close smile,23-close smile/key frames/23-close smile_50.jpg,True,0.06923003694656492
+72,left eyebrow,72-left eyebrow/key frames/72-left eyebrow_120.jpg,True,0.06423576501716068
+78,brow raise,78-brow raise/key frames/78-brow raise_42.jpg,True,0.05693990707107527
+63,left wink,63-left wink/key frames/63-left wink_15.jpg,True,0.06060232176696428
+84,frown,84-frown/key frames/84-frown_141.jpg,True,0.06402705926995605
+75,left snarl,75-left snarl/key frames/75-left snarl_50.jpg,True,0.06962589327979572
+13,right wink,13/13-right wink_key frames/13-right wink_44.jpg,True,0.062281614043160245
+74,tight eyes closure,74-tight eyes closure/key frames/74-tight eyes closure_66.jpg,True,0.06478869820599255
+67,snarl,67-snarl/key frames/67-snarl_115.jpg,True,0.07029953699343193
+11,left smile,11-left smile/key frames/11-left smile_46.jpg,True,0.06339628125060694
+53,right snarl,53/53-right snarl_key frames/53-right snarl_83.jpg,True,0.06061005147154293
+88,right eyebrow,88-right eyebrow/key frames/88-right eyebrow_55.jpg,True,0.06683566193710748
+50,gentle eyes closure,50-gentle eyes closure/key frames/50-gentle eyes closure_91.jpg,True,0.06694730573394057
+20,right wink,20-right wink/key frames/20-right wink_78.jpg,True,0.06100403402455941
+4,open smile,4-open smile/key frames/4-open smile_81.jpg,True,0.06018653367152086
+31,right snarl,31-right snarl/key frames/31-right snarl_70.jpg,True,0.06370500318216647
+51,snarl,51-snarl/key frames/51-snarl_120.jpg,True,0.064259153852868
+6,left wink,6-left wink/key frames/6-left wink_46.jpg,True,0.062234522298763625
+85,brow raise,85-brow raise/key frames/85-brow raise_271.jpg,True,0.06706477467604957
+81,right smile,81-right smile/key frames/81-right smile_45.jpg,True,0.06896411982397387
+82,left snarl,82-left snarl/key frames/82-left snarl_307.jpg,True,0.059653208076755115
+86,left eyebrow,86-left eyebrow/key frames/86-left eyebrow_107.jpg,True,0.06350761573874257
+70,left smile,70-left smile/key frames/70-left smile_19.jpg,True,0.06192930803988397
+33,brow raise,33-brow raise/key frames/33-brow raise_420.jpg,True,0.06956237180141364
+87,tight eyes closure,87-tight eyes closure/key frames/87-tight eyes closure_60.jpg,True,0.06904348900678052
+7,left smile,7-left smile/key frames/7-left smile_1.jpg,True,0.07089274107697027
+95,close smile,95-close smile/key frames/95-close smile_1.jpg,True,0.0691229977248588
+14,frown,14-frown/key frames/14-frown_203.jpg,True,0.06908989987692644
+28,frown,28-frown/key frames/28-frown_70.jpg,True,0.0683615379238324
+76,left snarl,76-left snarl/key frames/76-left snarl_1.jpg,True,0.06534694434775742
+56,right snarl,56-right snarl/key frames/56-right snarl_80.jpg,True,0.06274663379207515
+32,right wink,32-right wink/key frames/32-right wink_73.jpg,True,0.06113062205063317
+18,open smile,AFLFP/18/18-open smile_67.jpg,True,0.05975193748089194
+15,left wink,15-left wink/key frames/15-left wink_126.jpg,True,0.06484955328919256
+6,left eyebrow,6-left eyebrow/key frames/6-left eyebrow_260.jpg,True,0.06477122877726407
+67,funny,67-funny/key frames/67-funny_3.jpg,True,0.06910658924355678
+35,tight eyes closure,35-tight eyes closure/key frames/35-tight eyes closure_27.jpg,True,0.06753465430542299
+25,close smile,25/25-close smile_key frames/25-close smile_111.jpg,True,0.06478631608885806
+92,gentle eyes closure,92-gentle eyes closure/key frames/92-gentle eyes closure_91.jpg,True,0.05865551439036204
+66,funny,66-funny/key frames/66-funny_799.jpg,True,0.07221800376345593
+84,right smile,84-right smile/key frames/84-right smile_53.jpg,True,0.06899366362299642
+4,right eyebrow,4-right eyebrow/key frames/4-right eyebrow_7.jpg,True,0.05846332060837546
+100,right snarl,100-right snarl/key frames/100-right snarl_93.jpg,True,0.06822659414597847
+13,frown,13/13-frown_key frames/13-frown_69.jpg,True,0.06431921407379701
+37,left smile,37-left smile/key frames/37-left smile_394.jpg,True,0.059796235007282345
+21,snarl,21-snarl/key frames/21-snarl_104.jpg,True,0.058492543142945955
+68,snarl,68-snarl/key frames/68-snarl_108.jpg,True,0.058004636567213254
+91,left snarl,91-left snarl/key frames/91-left snarl_7.jpg,True,0.06124046082096238
+86,right smile,86-right smile/key frames/86-right smile_83.jpg,True,0.0663887691698664
+72,right eyebrow,72-right eyebrow/key frames/72-right eyebrow_15.jpg,True,0.06373658577124344
+87,right wink,87-right wink/key frames/87-right wink_45.jpg,True,0.0642089849708691
+1,brow raise,1-brow raise/key frames/1-brow raise_15.jpg,True,0.06502197780371284
+65,tight eyes closure,AFLFP/65/65-tight eyes closure_68.jpg,True,0.05690348773881891
+61,funny,61-funny/key frames/61-funny_176.jpg,True,0.06157080794404695
+23,open smile,23-open smile/key frames/23-open smile_78.jpg,True,0.06667422748361805
+11,gentle eyes closure,11-gentle eyes closure/key frames/11-gentle eyes closure_122.jpg,True,0.06601724871671104
+29,left eyebrow,29-left eyebrow/key frames/29-left eyebrow_13.jpg,True,0.06802365283434939
+33,left wink,33-left wink/key frames/33-left wink_414.jpg,True,0.06942073920769974
+26,close smile,26-close smile/key frames/26-close smile_193.jpg,True,0.06354574333904008
+12,right snarl,12-right snarl/key frames/12-right snarl_110.jpg,True,0.06310283611968172
+54,left wink,54-left wink/key frames/54-left wink_376.jpg,True,0.06437541012735003
+83,right smile,83-right smile/key frames/83-right smile_50.jpg,True,0.06272264727539376
+80,right eyebrow,80-right eyebrow/key frames/80-right eyebrow_34.jpg,True,0.06267669613630547
+79,left smile,79-left smile/key frames/79-left smile_65.jpg,True,0.05903163519831858
+49,snarl,49-snarl/key frames/49-snarl_117.jpg,True,0.06499723124751126
+70,left eyebrow,70-left eyebrow/key frames/70-left eyebrow_57.jpg,True,0.06172825104491214
+55,tight eyes closure,55-tight eyes closure/key frames/55-tight eyes closure_120.jpg,True,0.06175893836260432
+82,brow raise,82-brow raise/key frames/82-brow raise_52.jpg,True,0.06020134199223662
+52,right wink,52-right wink/key frames/52-right wink_30.jpg,True,0.06113185801118847
+77,close smile,77-close smile/key frames/77-close smile_99.jpg,True,0.06800247829303178
+63,left snarl,63-left snarl/key frames/63-left snarl_10.jpg,True,0.0645017193665077
+9,open smile,9-open smile/key frames/9-open smile_76.jpg,True,0.0633343953025399
+20,frown,20-frown/key frames/20-frown_45.jpg,True,0.062254440446959665
+58,funny,58-funny/key frames/58-funny_298.jpg,True,0.06319795888152112
+71,gentle eyes closure,71-gentle eyes closure/key frames/71-gentle eyes closure_67.jpg,True,0.06590061998935609
+24,brow raise,24-brow raise/key frames/24-brow raise_1.jpg,True,0.06249698841409992
+73,gentle eyes closure,73-gentle eyes closure/key frames/73-gentle eyes closure_120.jpg,True,0.06595189619078407
+95,right eyebrow,95-right eyebrow/key frames/95-right eyebrow_130.jpg,True,0.06403230642116967
+64,frown,64-frown/key frames/64-frown_82.jpg,True,0.05832608035978504
+96,left snarl,96-left snarl/key frames/96-left snarl_1.jpg,True,0.05743938957115428
+19,tight eyes closure,19-tight eyes closure/key frames/19-tight eyes closure_1.jpg,True,0.06428944619420118
+85,left eyebrow,85-left eyebrow/key frames/85-left eyebrow_416.jpg,True,0.06494912756614855
+31,right smile,31-right smile/key frames/31-right smile_53.jpg,True,0.06661295501569926
+57,left wink,57-left wink/key frames/57-left wink_73.jpg,True,0.06484254279736357
+30,left smile,30-left smile/key frames/30-left smile_38.jpg,True,0.0652570151322934
+7,right snarl,7-right snarl/key frames/7-right snarl_333.jpg,True,0.07134499548694898
+98,right wink,98-right wink/key frames/98-right wink_73.jpg,True,0.06916978306344743
+53,snarl,53/53-snarl_key frames/53-snarl_10.jpg,True,0.059092312050570854
+46,left smile,46-left smile/key frames/46-left smile_56.jpg,True,0.06635316376769294
+59,close smile,59-brow raise/key frames/59-close smile_92.jpg,True,0.06306553063005635
+78,left wink,78-left wink/key frames/78-left wink_56.jpg,True,0.06081055123209618
+16,open smile,16-open smile/key frames/16-open smile_34.jpg,True,0.06395201720002693
+81,tight eyes closure,81-tight eyes closure/key frames/81-tight eyes closure_33.jpg,True,0.07022846258402674
+17,funny,17-funny/key frames/17-funny_12.jpg,True,0.056440047457806154
+5,gentle eyes closure,5-gentle eyes closure/key frames/5-gentle eyes closure_13.jpg,True,0.06025447050475646
+62,right smile,62-right smile/key frames/62-right smile_40.jpg,True,0.06272728135955216
+36,left eyebrow,36/36-left eyebrow_key frames/36-left eyebrow_1.jpg,True,0.06267518740319304
+47,snarl,47-snarl/key frames/47-snarl_44.jpg,True,0.06388471870005417
+48,right wink,48-right wink/key frames/48-right wink_52.jpg,True,0.0662116462673224
+22,funny,22-funny/key frames/22-funny_1371.jpg,True,0.06427055128500953
+50,brow raise,50-brow raise/key frames/50-brow raise_91.jpg,True,0.06514851576128794
+99,right snarl,99-right snarl/key frames/99-right snarl_1.jpg,True,0.06415936777800567
+88,tight eyes closure,88-tight eyes closure/key frames/88-tight eyes closure_35.jpg,True,0.07293492228608424
+69,close smile,69-close smile/key frames/68-close smile_67.jpg,True,0.06914842899476004
+41,right eyebrow,41-right eyebrow/key frames/41-right eyebrow_1.jpg,True,0.06333787774827353
+8,open smile,8-open smile/key frames/8-open smile_78.jpg,True,0.06682872281722703
+94,frown,94-frown/key frames/94-frown_24.jpg,True,0.06012264216147746
+10,right eyebrow,10-right eyebrow/key frames/10-right eyebrow_197.jpg,True,0.06313206653315151
+34,right wink,34-right wink/key frames/34-right wink_1.jpg,True,0.0618059255971744
+74,left snarl,74-left snarl/key frames/74-left snarl_48.jpg,True,0.06785347103787549
+3,funny,AFLFP/3/3-funny_820.jpg,True,0.06463419139981781
+51,close smile,51-close smile/key frames/51-close smile_87.jpg,True,0.06151605710510674
+97,left snarl,97-left snarl/key frames/97-left snarl_100.jpg,True,0.06526654634526348
+75,snarl,75-snarl/key frames/75-snarl_125.jpg,True,0.06219129327769237
+27,gentle eyes closure,27-gentle eyes closure/key frames/27-gentle eyes closure_9.jpg,True,0.06857171551587089
+33,left smile,33-left smile/key frames/33-left smile_1.jpg,True,0.06452647512650236
+54,right smile,54-right smile/key frames/54-right smile_257.jpg,True,0.07022008883867105
+14,brow raise,14-brow raise/key frames/14-brow raise_4.jpg,True,0.06615948814453469
+25,left eyebrow,25/25-left eyebrow_key frames/25-left eyebrow_147.jpg,True,0.06437821590239595
+35,right snarl,35-right snarl/key frames/32-right snarl_100.jpg,True,0.06548681065640616
+100,left wink,100-left wink/key frames/100-left wink_219.jpg,True,0.06512031974644952
+11,open smile,11-open smile/key frames/11-open smile_24.jpg,True,0.06545109414116151
+91,right snarl,91-right snarl/key frames/91-right snarl_62.jpg,True,0.0604452491497985
+34,open smile,34-open smile/key frames/34-open smile_1.jpg,True,0.06987810874167381
+19,frown,19-frown/key frames/19-frown_87.jpg,True,0.062113862811665234
+59,left wink,59-left wink/key frames/59-left wink_38.jpg,True,0.06362480379603053
+27,tight eyes closure,27-tight eues closure/key frames/27-tight eues closure_70.jpg,True,0.07266301408480894
+61,frown,61-frown/key frames/61-frown_74.jpg,True,0.05792378991297966
+80,snarl,80-snarl/key frames/80-snarl_125.jpg,True,0.06373895153138041
+32,brow raise,32-brow raise/key frames/32-brow raise_145.jpg,True,0.062421015789840814
+70,close smile,70-close smile/key frames/70-close smile_9.jpg,True,0.06568920919388045
+50,left smile,50-left smile/key frames/50-left smile_110.jpg,True,0.06377949737330685
+62,gentle eyes closure,62-gentle eyes closure/key frames/62-gentle eyes closure_91.jpg,True,0.06106591994046909
+48,open smile,48-open smile/key frames/48-open smile_19.jpg,True,0.06764186366778073
+65,right smile,AFLFP/65/65-right smile_62.jpg,True,0.06474500266833703
+13,right eyebrow,13/13-right eyebrow_key frames/13-right eyebrow_66.jpg,True,0.06653289710597649
+9,right wink,9-right wink/key frames/9-right wink_84.jpg,True,0.0617434515773761
+5,right wink,5-right wink/key frames/5-right wink_64.jpg,True,0.0587514226447739
+69,funny,69-funny/key frames/69-funny_520.jpg,True,0.06921919514504662
+55,left eyebrow,55-left eyebrow/key frames/55-left eyebrow_157.jpg,True,0.057584329190018956
+74,close smile,74-close smile/key frames/74-close smile_115.jpg,True,0.0642204889669918
+18,right snarl,AFLFP/18/18-right snarl_211.jpg,True,0.06188576580202599
+4,left eyebrow,4-left eyebrow/key frames/4-left eyebrow_103.jpg,True,0.057915663083686855
+83,frown,83-frown/key frames/83-frown_79.jpg,True,0.06311546573886563
+52,left snarl,52-left snarl/key frames/52-left snarl_5.jpg,True,0.061901558714754834
+76,left wink,76-left wink/key frames/76-left wink_221.jpg,True,0.06442878898357147
+8,right eyebrow,8-right eyebrow/key frames/8-right eyebrow_86.jpg,True,0.06203105524253498
+24,left snarl,24-left snarl/key frames/24-left snarl_1.jpg,True,0.06414851608493619
+94,snarl,94-snarl/key frames/94-snarl_23.jpg,True,0.06614288032474347
+78,left smile,78-left smile/key frames/78-left smile_1.jpg,True,0.06103382764812812
+71,funny,71-funny/key frames/71-funny_516.jpg,True,0.06937002065464477
+81,gentle eyes closure,81-gentle eyes closure/key frames/81-gentle eyes closure_22.jpg,True,0.06607837287893825
+67,tight eyes closure,67-tight eyes closure/key frames/67-tight eyes closure_75.jpg,True,0.0649747782553253
+30,brow raise,30-brow raise/key frames/30-brow raise_1.jpg,True,0.0671737302021359
+41,close smile,41-close smile/key frames/41-close smile_45.jpg,True,0.06073701441957297
+36,right eyebrow,36/36-right eyebrow_key frames/36-right eyebrow_206.jpg,True,0.0626954084043505
+64,left snarl,64-left snarl/key frames/64-left snarl_1.jpg,True,0.06975762897476247
+12,left wink,12-left wink/key frames/12-left wink_1.jpg,True,0.0631515195167868
+23,right smile,23-right smile/key frames/23-right smile_55.jpg,True,0.06411841832716653
+1,right smile,1-right smile/key frames/1-right smile_13.jpg,True,0.06636783195613877
+37,frown,37-frown/key frames/37-frown_1.jpg,True,0.06416854198890079
+17,right wink,17-right wink/key frames/17-right wink_60.jpg,True,0.06061829501443656
+22,gentle eyes closure,22-gentle eyes closure/key frames/22-gentle eyes closure_46.jpg,True,0.055630003367628404
+79,brow raise,79-brow raise/key frames/79-brow raise_55.jpg,True,0.06569192013329685
+85,open smile,85-open smile/key frames/85-open smile_348.jpg,True,0.06301273478308043
+49,funny,49-funny/key frames/49-funny_1337.jpg,True,0.0575779017551733
+84,left smile,84-left smile/key frames/84-left smile_31.jpg,True,0.06037403658072458
+73,tight eyes closure,73-tight eyes closure/key frames/73-tight eyes closure_88.jpg,True,0.06528628547222236
+86,snarl,86-snarl/key frames/86-snarl_184.jpg,True,0.06909090353280582
+16,snarl,16-snarl/key frames/16-snarl_1.jpg,True,0.06010982290889156
+47,open smile,47-open smile/key frames/47-open smile_95.jpg,True,0.0637658201010397
+99,left eyebrow,99-left eyebrow/key frames/99-left eyebrow_1.jpg,True,0.07037098628488907
+57,right wink,57-right wink/key frames/57-right wink_43.jpg,True,0.06344486898797252
+56,brow raise,56-brow raise/key frames/56-brow raise_1.jpg,True,0.04956076860844959
+29,left smile,29-left smile/key frames/29-left smile_83.jpg,True,0.06615787202166394
+96,right snarl,96-right snarl/key frames/96-right snarl_114.jpg,True,0.06420909077700199
+10,right smile,10-right smile/key frames/10-right smile_1.jpg,True,0.06089784421320311
+26,left eyebrow,26-left eyebrow/key frames/26-left eyebrow_1.jpg,True,0.06491937139764646
+77,left wink,77-left wink/key frames/77-left wink_100.jpg,True,0.0688600702863105
+72,funny,72-funny/key frames/72-funny_32.jpg,True,0.0651014977791173
+88,right snarl,88-right snarl/key frames/88-right snarl_20.jpg,True,0.06952383925906495
+95,tight eyes closure,95-tight eyes closure/key frames/95-tight eyes closure_1.jpg,True,0.06908343284285356
+28,right wink,28-right wink/key frames/28-right wink_70.jpg,True,0.06895709600549822
+51,gentle eyes closure,51-gentle eyes closure/key frames/51-gentle eyes closure_37.jpg,True,0.06222458719966594
+58,left eyebrow,58-left eyebrow/key frames/58-left eyebrow_155.jpg,True,0.05953797157533441
+31,right eyebrow,31-right eyebrow/key frames/31-right eyebrow_79.jpg,True,0.05850745998518539
+87,left snarl,87-left snarl/key frames/87-left snarl_44.jpg,True,0.06897866713661269
+46,frown,46-frown/key frames/46-frown_75.jpg,True,0.06449871024036148
+3,left snarl,AFLFP/3/3-left snarl_254.jpg,True,0.0645017760948685
+97,close smile,97-close smile/key frames/97-close smile_43.jpg,True,0.06417878539797375
+68,funny,68-funny/key frames/68-funny_1458.jpg,True,0.05967238627386602
+92,left smile,92-left smile/key frames/92-left smile_32.jpg,True,0.05910117060892163
+20,snarl,20-snarl/key frames/20-snarl_107.jpg,True,0.060303074137021295
+53,open smile,53/53-open smile_key frames/53-open smile_75.jpg,True,0.06416791718363543
+21,brow raise,21-brow raise/key frames/21-brow raise_171.jpg,True,0.05771940484017062
+63,right eyebrow,63-right eyebrow/key frames/63-right eyebrow_97.jpg,True,0.05904142178084878
+98,tight eyes closure,98-tight eyes closure/key frames/98-tight eyes closure_89.jpg,True,0.06756631408532036
+7,gentle eyes closure,7-gentle eyes closure/key frames/7-gentle eyes closure_412.jpg,True,0.06520398870483404
+66,frown,66-frown/key frames/66-frown_100.jpg,True,0.06454501172101965
+75,left wink,75-left wink/key frames/75-left wink_60.jpg,True,0.06489344814166748
+15,close smile,15-close smile/key frames/15-close smile_165.jpg,True,0.06506560599980908
+6,left smile,6-left smile/key frames/6-left smile_181.jpg,True,0.06247390633518258
+82,right snarl,82-right snarl/key frames/82-right snarl_72.jpg,True,0.061032777727255544
+22,left snarl,22-left snarl/key frames/22-left snarl_81.jpg,True,0.05483768678666447
+85,right smile,85-right smile/key frames/85-right smile_278.jpg,True,0.05883729502909148
+9,snarl,9-snarl/key frames/9-snarl_122.jpg,True,0.052453929767105244
+17,right eyebrow,17-right eyebrow/key frames/17-right eyebrow_105.jpg,True,0.061933622818438415
+14,close smile,14-close smile/key frames/14-close smile_118.jpg,True,0.06515621683309408
+28,right snarl,28-right snarl/key frames/28-right snarl_115.jpg,True,0.06787156594638798
+69,left wink,69-left wink/key frames/69-left wink_39.jpg,True,0.06801971956209381
+91,open smile,91-open smile/key frames/91-open smile_61.jpg,True,0.06301481521673365
+4,funny,4-funny/key frames/4-funny_50.jpg,True,0.06237153037120764
+50,tight eyes closure,50-tight eues closure/key frames/50-tight eues closure_43.jpg,True,0.06786232753688383
+15,left snarl,15-left snarl/key frames/15-left snarl_1.jpg,True,0.0649421237647772
+77,gentle eyes closure,77-gentle eyes closure/key frames/77-gentle eyes closure_87.jpg,True,0.06506016509677442
+81,brow raise,81-brow raise/key frames/81-brow raise_21.jpg,True,0.06742909906094245
+19,right wink,19-right wink/key frames/19-right wink_1.jpg,True,0.058712014408694335
+37,brow raise,37-brow raise/key frames/37-brow raise_1.jpg,True,0.06288681001278192
+54,frown,54-frown/key frames/54-frown_291.jpg,True,0.060152491049179344
+92,tight eyes closure,92-tight eyes closure/key frames/92-tight eyes closure_103.jpg,True,0.0641784656496703
+6,open smile,6-open smile/key frames/6-open smile_50.jpg,True,0.06123013823161865
+1,close smile,1-close smile/key frames/1-close smile_1.jpg,True,0.06534771296566359
+41,frown,41-frown/key frames/41-frown_1.jpg,True,0.06265788799279717
+65,left eyebrow,AFLFP/65/65-left eyebrow_30.jpg,True,0.05762254496161923
+71,right wink,71-right wink/key frames/71-right wink_107.jpg,True,0.0733960761265091
+12,snarl,12-snarl/key frames/12-snarl_108.jpg,True,0.06056876164831763
+66,gentle eyes closure,66-gentle eyes closure/key frames/66-gentle eyes closure_140.jpg,True,0.06403180079379912
+55,right smile,55-right smile/key frames/55-right smile_101.jpg,True,0.05980116458303954
+11,left wink,11-left wink/key frames/11-left wink_196.jpg,True,0.06363373450123619
+64,right eyebrow,64-right eyebrow/key frames/64-right eyebrow_1.jpg,True,0.06185881751612959
+18,left smile,AFLFP/18/18-left smile_136.jpg,True,0.059102259239425005
+87,left eyebrow,87-left eyebrow/key frames/87-left eyebrow_1.jpg,True,0.06761005918567396
+86,frown,86-frown/key frames/86-frown_120.jpg,True,0.06458690916989984
+67,right wink,67-right wink/key frames/67-right wink_1.jpg,True,0.060078841853716244
+34,right smile,34-right smile/key frames/34-right smile_189.jpg,True,0.062069237063262755
+48,gentle eyes closure,48-gentle eyes closure/key frames/48-gentle eyes closure_106.jpg,True,0.06192634964337156
+100,close smile,100-close smile/key frames/100-close smile_115.jpg,True,0.07026532072979198
+7,tight eyes closure,7-tight eyes closure/key frames/7-tight eyes closure_311.jpg,True,0.0651097967247345
+56,left snarl,56-left snarl/key frames/56-left snarl_54.jpg,True,0.05578179157191043
+51,right snarl,51-right snarl/key frames/51-right snarl_46.jpg,True,0.0625699642114314
+82,left smile,82-left smile/key frames/82-left smile_13.jpg,True,0.06261521794219724
+74,right snarl,74-right snarl/key frames/74-right snarl_57.jpg,True,0.06497634377989986
+32,left eyebrow,32-left eyebrow/key frames/32-left eyebrow_65.jpg,True,0.06022757408772533
+31,left wink,31-left wink/key frames/31-left wink_56.jpg,True,0.06838063825818388
+73,right smile,73-right smile/key frames/73-right smile_114.jpg,True,0.06585762855827944
+83,right eyebrow,83-right eyebrow/key frames/83-right eyebrow_85.jpg,True,0.06322850918648407
+8,brow raise,8-brow raise/key frames/8-brow raise_134.jpg,True,0.06091612857769209
+80,gentle eyes closure,80-gentle eyes closure/key frames/80-gentle eyes closure_23.jpg,True,0.060477649149490775
+25,snarl,25/25-snarl_key frames/25-snarl_103.jpg,True,0.06296968259033772
+75,right eyebrow,75-right eyebrow/key frames/75-right eyebrow_187.jpg,True,0.0621883543210846
+63,right wink,63-right wink/key frames/63-right wink_52.jpg,True,0.06372971436675094
+52,left wink,52-left wink/key frames/52-left wink_73.jpg,True,0.05974845089810731
+99,brow raise,99-brow raise/key frames/99-brow raise_39.jpg,True,0.06378114748744805
+53,left smile,53/53-left smile_key frames/53-left smile_72.jpg,True,0.06319105942276874
+27,open smile,27-open smile/key frames/27-open smile_60.jpg,True,0.06510182366759472
+10,tight eyes closure,10-tight eye closure/key frames/10-tight eye closure_226.jpg,True,0.07327354489631414
+23,funny,23-funny/key frames/23-funny_27.jpg,True,0.06766310117512986
+5,open smile,5-open smile/key frames/5-open smile_46.jpg,True,0.062262208839613774
+88,left eyebrow,88-left eyebrow/key frames/88-left eyebrow_22.jpg,True,0.069892061904973
+61,right snarl,61-right snarl/key frames/61-right snarl_48.jpg,True,0.06291505064503777
+36,frown,36/36-frown_key frames/36-frown_73.jpg,True,0.06498661095691474
+97,funny,97-funny/key frames/97-funny_162.jpg,True,0.07003712338033709
+94,close smile,94-close smile/key frames/94-close smile_109.jpg,True,0.06427544625013941
+98,left snarl,98-left snarl/key frames/98-left snarl_105.jpg,True,0.07114540034120509
+35,gentle eyes closure,35-gentle eyes closure/key frames/35-gentle eyes closure_110.jpg,True,0.06307879823853166
+20,left wink,20-left wink/key frames/20-left wink_62.jpg,True,0.06053548156573168
+96,close smile,96-close smile/key frames/96-close smile_167.jpg,True,0.05856678795846318
+70,brow raise,70-brow raise/key frames/70-brow raise_30.jpg,True,0.05762056956938
+72,tight eyes closure,72-tight eyes closure/key frames/72-tight eyes closure_58.jpg,True,0.06314623802640801
+49,left snarl,49-left snarl/key frames/49-left snarl_181.jpg,True,0.06780104946022793
+78,right eyebrow,78-right eyebrow/key frames/78-right eyebrow_1.jpg,True,0.055527189351122504
+29,snarl,29-snarl/key frames/29-snarl_6.jpg,True,0.06348894478846222
+21,right smile,21-right smile/key frames/21-right smile_138.jpg,True,0.06300023640132023
+95,left smile,95-left smile/key frames/95-left smile_1.jpg,True,0.07250850434348165
+84,funny,84-funny/key frames/84-funny_90.jpg,True,0.06937360825203398
+13,left eyebrow,13/13-left eyebrow_key frames/13-left eyebrow_98.jpg,True,0.0631033271227185
+47,right smile,47-right smile/key frames/47-right smile_44.jpg,True,0.062496976622862244
+68,frown,68-frown/key frames/68-frown_70.jpg,True,0.06345591102174841
+33,right snarl,33-right snarl/key frames/33-right snarl_1.jpg,True,0.06478611586310226
+59,right wink,59-right wink/key frames/59-right wink_60.jpg,True,0.060869394425901696
+26,funny,26-funny/key frames/26-funny_1823.jpg,True,0.06848304291034749
+3,snarl,AFLFP/3/3-snarl_296.jpg,True,0.060800945404805025
+58,open smile,58-open smile/key frames/58-open smile_110.jpg,True,0.06406255829846767

@@ -5,7 +5,6 @@ from __future__ import annotations
 import random
 import re
 import shutil
-import subprocess
 from collections.abc import Generator, Sequence
 from contextlib import contextmanager
 from dataclasses import dataclass
@@ -76,15 +75,11 @@ def materialize_disfa_frames(
         raise DatasetLayoutError(
             path=video_archive, detail="left-camera archive is missing"
         )
-    ffmpeg = shutil.which("ffmpeg")
-    if ffmpeg is None:
-        raise FrameExtractionError(subject="DISFA", detail="ffmpeg is not available")
     with TemporaryDirectory(prefix="pyfeat-disfa-") as temporary_name:
         temporary_root = Path(temporary_name)
         samples = _extract_selected_frames(
             video_archive=video_archive,
             labels=labels,
-            ffmpeg=ffmpeg,
             temporary_root=temporary_root,
         )
         yield samples
@@ -93,9 +88,10 @@ def materialize_disfa_frames(
 def _extract_selected_frames(
     video_archive: Path,
     labels: Sequence[DISFAFrameLabel],
-    ffmpeg: str,
     temporary_root: Path,
 ) -> list[DISFAFrameSample]:
+    import cv2  # pyright: ignore[reportMissingTypeStubs]
+
     by_subject: dict[str, list[DISFAFrameLabel]] = {}
     for label in labels:
         by_subject.setdefault(label.subject, []).append(label)
@@ -115,43 +111,46 @@ def _extract_selected_frames(
             subject_labels = sorted(
                 by_subject[subject], key=lambda label: label.frame_number
             )
-            output_pattern = temporary_root / f"{subject}_%06d.jpg"
-            selector = "+".join(
-                f"eq(n\\,{label.video_frame_index})" for label in subject_labels
-            )
-            command = [
-                ffmpeg,
-                "-v",
-                "error",
-                "-i",
-                str(video_path),
-                "-vf",
-                f"select={selector}",
-                "-fps_mode",
-                "vfr",
-                "-start_number",
-                "0",
-                "-q:v",
-                "2",
-                str(output_pattern),
-            ]
-            try:
-                _ = subprocess.run(command, check=True, capture_output=True, text=True)
-            except subprocess.CalledProcessError as exc:
+            requested = {
+                label.video_frame_index: label for label in subject_labels
+            }
+            capture = cv2.VideoCapture(str(video_path))
+            if not capture.isOpened():
+                capture.release()
                 raise FrameExtractionError(
-                    subject=subject, detail=str(exc.stderr).strip()
-                ) from exc
+                    subject=subject, detail="could not open extracted video"
+                )
+            subject_samples: list[DISFAFrameSample] = []
+            last_frame = max(requested)
+            frame_index = 0
+            while frame_index <= last_frame:
+                success, frame = capture.read()
+                if not success:
+                    break
+                label = requested.get(frame_index)
+                if label is not None:
+                    image_path = temporary_root / (
+                        f"{subject}_{label.frame_number:06d}.jpg"
+                    )
+                    if not cv2.imwrite(str(image_path), frame):
+                        capture.release()
+                        raise FrameExtractionError(
+                            subject=subject,
+                            detail=f"could not write frame {label.frame_number}",
+                        )
+                    subject_samples.append(
+                        DISFAFrameSample(label=label, image_path=image_path)
+                    )
+                frame_index += 1
+            capture.release()
             video_path.unlink()
-            images = sorted(temporary_root.glob(f"{subject}_*.jpg"))
-            if len(images) != len(subject_labels):
+            if len(subject_samples) != len(subject_labels):
                 raise FrameExtractionError(
                     subject=subject,
-                    detail=f"decoded {len(images)} of {len(subject_labels)} requested frames",
+                    detail=f"decoded {len(subject_samples)} of "
+                    f"{len(subject_labels)} requested frames",
                 )
-            extracted.extend(
-                DISFAFrameSample(label=label, image_path=image)
-                for label, image in zip(subject_labels, images, strict=True)
-            )
+            extracted.extend(subject_samples)
     return extracted
 
 

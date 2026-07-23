@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import csv
 import json
 import math
 import time
@@ -36,6 +37,10 @@ class DISFABenchmarkReport:
     py_feat_version: str
     device: str
     seed: int
+    evaluation_mode: str
+    sample_strategy: str
+    batch_size: int
+    output_size: int
     requested_samples: int
     processed_samples: int
     scored_samples: int
@@ -48,6 +53,16 @@ class DISFABenchmarkReport:
     truth_threshold: float
     prediction_threshold: float
     au_metrics: tuple[AUMetric, ...]
+    sample_results: tuple[DISFASampleResult, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class DISFASampleResult:
+    subject: str
+    frame_number: int
+    detected: bool
+    truth: tuple[int, ...]
+    prediction: tuple[float | None, ...]
 
 
 def run_disfa_benchmark(
@@ -86,7 +101,9 @@ def run_disfa_benchmark(
             ),
         )
         elapsed_s = time.perf_counter() - started
-        return score_disfa_detections(detections, labels, elapsed_s, device, seed)
+        return score_disfa_detections(
+            detections, labels, elapsed_s, device, seed, batch_size
+        )
 
 
 def score_disfa_detections(
@@ -95,6 +112,7 @@ def score_disfa_detections(
     elapsed_s: float,
     device: str,
     seed: int,
+    batch_size: int = 1,
 ) -> DISFABenchmarkReport:
     """Align the highest-confidence detected face to every selected frame."""
     top_faces: dict[int, tuple[float, DetectionRow]] = {}
@@ -111,7 +129,6 @@ def score_disfa_detections(
         for index, au in enumerate(au_names)
     }
     prediction = {au: np.full(len(labels), np.nan, dtype=np.float64) for au in au_names}
-    scored_samples = 0
     for frame, (_, row) in top_faces.items():
         if not 0 <= frame < len(labels):
             continue
@@ -120,7 +137,22 @@ def score_disfa_detections(
             continue
         for au, value in zip(au_names, values, strict=True):
             prediction[au][frame] = value
-        scored_samples += 1
+    sample_results = tuple(
+        DISFASampleResult(
+            subject=label.subject,
+            frame_number=label.frame_number,
+            detected=bool(np.isfinite(prediction[au_names[0]][index])),
+            truth=label.intensities,
+            prediction=tuple(
+                float(prediction[au][index])
+                if np.isfinite(prediction[au][index])
+                else None
+                for au in au_names
+            ),
+        )
+        for index, label in enumerate(labels)
+    )
+    scored_samples = sum(sample.detected for sample in sample_results)
     summary = summarize_au_scores(truth, prediction)
     processed_samples = len(labels)
     return DISFABenchmarkReport(
@@ -129,6 +161,10 @@ def score_disfa_detections(
         py_feat_version=version("py-feat"),
         device=device,
         seed=seed,
+        evaluation_mode="test-only; pretrained weights; no fitting or tuning",
+        sample_strategy="uniform random frames within each subject",
+        batch_size=batch_size,
+        output_size=512,
         requested_samples=processed_samples,
         processed_samples=processed_samples,
         scored_samples=scored_samples,
@@ -141,21 +177,60 @@ def score_disfa_detections(
         truth_threshold=2.0,
         prediction_threshold=0.5,
         au_metrics=summary.au_metrics,
+        sample_results=sample_results,
     )
 
 
 def write_disfa_report(
     report: DISFABenchmarkReport, output_dir: Path
-) -> tuple[Path, Path]:
-    """Persist one DISFA report as JSON and concise Markdown."""
+) -> tuple[Path, Path, Path]:
+    """Persist DISFA aggregate JSON, concise Markdown, and sample-level CSV."""
     output_dir.mkdir(parents=True, exist_ok=True)
-    json_path = output_dir / "disfa-pilot.json"
-    markdown_path = output_dir / "disfa-pilot.md"
+    json_path = output_dir / "disfa-test.json"
+    markdown_path = output_dir / "disfa-test.md"
+    csv_path = output_dir / "disfa-samples.csv"
     json_path.write_text(
-        f"{json.dumps(asdict(report), indent=2, sort_keys=True)}\n", encoding="utf-8"
+        f"{json.dumps(disfa_report_dict(report), indent=2, sort_keys=True)}\n",
+        encoding="utf-8",
     )
     markdown_path.write_text(_disfa_markdown(report), encoding="utf-8")
-    return json_path, markdown_path
+    au_names = tuple(f"AU{au:02d}" for au in DISFA_AUS)
+    fieldnames = (
+        "subject",
+        "frame_number",
+        "detected",
+        *(f"{au}_truth" for au in au_names),
+        *(f"{au}_prediction" for au in au_names),
+    )
+    with csv_path.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=fieldnames)
+        writer.writeheader()
+        for sample in report.sample_results:
+            row: dict[str, object] = {
+                "subject": sample.subject,
+                "frame_number": sample.frame_number,
+                "detected": sample.detected,
+            }
+            row.update(
+                {
+                    f"{au}_truth": value
+                    for au, value in zip(au_names, sample.truth, strict=True)
+                }
+            )
+            row.update(
+                {
+                    f"{au}_prediction": value
+                    for au, value in zip(au_names, sample.prediction, strict=True)
+                }
+            )
+            writer.writerow(row)
+    return json_path, markdown_path, csv_path
+
+
+def disfa_report_dict(report: DISFABenchmarkReport) -> dict[str, object]:
+    payload = asdict(report)
+    del payload["sample_results"]
+    return payload
 
 
 def _disfa_markdown(report: DISFABenchmarkReport) -> str:
@@ -165,7 +240,7 @@ def _disfa_markdown(report: DISFABenchmarkReport) -> str:
         for metric in report.au_metrics
     )
     return (
-        "# DISFA py-feat Detectorv2 pilot\n\n"
+        "# DISFA py-feat Detectorv2 test-only evaluation\n\n"
         f"- Samples: {report.scored_samples:,} scored / {report.processed_samples:,} processed "
         f"({report.detection_rate:.1%})\n"
         f"- Macro F1 / ICC(3,1): {report.macro_f1:.4f} / {report.macro_icc:.4f}\n"

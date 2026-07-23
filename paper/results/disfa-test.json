@@ -1,0 +1,144 @@
+{
+  "au_metrics": [
+    {
+      "au": "AU01",
+      "evaluated_samples": 5400,
+      "f1": 0.6947674418604651,
+      "icc": 0.4088708740928577,
+      "predicted_positive_count": 389,
+      "prevalence": 0.05537037037037037,
+      "support": 299,
+      "truth_positive_count": 299
+    },
+    {
+      "au": "AU02",
+      "evaluated_samples": 5400,
+      "f1": 0.9169960474308301,
+      "icc": 0.4722780101285215,
+      "predicted_positive_count": 245,
+      "prevalence": 0.04833333333333333,
+      "support": 261,
+      "truth_positive_count": 261
+    },
+    {
+      "au": "AU04",
+      "evaluated_samples": 5400,
+      "f1": 0.8777393310265282,
+      "icc": 0.4691399200200594,
+      "predicted_positive_count": 934,
+      "prevalence": 0.14814814814814814,
+      "support": 800,
+      "truth_positive_count": 800
+    },
+    {
+      "au": "AU05",
+      "evaluated_samples": 5400,
+      "f1": 0.5476190476190477,
+      "icc": 0.31814258418921904,
+      "predicted_positive_count": 25,
+      "prevalence": 0.010925925925925926,
+      "support": 59,
+      "truth_positive_count": 59
+    },
+    {
+      "au": "AU06",
+      "evaluated_samples": 5400,
+      "f1": 0.7627627627627628,
+      "icc": 0.5388242243358345,
+      "predicted_positive_count": 590,
+      "prevalence": 0.07574074074074075,
+      "support": 409,
+      "truth_positive_count": 409
+    },
+    {
+      "au": "AU09",
+      "evaluated_samples": 5400,
+      "f1": 0.7146067415730337,
+      "icc": 0.4415537328711123,
+      "predicted_positive_count": 237,
+      "prevalence": 0.03851851851851852,
+      "support": 208,
+      "truth_positive_count": 208
+    },
+    {
+      "au": "AU12",
+      "evaluated_samples": 5400,
+      "f1": 0.7369007803790413,
+      "icc": 0.5355200719452489,
+      "predicted_positive_count": 1123,
+      "prevalence": 0.12425925925925926,
+      "support": 671,
+      "truth_positive_count": 671
+    },
+    {
+      "au": "AU15",
+      "evaluated_samples": 5400,
+      "f1": 0.5906040268456376,
+      "icc": 0.5271268512322143,
+      "predicted_positive_count": 198,
+      "prevalence": 0.018518518518518517,
+      "support": 100,
+      "truth_positive_count": 100
+    },
+    {
+      "au": "AU17",
+      "evaluated_samples": 5400,
+      "f1": 0.5065913370998116,
+      "icc": 0.5041168100342888,
+      "predicted_positive_count": 780,
+      "prevalence": 0.052222222222222225,
+      "support": 282,
+      "truth_positive_count": 282
+    },
+    {
+      "au": "AU20",
+      "evaluated_samples": 5400,
+      "f1": 0.4792626728110599,
+      "icc": 0.33128525733532704,
+      "predicted_positive_count": 85,
+      "prevalence": 0.024444444444444446,
+      "support": 132,
+      "truth_positive_count": 132
+    },
+    {
+      "au": "AU25",
+      "evaluated_samples": 5400,
+      "f1": 0.9590718659361908,
+      "icc": 0.5281550229689839,
+      "predicted_positive_count": 1606,
+      "prevalence": 0.2772222222222222,
+      "support": 1497,
+      "truth_positive_count": 1497
+    },
+    {
+      "au": "AU26",
+      "evaluated_samples": 5400,
+      "f1": 0.7853610286844708,
+      "icc": 0.5245812521092726,
+      "predicted_positive_count": 571,
+      "prevalence": 0.08148148148148149,
+      "support": 440,
+      "truth_positive_count": 440
+    }
+  ],
+  "batch_size": 32,
+  "dataset": "disfa",
+  "detection_rate": 1.0,
+  "detector": "Detectorv2",
+  "device": "mps",
+  "elapsed_s": 206.5851362500107,
+  "evaluation_mode": "test-only; pretrained weights; no fitting or tuning",
+  "fps": 26.139344282082735,
+  "macro_f1": 0.7143569236690732,
+  "macro_icc": 0.46663288427191163,
+  "output_size": 512,
+  "prediction_threshold": 0.5,
+  "processed_samples": 5400,
+  "py_feat_version": "2.0.3",
+  "requested_samples": 5400,
+  "sample_strategy": "uniform random frames within each subject",
+  "scored_samples": 5400,
+  "seed": 42,
+  "subjects": 27,
+  "truth_threshold": 2.0
+}

@@ -3,7 +3,7 @@
 Facenet is a research workspace for real-time facial behavior analysis with
 [Py-Feat](https://py-feat.org/). Its main application is a local web demo built
 around Py-Feat Detectorv2, with supporting benchmark scripts, design notes, and
-a research-paper draft.
+a reproducible test-only evaluation paper.
 
 Despite the workspace name, this project is not an implementation of the
 FaceNet face-recognition model.
@@ -13,10 +13,10 @@ FaceNet face-recognition model.
 - Live webcam analysis with face boxes, a 478-point mesh, emotions, Action
   Units (AUs), valence/arousal, gaze, head pose, and blendshapes.
 - Viewer, session recording, annotations, and queued image analysis.
-- Deterministic pilot benchmark tooling for AFLFP landmarks and DISFA AUs.
+- Deterministic test-only benchmark tooling for AFLFP landmarks and DISFA AUs.
 - An OpenCV runner for separating model inference speed from browser and API
   overhead.
-- Design notes, weekly progress notes, and a LaTeX benchmark-paper draft.
+- Design notes, weekly progress notes, and a result-driven LaTeX paper.
 
 The documented browser demo measurement is approximately 22.1 FPS at 45 ms
 latency on an Apple Silicon development machine. This is an observed
@@ -29,7 +29,7 @@ end-to-end measurement, not a general model-performance claim.
 ├── docs/                  Design, implementation, and weekly notes
 ├── lib/
 │   └── py-feat-demo/      Py-Feat web demo and benchmark tools
-└── paper/                 LaTeX source, bibliography, and rendered draft
+└── paper/                 LaTeX source, results, generated tables, and figures
 ```
 
 Datasets, downloaded model weights, generated outputs, caches, and local tool

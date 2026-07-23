@@ -1,0 +1,235 @@
+{
+  "aflfp_movements": {
+    "brow raise": {
+      "abbreviation": "BR",
+      "baseline_mean_percent": 11.5,
+      "count": 71,
+      "mean": 0.06295603215020028,
+      "median": 0.06336237036298895,
+      "p90": 0.0671737302021359,
+      "std": 0.003931793601745976
+    },
+    "close smile": {
+      "abbreviation": "CS",
+      "baseline_mean_percent": 11.1,
+      "count": 71,
+      "mean": 0.06350355605244809,
+      "median": 0.06415203013313348,
+      "p90": 0.06802362479876133,
+      "std": 0.003954664325608829
+    },
+    "frown": {
+      "abbreviation": "FR",
+      "baseline_mean_percent": 11.1,
+      "count": 71,
+      "mean": 0.06371784903547918,
+      "median": 0.06345591102174841,
+      "p90": 0.06944485726641586,
+      "std": 0.004080065931863471
+    },
+    "funny": {
+      "abbreviation": "FN",
+      "baseline_mean_percent": 12.6,
+      "count": 71,
+      "mean": 0.06447868276481428,
+      "median": 0.06430548149200019,
+      "p90": 0.06937360825203398,
+      "std": 0.003979592172925198
+    },
+    "gentle eyes closure": {
+      "abbreviation": "GEC",
+      "baseline_mean_percent": 11.4,
+      "count": 71,
+      "mean": 0.06311923805728113,
+      "median": 0.06307879823853166,
+      "p90": 0.0675491174999188,
+      "std": 0.0037261031349978173
+    },
+    "left eyebrow": {
+      "abbreviation": "LE",
+      "baseline_mean_percent": 10.8,
+      "count": 71,
+      "mean": 0.06317447818964608,
+      "median": 0.06306431556966843,
+      "p90": 0.06799168184054505,
+      "std": 0.0034427796542997697
+    },
+    "left smile": {
+      "abbreviation": "LSM",
+      "baseline_mean_percent": 11.9,
+      "count": 71,
+      "mean": 0.06310428585440309,
+      "median": 0.06247390633518258,
+      "p90": 0.06773232548848584,
+      "std": 0.0035046321773631343
+    },
+    "left snarl": {
+      "abbreviation": "LSN",
+      "baseline_mean_percent": 11.5,
+      "count": 71,
+      "mean": 0.06377708531298783,
+      "median": 0.06351795294544049,
+      "p90": 0.06962589327979572,
+      "std": 0.004470923364280412
+    },
+    "left wink": {
+      "abbreviation": "LW",
+      "baseline_mean_percent": 11.4,
+      "count": 71,
+      "mean": 0.06392388028231707,
+      "median": 0.06362480379603053,
+      "p90": 0.0688600702863105,
+      "std": 0.003907989069945875
+    },
+    "open smile": {
+      "abbreviation": "OS",
+      "baseline_mean_percent": 12.0,
+      "count": 71,
+      "mean": 0.06396361594114743,
+      "median": 0.06397916664620934,
+      "p90": 0.06764186366778073,
+      "std": 0.0030476648062530386
+    },
+    "right eyebrow": {
+      "abbreviation": "RE",
+      "baseline_mean_percent": 11.2,
+      "count": 71,
+      "mean": 0.06314932523460191,
+      "median": 0.06314311322841765,
+      "p90": 0.06726379940721808,
+      "std": 0.003552591807259845
+    },
+    "right smile": {
+      "abbreviation": "RSM",
+      "baseline_mean_percent": 12.4,
+      "count": 71,
+      "mean": 0.06429208207910539,
+      "median": 0.06424474083096604,
+      "p90": 0.0691565304499221,
+      "std": 0.004037320017289222
+    },
+    "right snarl": {
+      "abbreviation": "RSN",
+      "baseline_mean_percent": 11.6,
+      "count": 71,
+      "mean": 0.06416170711971521,
+      "median": 0.06409829217618043,
+      "p90": 0.06842235727365657,
+      "std": 0.0040196335590646885
+    },
+    "right wink": {
+      "abbreviation": "RW",
+      "baseline_mean_percent": 11.5,
+      "count": 71,
+      "mean": 0.06270877235866879,
+      "median": 0.062281614043160245,
+      "p90": 0.06849132208848849,
+      "std": 0.004183491386307388
+    },
+    "snarl": {
+      "abbreviation": "SN",
+      "baseline_mean_percent": 12.0,
+      "count": 71,
+      "mean": 0.0639761908754859,
+      "median": 0.06388471870005417,
+      "p90": 0.06998242201848076,
+      "std": 0.004718388789184293
+    },
+    "tight eyes closure": {
+      "abbreviation": "TEC",
+      "baseline_mean_percent": 11.9,
+      "count": 71,
+      "mean": 0.06486027508037708,
+      "median": 0.06428944619420118,
+      "p90": 0.07010813931226939,
+      "std": 0.00422513356490434
+    }
+  },
+  "disfa_aus": {
+    "AU01": {
+      "f1": 0.6947674418604651,
+      "icc": 0.4088708740928577,
+      "predicted_positive": 389,
+      "prevalence": 0.05537037037037037,
+      "support": 299
+    },
+    "AU02": {
+      "f1": 0.9169960474308301,
+      "icc": 0.4722780101285215,
+      "predicted_positive": 245,
+      "prevalence": 0.04833333333333333,
+      "support": 261
+    },
+    "AU04": {
+      "f1": 0.8777393310265282,
+      "icc": 0.4691399200200594,
+      "predicted_positive": 934,
+      "prevalence": 0.14814814814814814,
+      "support": 800
+    },
+    "AU05": {
+      "f1": 0.5476190476190477,
+      "icc": 0.31814258418921904,
+      "predicted_positive": 25,
+      "prevalence": 0.010925925925925926,
+      "support": 59
+    },
+    "AU06": {
+      "f1": 0.7627627627627628,
+      "icc": 0.5388242243358345,
+      "predicted_positive": 590,
+      "prevalence": 0.07574074074074075,
+      "support": 409
+    },
+    "AU09": {
+      "f1": 0.7146067415730337,
+      "icc": 0.4415537328711123,
+      "predicted_positive": 237,
+      "prevalence": 0.03851851851851852,
+      "support": 208
+    },
+    "AU12": {
+      "f1": 0.7369007803790413,
+      "icc": 0.5355200719452489,
+      "predicted_positive": 1123,
+      "prevalence": 0.12425925925925926,
+      "support": 671
+    },
+    "AU15": {
+      "f1": 0.5906040268456376,
+      "icc": 0.5271268512322143,
+      "predicted_positive": 198,
+      "prevalence": 0.018518518518518517,
+      "support": 100
+    },
+    "AU17": {
+      "f1": 0.5065913370998116,
+      "icc": 0.5041168100342888,
+      "predicted_positive": 780,
+      "prevalence": 0.052222222222222225,
+      "support": 282
+    },
+    "AU20": {
+      "f1": 0.4792626728110599,
+      "icc": 0.33128525733532704,
+      "predicted_positive": 85,
+      "prevalence": 0.024444444444444446,
+      "support": 132
+    },
+    "AU25": {
+      "f1": 0.9590718659361908,
+      "icc": 0.5281550229689839,
+      "predicted_positive": 1606,
+      "prevalence": 0.2772222222222222,
+      "support": 1497
+    },
+    "AU26": {
+      "f1": 0.7853610286844708,
+      "icc": 0.5245812521092726,
+      "predicted_positive": 571,
+      "prevalence": 0.08148148148148149,
+      "support": 440
+    }
+  },
+  "disfa_prevalence_f1_correlation": 0.7080241596601273
+}

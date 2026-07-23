@@ -1,0 +1,21 @@
+{
+  "benchmark_date": "2026-07-23",
+  "git_commit": "50e0e345bff31ddf27d1854769ff81c12330a147",
+  "git_worktree_dirty": true,
+  "hardware": {
+    "machine": "MacBook Pro (MacBookPro18,3)",
+    "chip": "Apple M1 Pro",
+    "cpu_cores": 8,
+    "memory_gb": 16
+  },
+  "software": {
+    "macos": "26.5.2",
+    "python": "3.12.12",
+    "py_feat": "2.0.3",
+    "torch": "2.13.0",
+    "numpy": "2.5.1",
+    "pandas": "3.0.5",
+    "opencv_python_headless": "5.0.0.93",
+    "matplotlib": "3.11.1"
+  }
+}

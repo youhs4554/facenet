@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import csv
 import json
 import math
 import time
@@ -41,6 +42,10 @@ class AFLFPBenchmarkReport:
     py_feat_version: str
     device: str
     seed: int
+    evaluation_mode: str
+    sample_strategy: str
+    batch_size: int
+    output_size: int
     requested_samples: int
     processed_samples: int
     scored_samples: int
@@ -54,6 +59,16 @@ class AFLFPBenchmarkReport:
     subjects: int
     movements: int
     nme_definition: str
+    sample_results: tuple[AFLFPSampleResult, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class AFLFPSampleResult:
+    subject: str
+    movement: str
+    sample_id: str
+    detected: bool
+    nme: float | None
 
 
 def run_aflfp_benchmark(
@@ -63,7 +78,7 @@ def run_aflfp_benchmark(
     device: str,
     batch_size: int,
 ) -> AFLFPBenchmarkReport:
-    """Run the default repository Detectorv2 over a balanced AFLFP pilot."""
+    """Run the default repository Detectorv2 over a balanced AFLFP test cohort."""
     from feat import Detectorv2  # pyright: ignore[reportMissingTypeStubs]
 
     samples = select_balanced_aflfp_samples(
@@ -89,13 +104,19 @@ def run_aflfp_benchmark(
         ),
     )
     elapsed_s = time.perf_counter() - started
-    summary = score_aflfp_detections(detections, samples, elapsed_s=elapsed_s)
+    summary, sample_results = _score_aflfp_samples(
+        detections, samples, elapsed_s=elapsed_s
+    )
     return AFLFPBenchmarkReport(
         dataset="aflfp",
         detector="Detectorv2",
         py_feat_version=version("py-feat"),
         device=device,
         seed=seed,
+        evaluation_mode="test-only; pretrained weights; no fitting or tuning",
+        sample_strategy="balanced unique subject/movement pairs",
+        batch_size=batch_size,
+        output_size=512,
         requested_samples=max_samples,
         processed_samples=summary.processed_samples,
         scored_samples=summary.scored_samples,
@@ -109,6 +130,7 @@ def run_aflfp_benchmark(
         subjects=len({sample.subject for sample in samples}),
         movements=len({sample.movement for sample in samples}),
         nme_definition="mean point error / sqrt(GT bbox width * GT bbox height)",
+        sample_results=sample_results,
     )
 
 
@@ -118,6 +140,15 @@ def score_aflfp_detections(
     elapsed_s: float,
 ) -> LandmarkSummary:
     """Align top-face rows to AFLFP inputs and summarize landmark NME."""
+    summary, _ = _score_aflfp_samples(detections, samples, elapsed_s)
+    return summary
+
+
+def _score_aflfp_samples(
+    detections: DetectionTable,
+    samples: list[AFLFPSample],
+    elapsed_s: float,
+) -> tuple[LandmarkSummary, tuple[AFLFPSampleResult, ...]]:
     top_faces: dict[int, tuple[float, DetectionRow]] = {}
     for _, row in detections.iterrows():
         frame = int(float(row["frame"]))
@@ -127,10 +158,12 @@ def score_aflfp_detections(
             top_faces[frame] = (face_score, row)
 
     scores: list[float | None] = []
+    sample_results: list[AFLFPSampleResult] = []
     for frame, sample in enumerate(samples):
         selected = top_faces.get(frame)
         if selected is None:
             scores.append(None)
+            sample_results.append(_aflfp_sample_result(sample, None))
             continue
         row = selected[1]
         prediction = np.column_stack(
@@ -141,28 +174,61 @@ def score_aflfp_detections(
         )
         if not np.isfinite(prediction).all():
             scores.append(None)
+            sample_results.append(_aflfp_sample_result(sample, None))
             continue
-        scores.append(landmark_nme(prediction, read_landmarks(sample.annotation_path)))
-    return summarize_landmark_scores(scores, elapsed_s=elapsed_s)
+        score = landmark_nme(prediction, read_landmarks(sample.annotation_path))
+        scores.append(score)
+        sample_results.append(_aflfp_sample_result(sample, score))
+    return (
+        summarize_landmark_scores(scores, elapsed_s=elapsed_s),
+        tuple(sample_results),
+    )
+
+
+def _aflfp_sample_result(
+    sample: AFLFPSample, nme: float | None
+) -> AFLFPSampleResult:
+    return AFLFPSampleResult(
+        subject=sample.subject,
+        movement=sample.movement,
+        sample_id="/".join(sample.image_path.parts[-3:]),
+        detected=nme is not None,
+        nme=nme,
+    )
 
 
 def write_aflfp_report(
     report: AFLFPBenchmarkReport, output_dir: Path
-) -> tuple[Path, Path]:
-    """Persist one AFLFP report as JSON and concise Markdown."""
+) -> tuple[Path, Path, Path]:
+    """Persist AFLFP aggregate JSON, concise Markdown, and sample-level CSV."""
     output_dir.mkdir(parents=True, exist_ok=True)
-    json_path = output_dir / "aflfp-pilot.json"
-    markdown_path = output_dir / "aflfp-pilot.md"
+    json_path = output_dir / "aflfp-test.json"
+    markdown_path = output_dir / "aflfp-test.md"
+    csv_path = output_dir / "aflfp-samples.csv"
     json_path.write_text(
-        f"{json.dumps(asdict(report), indent=2, sort_keys=True)}\n", encoding="utf-8"
+        f"{json.dumps(aflfp_report_dict(report), indent=2, sort_keys=True)}\n",
+        encoding="utf-8",
     )
     markdown_path.write_text(_aflfp_markdown(report), encoding="utf-8")
-    return json_path, markdown_path
+    with csv_path.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(
+            stream, fieldnames=("subject", "movement", "sample_id", "detected", "nme")
+        )
+        writer.writeheader()
+        for sample in report.sample_results:
+            writer.writerow(asdict(sample))
+    return json_path, markdown_path, csv_path
+
+
+def aflfp_report_dict(report: AFLFPBenchmarkReport) -> dict[str, object]:
+    payload = asdict(report)
+    del payload["sample_results"]
+    return payload
 
 
 def _aflfp_markdown(report: AFLFPBenchmarkReport) -> str:
     return (
-        "# AFLFP py-feat Detectorv2 pilot\n\n"
+        "# AFLFP py-feat Detectorv2 test-only evaluation\n\n"
         f"- Samples: {report.scored_samples:,} scored / {report.processed_samples:,} processed "
         f"({report.detection_rate:.1%})\n"
         f"- NME mean / std: {report.nme_mean:.4f} / {report.nme_std:.4f}\n"
