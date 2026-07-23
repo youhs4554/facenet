@@ -1,6 +1,6 @@
 # Py-Feat Live Web Demo
 
-This is a local browser implementation inspired by official [Py-Feat.Live](https://github.com/cosanlab/pyfeat-live) workflows and powered by [cosanlab/py-feat](https://github.com/cosanlab/py-feat). It keeps the lightweight Flask + static frontend pattern used by the OpenFace 3.0 demo in this workspace.
+This is a local browser implementation inspired by official [Py-Feat.Live](https://github.com/cosanlab/pyfeat-live) workflows and powered by [cosanlab/py-feat](https://github.com/cosanlab/py-feat). It uses a lightweight Flask backend with a static frontend.
 
 The app includes:
 

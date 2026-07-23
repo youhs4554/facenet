@@ -16,7 +16,6 @@ FaceNet face-recognition model.
 - Deterministic pilot benchmark tooling for AFLFP landmarks and DISFA AUs.
 - An OpenCV runner for separating model inference speed from browser and API
   overhead.
-- A vendored OpenFace 3.0 research baseline with local demo experiments.
 - Design notes, weekly progress notes, and a LaTeX benchmark-paper draft.
 
 The documented browser demo measurement is approximately 22.1 FPS at 45 ms
@@ -29,13 +28,13 @@ end-to-end measurement, not a general model-performance claim.
 .
 ├── docs/                  Design, implementation, and weekly notes
 ├── lib/
-│   ├── py-feat-demo/      Primary Py-Feat web demo and benchmark tools
-│   └── OpenFace-3.0/      Vendored OpenFace baseline and local experiments
+│   └── py-feat-demo/      Py-Feat web demo and benchmark tools
 └── paper/                 LaTeX source, bibliography, and rendered draft
 ```
 
 Datasets, downloaded model weights, generated outputs, caches, and local tool
-state are intentionally excluded from Git.
+state are intentionally excluded from Git. The legacy local OpenFace checkout
+is also outside this repository's managed scope.
 
 ## Quick start
 
@@ -97,17 +96,19 @@ omit the `-k` expression to validate the full dataset contract.
 
 The benchmark scripts expect datasets to be supplied separately. The local
 `data` path is not versioned, and no dataset license or redistribution right
-is implied by this repository. Model checkpoints are also excluded; follow
-the upstream Py-Feat and OpenFace instructions to obtain compatible weights.
+is implied by this repository.
 
-## Upstream projects
+Py-Feat model checkpoints are not committed. Creating `Detectorv2` downloads
+the required pretrained models on first use and stores them in the local model
+cache; later runs reuse the cached files. A network connection is therefore
+normally required for the first model initialization on a new machine.
 
-This workspace builds on:
+## Upstream project
 
-- [cosanlab/py-feat](https://github.com/cosanlab/py-feat)
-- [CMU-MultiComp-Lab/OpenFace-3.0](https://github.com/CMU-MultiComp-Lab/OpenFace-3.0)
-- [biubug6/Pytorch_Retinaface](https://github.com/biubug6/Pytorch_Retinaface)
-- [ZhenglinZhou/STAR](https://github.com/ZhenglinZhou/STAR)
+This workspace builds on [cosanlab/py-feat](https://github.com/cosanlab/py-feat)
+and follows interaction patterns from
+[cosanlab/pyfeat-live](https://github.com/cosanlab/pyfeat-live).
 
-Vendored third-party code remains subject to its upstream license files. No
-repository-wide license has been granted for the original workspace material.
+Py-Feat code and pretrained models have separate license considerations;
+review the upstream model licenses before deployment. No repository-wide
+license has been granted for the original workspace material.

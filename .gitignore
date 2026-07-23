@@ -34,11 +34,9 @@ node_modules/
 *.pt
 *.pth
 *.safetensors
-/lib/OpenFace-3.0/weights/*
-!/lib/OpenFace-3.0/weights/README.md
-/lib/OpenFace-3.0/feature_maps_output/
-/lib/OpenFace-3.0/images/live_demo_check*.jpg
-/lib/OpenFace-3.0/images/web_demo_redesign.png
+
+# Legacy implementation kept locally but not managed by this repository
+/lib/OpenFace-3.0/
 
 # Local benchmark data and results
 /benchmark-data/
