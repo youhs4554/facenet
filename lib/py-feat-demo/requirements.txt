@@ -1,0 +1,8 @@
+flask
+matplotlib
+numpy
+opencv-python-headless
+pandas
+pillow
+pytest
+py-feat

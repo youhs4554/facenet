@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Py-Feat.Live Web Demo</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/styles.css?v=live-inspector-1" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">PF</div>
+        <div class="brand-copy">
+          <h1>Py-Feat.Live Web</h1>
+          <p>Live, Viewer, Analyze workflows powered by py-feat</p>
+        </div>
+      </div>
+      <nav class="app-nav" aria-label="Primary">
+        <button class="nav-tab is-active" data-view="live" type="button">Live</button>
+        <button class="nav-tab" data-view="viewer" type="button">Viewer</button>
+        <button class="nav-tab" data-view="analyze" type="button">Analyze</button>
+        <button class="nav-tab" data-view="settings" type="button">Settings</button>
+      </nav>
+      <section class="header-stats" aria-label="runtime status">
+        <div><span>Model</span><strong id="modelState">loading</strong></div>
+        <div><span>Device</span><strong id="deviceBadge">auto</strong></div>
+        <div><span>FPS</span><strong id="headerFps">0.0</strong></div>
+        <div><span>Latency</span><strong id="latencyText">0 ms</strong></div>
+      </section>
+    </header>
+
+    <main>
+      <section id="liveView" class="view is-active" data-view-panel="live">
+        <div class="dashboard">
+          <section class="left-column" aria-label="camera controls">
+            <section class="card camera-card">
+              <div class="card-title"><h2>Live Controls</h2></div>
+              <div class="video-shell">
+                <video id="camera" autoplay muted playsinline></video>
+              </div>
+              <canvas id="captureCanvas" hidden></canvas>
+              <div class="settings-grid">
+                <label>Camera<select id="cameraSelect"></select></label>
+                <label>Resolution<select id="resolutionSelect">
+                  <option value="640x480">640 x 480</option>
+                  <option value="960x720">960 x 720</option>
+                  <option value="1280x720">1280 x 720</option>
+                </select></label>
+                <label>Preset<select id="presetSelect"></select></label>
+                <label>Device<select id="deviceSelect">
+                  <option value="auto">Auto</option>
+                  <option value="cpu">CPU</option>
+                  <option value="mps">MPS</option>
+                  <option value="cuda">CUDA</option>
+                </select></label>
+                <details class="advanced-live-settings">
+                  <summary>Advanced camera/model settings</summary>
+                  <div class="advanced-settings-grid">
+                    <label>Detection Size<input id="detectionSizeInput" type="number" min="160" step="32" value="640" /></label>
+                    <label>Interval (ms)<input id="intervalInput" type="number" min="16" step="1" value="33" /></label>
+                    <label>Flip<select id="flipSelect">
+                      <option value="off">Off</option>
+                      <option value="on">On</option>
+                    </select></label>
+                    <label>Landmark Style<select id="landmarkStyleSelect">
+                      <option value="points">Points</option>
+                      <option value="mesh" selected>Mesh</option>
+                      <option value="lines">Lines</option>
+                    </select></label>
+                  </div>
+                </details>
+              </div>
+              <div class="run-controls">
+                <button id="startBtn" type="button" disabled>Start</button>
+                <button id="pauseBtn" type="button" disabled>Pause</button>
+                <button id="stopBtn" type="button" disabled>Stop</button>
+                <button id="recordBtn" type="button" disabled>Record</button>
+              </div>
+              <div id="cameraStatus" class="status-line">Waiting for model...</div>
+            </section>
+          </section>
+
+          <section class="center-column" aria-label="analysis output">
+            <section class="card output-card">
+              <div class="card-title"><h2>Analyzed Output</h2></div>
+              <div class="result-frame">
+                <video id="mirror" autoplay muted playsinline></video>
+                <canvas id="overlayCanvas"></canvas>
+                <div id="emptyState">Start를 누르면 분석 결과가 여기에 표시됩니다.</div>
+              </div>
+              <div class="overlay-controls">
+                <label><input id="boxToggle" type="checkbox" checked /> Faceboxes</label>
+                <label><input id="meshToggle" type="checkbox" checked /> Landmarks <span id="landmarkToggleCount">0</span></label>
+                <label><input id="gazeToggle" type="checkbox" checked /> Gaze</label>
+                <label><input id="poseToggle" type="checkbox" checked /> Pose</label>
+                <label><input id="emotionToggle" type="checkbox" checked /> Emotions</label>
+                <label><input id="auToggle" type="checkbox" checked /> AUs</label>
+                <label><input id="vaToggle" type="checkbox" checked /> V/A</label>
+                <label><input id="blendshapeToggle" type="checkbox" /> Blendshapes</label>
+                <button id="downloadBtn" type="button">Capture</button>
+              </div>
+            </section>
+          </section>
+
+          <aside class="right-column" aria-label="analysis inspector">
+            <section class="card inspector-card">
+              <div class="card-title split-title">
+                <h2>Inspector</h2>
+                <span id="primaryEmotion" class="inspector-pill">neutral 0.00</span>
+              </div>
+              <div class="inspector-summary">
+                <div><span>Faces</span><strong id="faceCountText">0</strong></div>
+                <div><span>Landmarks</span><strong id="landmarkCount">0</strong></div>
+                <div><span>Active AU</span><strong id="activeAuCount">0</strong></div>
+                <div><span>Top AU</span><strong id="topAuText">none</strong></div>
+              </div>
+              <div class="inspector-section">
+                <div class="section-heading">
+                  <h3>Emotion</h3>
+                  <span>top 3</span>
+                </div>
+                <div id="emotionList" class="bar-list compact-bars"></div>
+              </div>
+              <div class="inspector-section">
+                <div class="section-heading">
+                  <h3>Action Units</h3>
+                  <span>active with descriptions</span>
+                </div>
+                <div id="activeAuList" class="active-au-list"></div>
+                <details class="secondary-details">
+                  <summary>All AU scores</summary>
+                  <div id="auList" class="bar-list au-list compact-list"></div>
+                </details>
+              </div>
+              <div class="inspector-section">
+                <div class="section-heading">
+                  <h3>Pose / Gaze</h3>
+                  <span>compact</span>
+                </div>
+                <dl class="metric-grid compact-grid">
+                  <div><dt>Pitch</dt><dd id="posePitch">0.00</dd></div>
+                  <div><dt>Roll</dt><dd id="poseRoll">0.00</dd></div>
+                  <div><dt>Yaw</dt><dd id="poseYaw">0.00</dd></div>
+                  <div><dt>Gaze</dt><dd id="gazeText">0.00, 0.00, 1.00</dd></div>
+                </dl>
+              </div>
+              <details class="secondary-details blendshape-details">
+                <summary>Blendshapes</summary>
+                <div id="blendshapeList" class="bar-list compact-list"></div>
+              </details>
+              <details class="secondary-details va-details">
+                <summary>Valence / Arousal</summary>
+                <canvas id="vaCanvas" class="va-canvas" width="320" height="150"></canvas>
+              </details>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section id="viewerView" class="view" data-view-panel="viewer">
+        <div class="workspace-grid">
+          <section class="card">
+            <div class="card-title split-title">
+              <h2>Sessions</h2>
+              <button id="refreshSessionsBtn" type="button">Refresh</button>
+            </div>
+            <div id="sessionList" class="item-list"></div>
+          </section>
+          <section class="card">
+            <div class="card-title"><h2>Viewer</h2></div>
+            <div class="viewer-stage">
+              <canvas id="viewerCanvas" width="720" height="540"></canvas>
+            </div>
+            <div class="scrub-row">
+              <input id="viewerFrameInput" type="range" min="0" max="0" value="0" />
+              <span id="viewerFrameLabel">0 / 0</span>
+            </div>
+            <div id="viewerDetails" class="detail-pane"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="analyzeView" class="view" data-view-panel="analyze">
+        <div class="workspace-grid">
+          <section class="card">
+            <div class="card-title"><h2>Analyze Input</h2></div>
+            <div class="form-stack">
+              <label>Image Or Video<input id="analyzeFileInput" type="file" accept="image/*,video/*" /></label>
+              <label>Label<input id="analyzeLabelInput" type="text" placeholder="optional label" /></label>
+              <button id="queueImageBtn" type="button">Add To Queue</button>
+              <button id="runQueueBtn" type="button">Run Queue</button>
+              <button id="pauseQueueBtn" type="button">Pause</button>
+              <button id="stopQueueBtn" type="button">Stop</button>
+              <img id="analyzePreview" alt="" />
+            </div>
+          </section>
+          <section class="card">
+            <div class="card-title"><h2>Queue</h2></div>
+            <div id="queueList" class="item-list"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="settingsView" class="view" data-view-panel="settings">
+        <div class="settings-page">
+          <section class="card">
+            <div class="card-title"><h2>Presets</h2></div>
+            <div id="presetList" class="item-list"></div>
+          </section>
+          <section class="card">
+            <div class="card-title"><h2>Compute</h2></div>
+            <div id="computeInfo" class="detail-pane"></div>
+          </section>
+          <section class="card">
+            <div class="card-title"><h2>Detector Capabilities</h2></div>
+            <div id="capabilityInfo" class="detail-pane"></div>
+          </section>
+          <section class="card">
+            <div class="card-title"><h2>Logs</h2></div>
+            <div id="logList" class="detail-pane"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js?v=live-inspector-3"></script>
+  </body>
+</html>
