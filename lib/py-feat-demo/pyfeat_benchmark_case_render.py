@@ -180,6 +180,150 @@ def render_disfa_target_strip(
     plt.close(figure)
 
 
+def render_aflfp_ground_truth_example(
+    case: AFLFPCase, output_path: Path
+) -> None:
+    """Show one AFLFP source image beside its manual 68-point annotation."""
+    figure, axes_array = plt.subplots(1, 2, figsize=(12, 5), dpi=160)
+    figure.patch.set_facecolor("#F5F7F9")
+    source_axis, truth_axis = tuple(axes_array)
+    _draw_face(source_axis, case.image_path, case.truth)
+    source_axis.set_title("Source image", fontsize=11, color=NAVY, loc="left")
+
+    _draw_face(truth_axis, case.image_path, case.truth)
+    truth_axis.scatter(
+        case.truth[:, 0],
+        case.truth[:, 1],
+        s=18,
+        facecolors="none",
+        edgecolors="#64748B",
+        linewidths=1.0,
+        label="Manual GT · 68 points",
+    )
+    truth_axis.scatter(
+        case.truth[ORAL_JAW_INDICES, 0],
+        case.truth[ORAL_JAW_INDICES, 1],
+        s=26,
+        facecolors="none",
+        edgecolors=TEAL,
+        linewidths=1.35,
+        label="Oral/jaw GT",
+    )
+    key_indices = (48, 54, 62, 66)
+    for point_index in key_indices:
+        x, y = case.truth[point_index]
+        truth_axis.annotate(
+            str(point_index),
+            (x, y),
+            xytext=(4, -6),
+            textcoords="offset points",
+            fontsize=7,
+            color=NAVY,
+        )
+    coordinates = "\n".join(
+        f"p{point_index}=({case.truth[point_index, 0]:.1f}, "
+        f"{case.truth[point_index, 1]:.1f})"
+        for point_index in key_indices
+    )
+    truth_axis.text(
+        0.02,
+        0.02,
+        "GT coordinate examples (px)\n" + coordinates,
+        transform=truth_axis.transAxes,
+        va="bottom",
+        ha="left",
+        fontproperties=MONO_FONT,
+        fontsize=7.5,
+        color="white",
+        bbox={
+            "boxstyle": "round,pad=0.45",
+            "facecolor": NAVY,
+            "edgecolor": "none",
+            "alpha": 0.88,
+        },
+    )
+    truth_axis.set_title(
+        "Manual ground truth · 68 landmarks",
+        fontsize=11,
+        color=NAVY,
+        loc="left",
+    )
+    truth_axis.legend(loc="lower right", fontsize=7.5, framealpha=0.88)
+    _finish_wide_example(
+        figure,
+        output_path,
+        f"AFLFP annotation example · subject {case.subject} · {case.movement}",
+    )
+
+
+def render_disfa_ground_truth_example(
+    case: DISFACase, output_path: Path
+) -> None:
+    """Show one DISFA source frame beside its manual 12-AU intensities."""
+    figure, axes_array = plt.subplots(1, 2, figsize=(12, 5), dpi=160)
+    figure.patch.set_facecolor("#F5F7F9")
+    source_axis, truth_axis = tuple(axes_array)
+    _draw_face(source_axis, case.image_path, case.landmarks)
+    source_axis.set_title("Source frame", fontsize=11, color=NAVY, loc="left")
+
+    positions = np.arange(len(DISFA_AUS))
+    target_indices = {index for _, index in TARGET_AU_INDICES}
+    colors = [TEAL if index in target_indices else "#94A3B8"
+              for index in positions]
+    bars = truth_axis.barh(
+        positions,
+        case.truth_intensities,
+        height=0.68,
+        color=colors,
+        edgecolor="none",
+    )
+    truth_axis.axvline(
+        2.0,
+        color=CORAL,
+        linewidth=1.2,
+        linestyle="--",
+        label="Positive threshold ≥2",
+    )
+    truth_axis.set_xlim(0.0, 5.55)
+    truth_axis.set_xticks(range(6))
+    truth_axis.set_yticks(positions, DISFA_AUS)
+    truth_axis.invert_yaxis()
+    truth_axis.set_xlabel("Manual AU intensity (0–5)", color=NAVY)
+    truth_axis.set_title(
+        "Manual ground truth · 12 AU intensities",
+        fontsize=11,
+        color=NAVY,
+        loc="left",
+    )
+    truth_axis.grid(axis="x", color="#D4DEE5", linewidth=0.7)
+    truth_axis.set_axisbelow(True)
+    for index, (bar, value) in enumerate(
+        zip(bars, case.truth_intensities, strict=True)
+    ):
+        truth_axis.text(
+            max(float(value) + 0.08, 0.12),
+            bar.get_y() + bar.get_height() / 2,
+            str(value),
+            va="center",
+            fontsize=8,
+            color=NAVY,
+            fontweight="bold" if index in target_indices else "normal",
+        )
+    for tick_index, tick in enumerate(truth_axis.get_yticklabels()):
+        if tick_index in target_indices:
+            tick.set_fontweight("bold")
+            tick.set_color(NAVY)
+    truth_axis.legend(loc="lower right", fontsize=8, framealpha=0.88)
+    for spine in truth_axis.spines.values():
+        spine.set_color("#D4DEE5")
+        spine.set_linewidth(1.0)
+    _finish_wide_example(
+        figure,
+        output_path,
+        f"DISFA annotation example · {case.subject} · frame {case.frame_number}",
+    )
+
+
 def _draw_disfa_target_panel(
     axis: Axes, case: DISFACase, panel_name: str
 ) -> None:
@@ -296,5 +440,24 @@ def _finish(figure: Figure, output_path: Path, title: str) -> None:
                     fontweight="bold", color=NAVY, y=0.985)
     figure.subplots_adjust(left=0.035, right=0.985, bottom=0.035,
                            top=0.92, wspace=0.10, hspace=0.22)
+    figure.savefig(output_path, dpi=160, facecolor=figure.get_facecolor())
+    plt.close(figure)
+
+
+def _finish_wide_example(
+    figure: Figure, output_path: Path, title: str
+) -> None:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    figure.suptitle(
+        title,
+        fontproperties=KOREAN_FONT,
+        fontsize=15,
+        fontweight="bold",
+        color=NAVY,
+        y=0.985,
+    )
+    figure.subplots_adjust(
+        left=0.04, right=0.985, bottom=0.10, top=0.88, wspace=0.16
+    )
     figure.savefig(output_path, dpi=160, facecolor=figure.get_facecolor())
     plt.close(figure)

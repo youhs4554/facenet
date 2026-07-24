@@ -63,5 +63,6 @@ uv run visualize_benchmark_cases.py
 
 This writes the AFLFP figure, the DISFA 2-by-2 figure and compact paper strip
 to `paper/figures/`, plus the auditable selection record at
-`paper/results/target-case-manifest.json`. AFLFP cases are limited to subjects
-permitted for academic publication.
+`paper/results/target-case-manifest.json`. It also writes one source-image and
+ground-truth example per dataset to `docs/weekly/assets/2026-07-24/`. AFLFP
+cases are limited to subjects permitted for academic publication.

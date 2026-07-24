@@ -31,7 +31,9 @@ from pyfeat_benchmark_case_manifest import (
     write_target_manifest,
 )
 from pyfeat_benchmark_case_render import (
+    render_aflfp_ground_truth_example,
     render_aflfp_target_cases,
+    render_disfa_ground_truth_example,
     render_disfa_target_cases,
     render_disfa_target_strip,
 )
@@ -93,6 +95,7 @@ class RunConfig:
     data_root: Path
     output_dir: Path
     asset_dir: Path
+    weekly_asset_dir: Path
     target_manifest: Path
     device: str
 
@@ -166,6 +169,10 @@ def _run_aflfp(
         target_cases,
         config.asset_dir / "aflfp_target_landmarks.png",
     )
+    render_aflfp_ground_truth_example(
+        target_cases[0],
+        config.weekly_asset_dir / "aflfp_ground_truth_example.png",
+    )
     return cases, target_cases
 
 
@@ -187,6 +194,10 @@ def _run_disfa(
         render_disfa_target_strip(
             target_cases,
             config.asset_dir / "disfa_target_aus_strip.png",
+        )
+        render_disfa_ground_truth_example(
+            target_cases[0],
+            config.weekly_asset_dir / "disfa_ground_truth_example.png",
         )
     return cases, target_cases
 
@@ -225,12 +236,17 @@ def main(
     data_root: Path = Path("../../data"),
     output_dir: Path = Path("../../output/benchmarks/case-analysis"),
     asset_dir: Path = Path("../../paper/figures"),
+    weekly_asset_dir: Path = Path(
+        "../../docs/weekly/assets/2026-07-24"
+    ),
     target_manifest: Path = Path("../../paper/results/target-case-manifest.json"),
 ) -> None:
     """Generate target-aligned figures and auditable case manifests."""
     config = RunConfig(
         data_root=data_root.resolve(), output_dir=output_dir.resolve(),
-        asset_dir=asset_dir.resolve(), target_manifest=target_manifest.resolve(),
+        asset_dir=asset_dir.resolve(),
+        weekly_asset_dir=weekly_asset_dir.resolve(),
+        target_manifest=target_manifest.resolve(),
         device="mps",
     )
     detector = Detectorv2(device=config.device)

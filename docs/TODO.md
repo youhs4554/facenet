@@ -58,3 +58,10 @@
 - [x] Save case-selection manifests without copying source datasets.
 - [x] Add the figures and scoped interpretation to the weekly report and paper.
 - [x] Rebuild and visually verify the final paper PDF.
+
+# Benchmark Ground-Truth Examples — 2026-07-24
+
+- [x] Select publication-eligible AFLFP and target-relevant DISFA examples.
+- [x] Visualize the source image and manual ground truth for each dataset.
+- [x] Add the examples and concise annotation explanations to the weekly report.
+- [x] Verify image decoding, Markdown paths, and reported ground-truth values.

@@ -7,8 +7,10 @@ from PIL import Image
 
 from pyfeat_benchmark_case_render import (
     render_aflfp_cases,
+    render_aflfp_ground_truth_example,
     render_aflfp_target_cases,
     render_disfa_cases,
+    render_disfa_ground_truth_example,
     render_disfa_target_cases,
     render_disfa_target_strip,
 )
@@ -250,6 +252,21 @@ def test_aflfp_target_renderer_writes_report_ready_png(tmp_path: Path) -> None:
         assert rendered.size == (1920, 1600)
 
 
+def test_aflfp_ground_truth_renderer_writes_wide_png(tmp_path: Path) -> None:
+    # Given
+    image_path = tmp_path / "face.png"
+    Image.new("RGB", (200, 200), "white").save(image_path)
+    case = _aflfp_case(image_path, "18", 0.02, "close smile")
+    output_path = tmp_path / "aflfp-ground-truth.png"
+
+    # When
+    render_aflfp_ground_truth_example(case, output_path)
+
+    # Then
+    with Image.open(output_path) as rendered:
+        assert rendered.size == (1920, 800)
+
+
 def test_disfa_renderer_writes_report_ready_png(tmp_path: Path) -> None:
     # Given
     image_path = tmp_path / "face.png"
@@ -308,3 +325,18 @@ def test_disfa_target_strip_writes_compact_paper_png(tmp_path: Path) -> None:
     # Then
     with Image.open(output_path) as rendered:
         assert rendered.size == (2400, 640)
+
+
+def test_disfa_ground_truth_renderer_writes_wide_png(tmp_path: Path) -> None:
+    # Given
+    image_path = tmp_path / "face.png"
+    Image.new("RGB", (200, 200), "white").save(image_path)
+    case = _disfa_case(image_path, "SN007", 0, 0.1)
+    output_path = tmp_path / "disfa-ground-truth.png"
+
+    # When
+    render_disfa_ground_truth_example(case, output_path)
+
+    # Then
+    with Image.open(output_path) as rendered:
+        assert rendered.size == (1920, 800)
