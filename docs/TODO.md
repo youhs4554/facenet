@@ -44,3 +44,9 @@
 - [x] Add web-viewable versions of the selected figures to the weekly briefing.
 - [x] Visually verify the figures and recheck the weekly report.
 - [x] Commit only the weekly briefing deliverables and push the current branch.
+
+# Weekly Briefing Structure Revision — 2026-07-24
+
+- [x] Restructure the report around Weekly Done, Py-Feat, benchmark results, and Weekly TODO.
+- [x] Retain only the project-relevant datasets, metrics, AUs, and visualizations.
+- [x] Verify the shortened report against the saved benchmark artifacts.
