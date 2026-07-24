@@ -31,14 +31,14 @@
 
 ### NME 계산 방법
 
-$$
+```math
 \mathrm{NME}
 =
 \frac{1}{L}
 \sum_{i=1}^{L}
 \frac{\left\lVert \hat{\mathbf{p}}_i-\mathbf{p}_i \right\rVert_2}
 {\sqrt{w h}}
-$$
+```
 
 - $L$: Landmark 수(68개)
 - $\hat{\mathbf{p}}_i$, $\mathbf{p}_i$: $i$번째 Landmark의 예측 위치와 실제 위치
