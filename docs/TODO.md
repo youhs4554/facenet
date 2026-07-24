@@ -50,3 +50,11 @@
 - [x] Restructure the report around Weekly Done, Py-Feat, benchmark results, and Weekly TODO.
 - [x] Retain only the project-relevant datasets, metrics, AUs, and visualizations.
 - [x] Verify the shortened report against the saved benchmark artifacts.
+
+# Target-Focused Face Case Visualizations — 2026-07-24
+
+- [x] Confirm access to the AFLFP and DISFA source data.
+- [x] Generate reproducible oral/jaw landmark and AU12/25/26 case visualizations.
+- [x] Save case-selection manifests without copying source datasets.
+- [x] Add the figures and scoped interpretation to the weekly report and paper.
+- [x] Rebuild and visually verify the final paper PDF.

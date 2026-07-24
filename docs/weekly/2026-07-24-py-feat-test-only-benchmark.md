@@ -6,6 +6,8 @@
 
 > AFLFP·DISFA 공개 데이터셋을 이용한 Landmark·Action Unit 정량 성능 검증
 
+> 실제 얼굴 사례에서 구강·하악 Landmark와 AU12·25·26 분석 결과 시각화
+
 > 연구노트 작성 및 6월분 전체 정리
 
 ## Py-Feat 개요
@@ -66,6 +68,19 @@
 
 그림 2. DISFA의 AU별 검출 성능(F1)과 강도 일치도(ICC). 구강·하악 관련 AU12·25·26에서 모두 분석 결과를 산출했다.
 
+### 실제 얼굴 사례 분석
+
+![AFLFP 구강·하악 Landmark 사례](assets/2026-07-24/aflfp_target_landmarks.png)
+
+그림 3. AFLFP의 입 닫기·입 벌리기·좌우 입꼬리 움직임 사례. 청록색 원은 실제 Landmark, 주황색 표시는 Py-Feat 예측이며, 구강 개구량과 입꼬리 높이 차이를 얼굴 크기로 정규화해 함께 표시했다. 각 움직임에서 중간 수준의 오차를 보인 사례를 사용해 일부 최고 성능 사례에 치우치지 않도록 했다.
+
+![DISFA 구강·하악 AU 사례](assets/2026-07-24/disfa_target_aus.png)
+
+그림 4. DISFA에서 AU12(입꼬리 당김), AU25(입술 벌어짐), AU26(턱 내림)의 실제 강도가 높은 사례와 비활성 기준 사례를 비교했다. `GT/5`는 수동 주석 강도(0~5), `Py-Feat`는 모델 출력 확률(0~1)이다. 실제 강도가 높은 사례에서 목표 AU 반응을 확인했으며, 여러 AU가 동시에 활성화되는 양상도 함께 나타났다.
+
+- 사례 그림은 실제 얼굴에서 분석 위치와 출력 형태를 확인하기 위한 정성 결과이며, 전체 성능 판단은 앞의 NME와 F1 결과를 기준으로 함
+- 현재 그림의 개구량·비대칭은 단일 프레임 기준의 탐색 지표이며, Task 2·5 적용 시에는 연속 프레임에서 속도·주기성과 함께 검증할 예정
+
 ## 핵심 AU 결과
 
 | AU | 설명 | 프로젝트에서의 의미 | F1 |
@@ -105,4 +120,5 @@
 - [최종 Benchmark PDF](../../output/pdf/pyfeat_testonly_benchmark.pdf)
 - [AFLFP 결과 요약](../../paper/results/aflfp-test.md)
 - [DISFA 결과 요약](../../paper/results/disfa-test.md)
+- [실제 얼굴 사례 선정 및 분석값](../../paper/results/target-case-manifest.json)
 - [실험 재현 방법](../../paper/README.md)

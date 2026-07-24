@@ -4,13 +4,14 @@
 # dependencies = [
 #     "matplotlib>=3.10",
 #     "numpy>=2.0",
+#     "opencv-python-headless>=4.10",
 #     "pillow>=11.0",
 #     "py-feat==2.0.3",
 #     "typer>=0.16",
 # ]
 # ///
 
-"""Rerun deterministic pilots and render auditable best/worst cases."""
+"""Render target-aligned oral landmark and action-unit benchmark cases."""
 
 from __future__ import annotations
 
@@ -24,17 +25,22 @@ import typer
 from feat import Detectorv2
 
 from pyfeat_benchmark_aflfp import select_balanced_aflfp_samples
-from pyfeat_benchmark_case_render import render_aflfp_cases, render_disfa_cases
 from pyfeat_benchmark_case_manifest import (
     CaseManifestSettings,
     write_case_manifests,
+    write_target_manifest,
+)
+from pyfeat_benchmark_case_render import (
+    render_aflfp_target_cases,
+    render_disfa_target_cases,
+    render_disfa_target_strip,
 )
 from pyfeat_benchmark_cases import (
     AFLFPCase,
     DISFACase,
     score_disfa_case,
-    select_aflfp_extremes,
-    select_disfa_extremes,
+    select_aflfp_target_cases,
+    select_disfa_target_cases,
 )
 from pyfeat_benchmark_data import (
     DISFA_AUS,
@@ -50,13 +56,24 @@ from pyfeat_benchmark_disfa import (
 )
 from pyfeat_benchmark_metrics import landmark_nme
 
-
 SEED: Final = 42
 AFLFP_SAMPLE_COUNT: Final = 256
 DISFA_SAMPLE_COUNT: Final = 270
 BATCH_SIZE: Final = 4
 OUTPUT_SIZE: Final = 512
 EXTREME_COUNT: Final = 2
+TARGET_MOVEMENTS: Final = (
+    "close smile",
+    "open smile",
+    "left smile",
+    "right smile",
+)
+AFLFP_PUBLICATION_SUBJECTS: Final = frozenset(
+    {
+        "1", "3", "4", "5", "6", "7", "8", "9", "10", "11", "14",
+        "18", "20", "22", "23", "24", "28", "32", "34", "36", "55", "100",
+    }
+)
 AU_NAMES: Final = tuple(f"AU{au:02d}" for au in DISFA_AUS)
 LANDMARK_COLUMNS: Final = tuple(
     [f"x_{index}" for index in range(68)]
@@ -76,6 +93,7 @@ class RunConfig:
     data_root: Path
     output_dir: Path
     asset_dir: Path
+    target_manifest: Path
     device: str
 
 
@@ -114,7 +132,9 @@ def _detect_faces(
     return faces
 
 
-def _run_aflfp(detector: Detectorv2, config: RunConfig) -> list[AFLFPCase]:
+def _run_aflfp(
+    detector: Detectorv2, config: RunConfig
+) -> tuple[list[AFLFPCase], tuple[AFLFPCase, ...]]:
     samples = select_balanced_aflfp_samples(
         load_aflfp_samples(config.data_root), AFLFP_SAMPLE_COUNT, SEED
     )
@@ -137,15 +157,21 @@ def _run_aflfp(detector: Detectorv2, config: RunConfig) -> list[AFLFPCase]:
                 prediction=face.landmarks,
             )
         )
-    selection = select_aflfp_extremes(cases, EXTREME_COUNT)
-    render_aflfp_cases(
-        selection,
-        config.asset_dir / "py-feat-detectorv2-aflfp-best-worst-2026-07-21.png",
+    target_cases = select_aflfp_target_cases(
+        cases,
+        movements=TARGET_MOVEMENTS,
+        allowed_subjects=AFLFP_PUBLICATION_SUBJECTS,
     )
-    return cases
+    render_aflfp_target_cases(
+        target_cases,
+        config.asset_dir / "aflfp_target_landmarks.png",
+    )
+    return cases, target_cases
 
 
-def _run_disfa(detector: Detectorv2, config: RunConfig) -> list[DISFACase]:
+def _run_disfa(
+    detector: Detectorv2, config: RunConfig
+) -> tuple[list[DISFACase], tuple[DISFACase, ...]]:
     labels = select_subject_balanced_labels(
         load_disfa_labels(config.data_root / "DISFA" / "ActionUnit_Labels.zip"),
         DISFA_SAMPLE_COUNT,
@@ -153,12 +179,16 @@ def _run_disfa(detector: Detectorv2, config: RunConfig) -> list[DISFACase]:
     )
     with materialize_disfa_frames(config.data_root, labels) as samples:
         cases = _score_disfa_samples(detector, samples, labels)
-        selection = select_disfa_extremes(cases, EXTREME_COUNT)
-        render_disfa_cases(
-            selection,
-            config.asset_dir / "py-feat-detectorv2-disfa-best-worst-2026-07-21.png",
+        target_cases = select_disfa_target_cases(cases)
+        render_disfa_target_cases(
+            target_cases,
+            config.asset_dir / "disfa_target_aus.png",
         )
-    return cases
+        render_disfa_target_strip(
+            target_cases,
+            config.asset_dir / "disfa_target_aus_strip.png",
+        )
+    return cases, target_cases
 
 
 def _score_disfa_samples(
@@ -194,16 +224,18 @@ def _score_disfa_samples(
 def main(
     data_root: Path = Path("../../data"),
     output_dir: Path = Path("../../output/benchmarks/case-analysis"),
-    asset_dir: Path = Path("../../docs/weekly/assets"),
+    asset_dir: Path = Path("../../paper/figures"),
+    target_manifest: Path = Path("../../paper/results/target-case-manifest.json"),
 ) -> None:
-    """Generate rankings and four-panel figures for both benchmark datasets."""
+    """Generate target-aligned figures and auditable case manifests."""
     config = RunConfig(
         data_root=data_root.resolve(), output_dir=output_dir.resolve(),
-        asset_dir=asset_dir.resolve(), device="mps",
+        asset_dir=asset_dir.resolve(), target_manifest=target_manifest.resolve(),
+        device="mps",
     )
     detector = Detectorv2(device=config.device)
-    aflfp_cases = _run_aflfp(detector, config)
-    disfa_cases = _run_disfa(detector, config)
+    aflfp_cases, aflfp_targets = _run_aflfp(detector, config)
+    disfa_cases, disfa_targets = _run_disfa(detector, config)
     manifest_settings = CaseManifestSettings(
         output_dir=config.output_dir, device=config.device, seed=SEED,
         batch_size=BATCH_SIZE, output_size=OUTPUT_SIZE,
@@ -213,8 +245,15 @@ def main(
     aflfp_manifest, disfa_manifest = write_case_manifests(
         manifest_settings, aflfp_cases, disfa_cases
     )
+    target_path = write_target_manifest(
+        manifest_settings,
+        config.target_manifest,
+        aflfp_targets,
+        disfa_targets,
+    )
     typer.echo(f"AFLFP: {len(aflfp_cases)} scored; {aflfp_manifest}")
     typer.echo(f"DISFA: {len(disfa_cases)} scored; {disfa_manifest}")
+    typer.echo(f"Target cases: {target_path}")
 
 
 if __name__ == "__main__":

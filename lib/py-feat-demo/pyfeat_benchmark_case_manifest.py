@@ -3,13 +3,13 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import datetime
 from importlib.metadata import version
 from pathlib import Path
 
 from pyfeat_benchmark_cases import AFLFPCase, DISFACase
-
 
 type JsonValue = (
     str
@@ -45,6 +45,49 @@ def write_case_manifests(
     aflfp_path = _write_manifest(settings, "aflfp", aflfp_records)
     disfa_path = _write_manifest(settings, "disfa", disfa_records)
     return aflfp_path, disfa_path
+
+
+def write_target_manifest(
+    settings: CaseManifestSettings,
+    path: Path,
+    aflfp_cases: Sequence[AFLFPCase],
+    disfa_cases: Sequence[DISFACase],
+) -> Path:
+    """Persist only the cases shown in the target-aligned publication figures."""
+    disfa_panels = ("AU12", "AU25", "AU26", "inactive reference")
+    payload: dict[str, JsonValue] = {
+        "purpose": (
+            "target-aligned qualitative examples; not aggregate benchmark replacement"
+        ),
+        "detector": "Detectorv2",
+        "py_feat_version": version("py-feat"),
+        "device": settings.device,
+        "seed": settings.seed,
+        "batch_size": settings.batch_size,
+        "output_size": settings.output_size,
+        "raw_media_included": False,
+        "selection_rules": {
+            "aflfp": (
+                "median-NME case per target movement, publication-eligible subjects "
+                "only, distinct subjects when available"
+            ),
+            "disfa": (
+                "highest manual intensity then highest Py-Feat probability for "
+                "AU12/AU25/AU26, distinct subjects when available, plus the "
+                "lowest target-AU probability inactive frame"
+            ),
+        },
+        "aflfp_panels": [_aflfp_record(case) for case in aflfp_cases],
+        "disfa_panels": [
+            {"panel": panel, **_disfa_record(case)}
+            for panel, case in zip(disfa_panels, disfa_cases, strict=True)
+        ],
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+    return path
 
 
 def _aflfp_record(case: AFLFPCase) -> dict[str, JsonValue]:

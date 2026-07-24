@@ -10,9 +10,9 @@ from typing import TypeVar
 import numpy as np
 import numpy.typing as npt
 
-
 PointMatrix = npt.NDArray[np.float64]
 CaseType = TypeVar("CaseType")
+TARGET_AU_INDICES = ((12, 6), (25, 10), (26, 11))
 
 
 class CaseSelectionError(Exception):
@@ -111,6 +111,35 @@ def select_aflfp_extremes(
     )
 
 
+def select_aflfp_target_cases(
+    cases: Sequence[AFLFPCase],
+    movements: Sequence[str],
+    allowed_subjects: frozenset[str],
+) -> tuple[AFLFPCase, ...]:
+    """Select median-NME publication cases for oral and lateral movements."""
+    selected: list[AFLFPCase] = []
+    used_subjects: set[str] = set()
+    for movement in movements:
+        candidates = sorted(
+            (
+                case
+                for case in cases
+                if case.movement == movement and case.subject in allowed_subjects
+            ),
+            key=lambda case: (case.nme, case.key),
+        )
+        if not candidates:
+            raise CaseInputError(
+                f"no publication-eligible AFLFP case for movement {movement!r}"
+            )
+        unused = [case for case in candidates if case.subject not in used_subjects]
+        pool = unused or candidates
+        case = pool[len(pool) // 2]
+        selected.append(case)
+        used_subjects.add(case.subject)
+    return tuple(selected)
+
+
 def select_disfa_extremes(
     cases: Sequence[DISFACase], count: int
 ) -> DISFASelection:
@@ -122,6 +151,52 @@ def select_disfa_extremes(
     return DISFASelection(
         best=tuple(ordered[:count]), worst=tuple(reversed(ordered[-count:]))
     )
+
+
+def select_disfa_target_cases(
+    cases: Sequence[DISFACase],
+) -> tuple[DISFACase, ...]:
+    """Select high-intensity AU12/25/26 cases and one inactive reference."""
+    selected: list[DISFACase] = []
+    used_subjects: set[str] = set()
+    for au, index in TARGET_AU_INDICES:
+        candidates = sorted(
+            (case for case in cases if case.truth_intensities[index] >= 2),
+            key=lambda case: (
+                -case.truth_intensities[index],
+                -case.predictions[index],
+                case.mismatch_count,
+                case.probability_mae,
+                case.key,
+            ),
+        )
+        if not candidates:
+            raise CaseInputError(f"no positive DISFA case for AU{au:02d}")
+        unused = [case for case in candidates if case.subject not in used_subjects]
+        case = (unused or candidates)[0]
+        selected.append(case)
+        used_subjects.add(case.subject)
+
+    target_indices = tuple(index for _, index in TARGET_AU_INDICES)
+    neutral_candidates = sorted(
+        (
+            case
+            for case in cases
+            if all(case.truth_intensities[index] < 2 for index in target_indices)
+        ),
+        key=lambda case: (
+            sum(case.predictions[index] for index in target_indices),
+            case.mismatch_count,
+            case.key,
+        ),
+    )
+    if not neutral_candidates:
+        raise CaseInputError("no inactive DISFA reference for AU12/25/26")
+    unused_neutral = [
+        case for case in neutral_candidates if case.subject not in used_subjects
+    ]
+    selected.append((unused_neutral or neutral_candidates)[0])
+    return tuple(selected)
 
 
 def _require_extremes(cases: Sequence[CaseType], count: int) -> None:

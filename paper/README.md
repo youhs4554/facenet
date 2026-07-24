@@ -2,8 +2,10 @@
 
 The manuscript evaluates the pretrained Py-Feat `Detectorv2` pipeline on
 deterministic AFLFP and DISFA test cohorts. Aggregate JSON, sample-level CSV,
-generated LaTeX tables, and vector figures are retained with the source.
-Dataset images and videos are not redistributed.
+generated LaTeX tables, aggregate figures, and selected target-aligned case
+figures are retained with the source. Raw datasets are not redistributed; the
+case manifest contains selection keys, predictions, and landmarks without raw
+media.
 
 From this directory, regenerate all derived assets and compile the PDF with:
 
@@ -47,3 +49,19 @@ uv run benchmark_datasets.py run \
 
 Throughput measures only the model `detect()` call. Model initialization,
 checkpoint loading, and DISFA video decoding are excluded.
+
+When the source datasets are mounted at `data/`, regenerate the actual-face
+oral/jaw landmark and AU12/25/26 case figures with:
+
+```sh
+cd ../lib/py-feat-demo
+DYLD_LIBRARY_PATH=/opt/homebrew/opt/libomp/lib \
+PATH=/opt/homebrew/bin:$PATH \
+PYTHONDONTWRITEBYTECODE=1 \
+uv run visualize_benchmark_cases.py
+```
+
+This writes the AFLFP figure, the DISFA 2-by-2 figure and compact paper strip
+to `paper/figures/`, plus the auditable selection record at
+`paper/results/target-case-manifest.json`. AFLFP cases are limited to subjects
+permitted for academic publication.

@@ -213,6 +213,26 @@ DISFA F1/ICC value from sample-level CSV, failing on any discrepancy with the
 aggregate JSON. The final CSV contains exactly 1,136 AFLFP rows and 5,400
 DISFA rows.
 
+\subsection{Target-Aligned Case Visualization}
+
+A separate seed-42 audit sample (256 AFLFP images and 270 DISFA frames) is
+used only to visualize outputs relevant to the planned oral-motor analysis.
+For AFLFP, we select the median-NME publication-eligible case for mouth
+closure, mouth opening, left smile, and right smile, using different subjects
+when available. For DISFA, we select different-subject cases with the highest
+manual intensity for AU12, AU25, and AU26, using Py-Feat probability as a
+tie-break, plus a target-inactive reference. The full selection keys,
+predictions, and landmark coordinates are retained in
+\code{target-case-manifest.json}. These cases illustrate the output format
+and do not replace the aggregate evaluation.
+
+Two exploratory AFLFP geometries are shown with the landmark overlays. Mouth
+aperture is the distance between inner-lip landmarks 62 and 66, and
+lip-corner vertical difference is $\lvert y_{48}-y_{54}\rvert$; both are
+divided by the square root of the predicted 68-point bounding-box area. They
+are static-frame proxies for opening and asymmetry, not temporal clinical
+measures.
+
 \section{Results}
 
 \subsection{AFLFP Landmark Localization}
@@ -251,6 +271,24 @@ the published Cascaded FCN row \cite{xia2023aflfp}.}
 \input{generated/aflfp_movement_table}
 \end{table*}
 
+\Cref{fig:aflfp-target} connects the landmark benchmark to the intended
+oral-motor measurements. The selected open-smile case has 5.66\% normalized
+aperture, compared with 0.29\% in the close-smile case. NME for the four
+displayed cases ranges from 6.26\% to 7.44\%. The left/right cases also show
+that a single-frame lip-corner height difference is visible but is
+pose-sensitive and should be confirmed over a sequence.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.84\textwidth]{figures/aflfp_target_landmarks.png}
+\caption{Target-aligned AFLFP landmark cases. Gray marks show all 68 points;
+teal circles and coral crosses emphasize ground-truth and Py-Feat oral/jaw
+points. The panels cover mouth closure, mouth opening, and left/right
+lip-corner movement. NME and exploratory normalized oral geometries are shown
+for each publication-eligible case.}
+\label{fig:aflfp-target}
+\end{figure*}
+
 \subsection{DISFA Action Units}
 
 All \DISFASamples{} selected frames yield finite AU predictions
@@ -277,22 +315,13 @@ not calibrated to a common scale.}
 \label{fig:disfa-metrics}
 \end{figure*}
 
-\Cref{fig:disfa-prevalence} relates positive prevalence to F1. Across the 12
-AUs the descriptive Pearson correlation is
+Across the 12 AUs, positive prevalence and F1 have a descriptive Pearson
+correlation of
 $r=\DISFAPrevalenceCorrelation$. The pattern is compatible with more stable
 measurement when more positives are available, but it does not establish a
 causal effect: AU identity, visual distinctiveness, co-activation, and model
 training frequency are confounded. AU05, for example, has only 59 positive
 frames (1.09\%), whereas AU25 has 1,497 (27.72\%).
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.90\textwidth]{figures/disfa_prevalence_f1.pdf}
-\caption{DISFA positive prevalence versus F1. Marker area increases with
-positive support. The plot shows class imbalance retained by uniform temporal
-sampling; it is descriptive over 12 AUs and no significance test is claimed.}
-\label{fig:disfa-prevalence}
-\end{figure*}
 
 \begin{table*}[t]
 \caption{DISFA test-only results by AU. Positive support uses intensity
@@ -303,6 +332,26 @@ $\geq 2$; predicted positives use score $\geq 0.5$. Each AU is evaluated on
 \small
 \input{generated/disfa_au_table}
 \end{table*}
+
+\Cref{fig:disfa-target} shows the target outputs on actual DISFA frames.
+The AU12 case has manual intensity 5 and Py-Feat probability 1.00; the AU25
+case has 5 and 1.00; and the strongest sampled AU26 case has 3 and 0.99.
+The target-inactive reference produces 0.00 for all three probabilities.
+Co-activation is visible in the positive cases, reinforcing that AU12,
+AU25, and AU26 should be analyzed jointly rather than as mutually exclusive
+labels.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.97\textwidth]{figures/disfa_target_aus_strip.png}
+\caption{Target-aligned DISFA cases for AU12 (lip-corner pull), AU25 (lips
+part), AU26 (jaw drop), and a target-inactive reference. Teal points are the
+Py-Feat mouth landmarks and gray points trace the jaw. The inset compares
+manual intensity (GT, 0--5) with Py-Feat probability (0--1); the scales are
+not calibrated. These deliberately clear high-intensity examples are
+qualitative and are not estimates of cohort-level performance.}
+\label{fig:disfa-target}
+\end{figure*}
 
 \section{Discussion}
 
@@ -329,6 +378,14 @@ still reveals ordinal consistency differences across AUs, but an intensity
 study should reserve subjects for calibration, map scores to the DISFA scale,
 and report the mapping separately.
 
+The case visualizations make the project linkage concrete. AFLFP supplies
+observable mouth-opening and lateral-movement geometry, while DISFA supplies
+AU12/25/26 activation patterns on actual faces. The current pipeline therefore
+provides candidate inputs for oral-opening, closure, and lower-face movement
+analysis. It does not yet measure lip speed, periodicity, audio--visual
+synchrony, or task-level clinical discrimination; those require continuous
+Task 2/5 recordings and participant-level validation.
+
 Warm throughput near 25--26 FPS demonstrates that batched offline processing
 is practical on the measured Apple M1 Pro. It does not imply real-time
 end-to-end video throughput: camera capture, decoding, transfer, UI rendering,
@@ -351,16 +408,23 @@ from the left camera and ignores temporal structure. JPEG materialization may
 also cause small score changes near the 0.5 threshold. Fifth, AU F1
 binarizes an ordinal task and ICC compares unmatched score ranges. Finally,
 AFLFP performance is not clinical validation; landmark accuracy alone does
-not establish safety or diagnostic utility for facial palsy.
+not establish safety or diagnostic utility for facial palsy. The four
+target-aligned cases per dataset are selected to expose the intended signals,
+not to represent their population distributions, and their static geometry
+is sensitive to head pose.
 
 \section{Reproducibility and Data Governance}
 
 The repository retains benchmark commands, aggregate JSON, sample-level CSV,
 generated table fragments, vector figures, software versions, and this
 LaTeX source. Running \code{make pdf} validates the saved outputs, regenerates
-all derived assets, and compiles the manuscript. Raw AFLFP and DISFA media are
-excluded because access and redistribution are governed by their respective
-dataset terms. No participant images are reproduced in this paper, and no new
+the aggregate derived assets, and compiles the manuscript. Raw AFLFP and
+DISFA media remain excluded because access and redistribution are governed by
+their respective dataset terms. The manuscript includes only the selected
+publication figures: AFLFP cases are restricted to subjects permitted for
+academic publication, and DISFA is shown as target-focused face-region crops.
+The target-case manifest stores selection keys, outputs, and coordinates but
+no raw media. No clinical or hospital participant data were used, and no new
 human-participant data were collected.
 
 \section{Conclusion}
