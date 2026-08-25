@@ -59,9 +59,28 @@
 - [x] Add the figures and scoped interpretation to the weekly report and paper.
 - [x] Rebuild and visually verify the final paper PDF.
 
+# July Research Note — 2026-07-28
+
+- [x] Extract the blank 연구노트 template and the June example structure.
+- [x] Collect July figures from the paper, benchmark results, and weekly reports.
+- [x] Draw the schematics with GPT image generation under one Nature-style figure contract.
+- [x] Stage the benchmark data figures and ground-truth overlay cases.
+- [x] Write five Korean notes (제1호~제5호) matching the June prose format.
+- [x] Fill the template, unpin the fixed row height, and size figures to avoid orphans.
+- [x] Verify all 52 reported values against the saved benchmark artifacts.
+- [x] Export the PDF and confirm 11 pages with no clipped or blank pages.
+
 # Benchmark Ground-Truth Examples — 2026-07-24
 
 - [x] Select publication-eligible AFLFP and target-relevant DISFA examples.
 - [x] Visualize the source image and manual ground truth for each dataset.
 - [x] Add the examples and concise annotation explanations to the weekly report.
 - [x] Verify image decoding, Markdown paths, and reported ground-truth values.
+
+# MediaPipe Blendshape V2 Webcam Demo
+
+- [x] Review the official Blendshape V2 model card and Face Landmarker Web guide.
+- [x] Add RED tests for blendshape score normalization and temporal smoothing.
+- [x] Implement the standalone webcam demo with landmarks and all 52 coefficients.
+- [x] Add local usage guidance and model limitations.
+- [x] Run coverage, browser smoke testing, and the ECC verification loop.
