@@ -16,6 +16,7 @@ FaceNet face-recognition model.
 - Deterministic test-only benchmark tooling for AFLFP landmarks and DISFA AUs.
 - An OpenCV runner for separating model inference speed from browser and API
   overhead.
+- A standalone, browser-only MediaPipe Blendshape V2 webcam demo.
 - Design notes, weekly progress notes, and a result-driven LaTeX paper.
 
 The documented browser demo measurement is approximately 22.1 FPS at 45 ms
@@ -28,6 +29,7 @@ end-to-end measurement, not a general model-performance claim.
 .
 ├── docs/                  Design, implementation, and weekly notes
 ├── lib/
+│   ├── mediapipe-blendshape-demo/  Browser-only Blendshape V2 demo
 │   └── py-feat-demo/      Py-Feat web demo and benchmark tools
 └── paper/                 LaTeX source, results, generated tables, and figures
 ```
@@ -64,6 +66,18 @@ python pyfeat_web_demo.py --host 127.0.0.1 --port 7861 --device cpu
 
 See [the demo README](lib/py-feat-demo/README.md) for the OpenCV runner,
 session storage, performance options, and troubleshooting.
+
+For the lightweight MediaPipe-only webcam demo, no Python model environment is
+required:
+
+```sh
+cd lib/mediapipe-blendshape-demo
+python3 -m http.server 8080
+```
+
+Open <http://localhost:8080>. See the
+[MediaPipe demo README](lib/mediapipe-blendshape-demo/README.md) for model
+configuration, interpretation, tests, and limitations.
 
 ## Tests
 
