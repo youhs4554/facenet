@@ -1,0 +1,37 @@
+{
+  "atlas_sha256": "f101e4fb4b1a06c5f4fdea2a4d6f07889fd1575e1f8308907a7fdf89be92637c",
+  "frame_index": 89,
+  "schema_version": 1,
+  "sources": [
+    {
+      "label": "V3 NATIVE",
+      "notes": [
+        "runtime defaults",
+        "identity final bake",
+        "no extra gain"
+      ],
+      "video": "/home/aim/workspace/hosang/repo/facenet/.tools/audio2face3d/official-cli-runs/20260827-164026-default-v30-identity-r2/taro-a2f-default-v30-identity-r2-v30-diffusion-final.mp4",
+      "video_sha256": "5ea9ebbaaad8ee6af800317b7c3b0794b977bcaee8158f9b7edfd9c6e2e89ca0"
+    },
+    {
+      "label": "DYNAMIC-SAFE",
+      "notes": [
+        "lower 1.5 \u00b7 upper 1.3",
+        "jaw region 1.15",
+        "attack 0.82 \u00b7 release 0.58"
+      ],
+      "video": "/home/aim/workspace/hosang/repo/facenet/.tools/audio2face3d/official-cli-runs/20260827-165227-v30-dynamic-final-r3/taro-a2f-v30-dynamic-final-r3-v30-diffusion-final.mp4",
+      "video_sha256": "7712a25cfc25ec2035999c40b3d7f3ef4e7c67f565c9a2f06c5032f70dbae0bc"
+    },
+    {
+      "label": "ACE NODE QUALITY",
+      "notes": [
+        "blinkStrength 2.0",
+        "EyeBlink \u00d78",
+        "EyeWide \u00d70.8"
+      ],
+      "video": "/home/aim/workspace/hosang/repo/facenet/.tools/audio2face3d/quality-review/20260828-sookja-v30-ace-node-quality-v3-recomposed/avatar-v30-ace-node-overrides-sync.mp4",
+      "video_sha256": "f3dc8d8db9048652074f1ef0a92b18df998abe502643e7787a528ca4aac1fc3a"
+    }
+  ]
+}

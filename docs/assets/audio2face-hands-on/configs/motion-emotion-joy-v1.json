@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "mode": "enhanced",
+  "curve_application": "final_render",
+  "emotion": {
+    "overall_strength": 0.9,
+    "constant": {"joy": 0.7},
+    "timecoded": []
+  }
+}

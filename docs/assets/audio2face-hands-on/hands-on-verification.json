@@ -1,0 +1,127 @@
+{
+  "actual_emotion_render": "results/07-emotion-metahuman-render.json",
+  "all_links_exist": true,
+  "document": "/home/aim/workspace/hosang/repo/facenet/docs/audio2face-metahuman-cli-hands-on.ko.md",
+  "line_count": 715,
+  "linked_image_count": 16,
+  "linked_images": [
+    {
+      "height": 941,
+      "relative_path": "assets/audio2face-hands-on/figures/concept-overview-general-generated-v3.png",
+      "sha256": "38e6df68b469c9eac883818d2d53ab57aa6917361b8db44cf5824f4d95af30ce",
+      "size_bytes": 1508548,
+      "width": 1672
+    },
+    {
+      "height": 941,
+      "relative_path": "assets/audio2face-hands-on/figures/cli-architecture-novice-generated-v3.png",
+      "sha256": "77fa45bb2d11c3d0b1d95b5007b76c91fe644defad1af46f169f30880e2aa7fc",
+      "size_bytes": 1380280,
+      "width": 1672
+    },
+    {
+      "height": 1080,
+      "relative_path": "assets/audio2face-hands-on/vnc/01-cli-help.png",
+      "sha256": "1e1d5bf7d1b335a5a970ad2dbe05609b6a7ebca95568b0f1821ab30bb0b79e58",
+      "size_bytes": 1353668,
+      "width": 1920
+    },
+    {
+      "height": 1080,
+      "relative_path": "assets/audio2face-hands-on/vnc/02-preflight-health.png",
+      "sha256": "0c5796a74f92bb74b5dc3e8c913287f3200a3676bc25e2e0b929442d29444b5b",
+      "size_bytes": 947098,
+      "width": 1920
+    },
+    {
+      "height": 1080,
+      "relative_path": "assets/audio2face-hands-on/vnc/03-inference-progress.png",
+      "sha256": "4074a6b5f743f44c91ddaa9a1f5bce91101e0155cf85bd27f356c61539a14d09",
+      "size_bytes": 856199,
+      "width": 1920
+    },
+    {
+      "height": 1080,
+      "relative_path": "assets/audio2face-hands-on/vnc/04-inference-complete.png",
+      "sha256": "2f22bde65e4e35acea2716c866c1dccacc1fab399cb1be0d837fe9ff7812d2c3",
+      "size_bytes": 867633,
+      "width": 1920
+    },
+    {
+      "height": 1080,
+      "relative_path": "assets/audio2face-hands-on/results/01-named-shot-presets.png",
+      "sha256": "26c52fb08d5aa8d42154aaff09af10475f2ff7ca5ab6724755c6b2467ebfe843",
+      "size_bytes": 1250080,
+      "width": 1920
+    },
+    {
+      "height": 1080,
+      "relative_path": "assets/audio2face-hands-on/results/02-custom-camera.png",
+      "sha256": "418ecb4d089455775f0f7bfff464d8c62aae5454b5730d599d053a3ef561af5d",
+      "size_bytes": 1240131,
+      "width": 1920
+    },
+    {
+      "height": 720,
+      "relative_path": "assets/audio2face-hands-on/results/03-avatar-comparison.png",
+      "sha256": "3356ca925c6b2d92746a98a394dcf58e8519637c64de1ce756b211e7432d5433",
+      "size_bytes": 478249,
+      "width": 1920
+    },
+    {
+      "height": 540,
+      "relative_path": "assets/audio2face-hands-on/results/05-motion-intensity-ab.png",
+      "sha256": "5419731d2bbe0e2b985f6e6ecaba8ce95736faefb1a8bff16a6c060383ad3200",
+      "size_bytes": 661847,
+      "width": 1920
+    },
+    {
+      "height": 760,
+      "relative_path": "assets/audio2face-hands-on/results/09-face-parameter-atlas.png",
+      "sha256": "f101e4fb4b1a06c5f4fdea2a4d6f07889fd1575e1f8308907a7fdf89be92637c",
+      "size_bytes": 493895,
+      "width": 1920
+    },
+    {
+      "height": 1080,
+      "relative_path": "assets/audio2face-hands-on/results/06-ace-node-blink.png",
+      "sha256": "2981ce39003a84811554c55fc7bc67b296b2e823ee15fb47ba47514531f714e1",
+      "size_bytes": 481148,
+      "width": 1920
+    },
+    {
+      "height": 900,
+      "relative_path": "assets/audio2face-hands-on/results/07-emotion-metahuman-render.png",
+      "sha256": "8928b509102e89593988abbc7877722be9746b36c50af659fc4ebec8171da5c1",
+      "size_bytes": 766551,
+      "width": 1920
+    },
+    {
+      "height": 1080,
+      "relative_path": "assets/audio2face-hands-on/results/08-final-triptych.png",
+      "sha256": "c23719fb203a426811fe71ff9559a9e1c2e73f3db7a2ae2e5e1a663ff21cc08b",
+      "size_bytes": 845596,
+      "width": 1920
+    },
+    {
+      "height": 1080,
+      "relative_path": "assets/audio2face-hands-on/vnc/06-result-triptych.png",
+      "sha256": "46ab5fb16d76ce523dc39ccc91e244785470520dde8f756ae10000e1578d732b",
+      "size_bytes": 742672,
+      "width": 1920
+    },
+    {
+      "height": 1080,
+      "relative_path": "assets/audio2face-hands-on/vnc/05-ffprobe-verification.png",
+      "sha256": "833fdcc81616b185e0107e8ae40fbef7b134bea9dca4623d006d65945a4c8997",
+      "size_bytes": 899431,
+      "width": 1920
+    }
+  ],
+  "removed_from_learning_path": [
+    "results/04-model-v23-v30.png",
+    "results/07-emotion-conditioning-atlas.png"
+  ],
+  "schema_version": 2,
+  "tests": "30 focused tests, 34 subtests passed"
+}

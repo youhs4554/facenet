@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "mode": "enhanced",
+  "curve_application": "artifact_only",
+  "final_render_profile": "ace-source",
+  "face_parameters": {
+    "skinStrength": 1.05,
+    "lowerFaceStrength": 1.5,
+    "lowerFaceSmoothing": 0.004,
+    "upperFaceStrength": 1.3,
+    "upperFaceSmoothing": 0.001,
+    "blinkStrength": 2.0,
+    "tongueStrength": 1.3
+  },
+  "nvidia_runtime_curve_parameters": {
+    "enable_clamping": false,
+    "multipliers": {
+      "EyeBlinkLeft": 8.0,
+      "EyeBlinkRight": 8.0,
+      "EyeWideLeft": 0.8,
+      "EyeWideRight": 0.8,
+      "TongueOut": 1.0
+    },
+    "offsets": {}
+  },
+  "emotion": {
+    "overall_strength": 0.9,
+    "constant": {},
+    "timecoded": []
+  },
+  "artifact_postprocess": {
+    "global_intensity": 1.0,
+    "attack": 1.0,
+    "release": 1.0,
+    "region_gains": {},
+    "curve_operations": {}
+  }
+}

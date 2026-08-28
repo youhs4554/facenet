@@ -1,0 +1,33 @@
+{
+  "atlas_sha256": "8928b509102e89593988abbc7877722be9746b36c50af659fc4ebec8171da5c1",
+  "comparison_contract": "same avatar/audio/shot/render; constant emotion is the only requested control difference",
+  "schema_version": 1,
+  "sources": [
+    {
+      "config": null,
+      "config_sha256": null,
+      "frames": [
+        30,
+        60,
+        89
+      ],
+      "label": "NEUTRAL / AUTO EMOTION",
+      "run_id": "20260828-085258-hands-on-default-v30",
+      "video": "/home/aim/workspace/hosang/repo/facenet/.tools/audio2face3d/official-cli-runs/20260828-085258-hands-on-default-v30/taro-a2f-hands-on-default-v30-v30-diffusion-final.mp4",
+      "video_sha256": "efb51a6e83395a6e58213542eb89aaa583d442a376654b9a0645e0de6404f92f"
+    },
+    {
+      "config": "/home/aim/workspace/hosang/repo/facenet/.tools/audio2face3d/official-cli-runs/20260828-101400-hands-on-emotion-joy-render-v1/effective-motion-config.json",
+      "config_sha256": "adf448741c7799b8c8a1b556bc813b0bb3e8b66d9e1d38fbaf1f209b17d1c81c",
+      "frames": [
+        30,
+        60,
+        89
+      ],
+      "label": "CONSTANT JOY 0.7",
+      "run_id": "20260828-101400-hands-on-emotion-joy-render-v1",
+      "video": "/home/aim/workspace/hosang/repo/facenet/.tools/audio2face3d/official-cli-runs/20260828-101400-hands-on-emotion-joy-render-v1/taro-a2f-hands-on-emotion-joy-render-v1-v30-diffusion-final.mp4",
+      "video_sha256": "72bdd443e0ac35a3b534989dc04e4aea20ed5a3d36856898c0d2310589356902"
+    }
+  ]
+}

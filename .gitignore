@@ -2,6 +2,7 @@
 /.codegraph
 /.openscience/
 /data
+/.tools/
 
 # Python
 __pycache__/

@@ -1,0 +1,141 @@
+{
+  "atlas": {
+    "path": "/home/aim/workspace/hosang/repo/facenet/docs/assets/audio2face-hands-on/results/07-emotion-conditioning-atlas.png",
+    "sha256": "fa79b7cf9495395f51ed71085b2f9aa86cdaaccd31b0b14ed56c9b8e38915f70"
+  },
+  "cases": [
+    {
+      "animation_sha256": "8e1ec9d658e9502deec71ceb7c8f9fc74f791ba8832947d16211565d448b8417",
+      "case": "neutral",
+      "geometry_sha256": "8b7cae9e6fcedc4343896beaf14cb696db99c9e04647a2c891f948bedcb80745",
+      "request_sha256": "0830f3f8dd7e30208ce4470e8311bff5b1ed32682b9bc2b7f3fa8fc73d666104",
+      "selected_frame": 168,
+      "selected_time_seconds": 2.8,
+      "smoothed_emotions": {
+        "sadness": 0.5255410671234131
+      },
+      "top_curves": [
+        {
+          "name": "TongueIn",
+          "value": 0.4292977452278137
+        },
+        {
+          "name": "MouthRollLower",
+          "value": 0.40421777963638306
+        },
+        {
+          "name": "JawOpen",
+          "value": 0.22653166949748993
+        }
+      ]
+    },
+    {
+      "animation_sha256": "a8e1ade4077e2b4a5231dee1f71c64ba633c61fce10f8e48a27c4bfe849e1091",
+      "case": "joy-0.7",
+      "geometry_sha256": "4cec9e32bfa2ad7486f52303fcca83b10368d36dc67d8d027f3159e7ad5a44a5",
+      "request_sha256": "eb60c197da2e2299435726788effc60b6f8f6860ade8f12d3b5bd99595891b17",
+      "selected_frame": 168,
+      "selected_time_seconds": 2.8,
+      "smoothed_emotions": {
+        "joy": 0.6299999952316284
+      },
+      "top_curves": [
+        {
+          "name": "MouthRollLower",
+          "value": 0.4741358458995819
+        },
+        {
+          "name": "TongueIn",
+          "value": 0.43687570095062256
+        },
+        {
+          "name": "MouthFunnel",
+          "value": 0.29554539918899536
+        }
+      ]
+    },
+    {
+      "animation_sha256": "6514639a9ec97a2b2854f85b816642cfb1f88b8e99ba24302a4831ff1fbbe469",
+      "case": "sadness-0.7",
+      "geometry_sha256": "511becbec7875c5f0317611701bbf4a32a9f6135efcb4349c608ecced7435fc9",
+      "request_sha256": "bbb63c3f312bcadc98110f48aded669807753775a0acb4e606578851a81e29de",
+      "selected_frame": 168,
+      "selected_time_seconds": 2.8,
+      "smoothed_emotions": {
+        "sadness": 0.6299999952316284
+      },
+      "top_curves": [
+        {
+          "name": "TongueIn",
+          "value": 0.42608442902565
+        },
+        {
+          "name": "MouthRollLower",
+          "value": 0.39849355816841125
+        },
+        {
+          "name": "MouthRollUpper",
+          "value": 0.2611646354198456
+        }
+      ]
+    },
+    {
+      "animation_sha256": "85fa3a4309dc0158fcab8a2187846ed37a88a448065bf2c3c49539362ed00f1a",
+      "case": "anger-0.7",
+      "geometry_sha256": "aff8638fd84634b0c02259678b22e8a2c5f130eee5d0d8508e34a80adf98accd",
+      "request_sha256": "93c89625f8d8729200afd20ffdc98b36f6ec378d5d709d4aa7901a5b15cae105",
+      "selected_frame": 168,
+      "selected_time_seconds": 2.8,
+      "smoothed_emotions": {
+        "anger": 0.6299999952316284
+      },
+      "top_curves": [
+        {
+          "name": "TongueIn",
+          "value": 0.4541390538215637
+        },
+        {
+          "name": "BrowDownLeft",
+          "value": 0.3927874267101288
+        },
+        {
+          "name": "BrowDownRight",
+          "value": 0.38738012313842773
+        }
+      ]
+    },
+    {
+      "animation_sha256": "f150d80f9f099240685e33344f0f140b389bb05e380f4a518d7e8417c62c83b0",
+      "case": "joy-to-sadness",
+      "geometry_sha256": "b88fa1ef67076f11d902163639d727fba86acdc18c67e1c3889d454a48316794",
+      "request_sha256": "3aedea48ebda0d95d5563f4d8d1aba068382e1bcb29d2cd465ffce944d18e2fc",
+      "selected_frame": 168,
+      "selected_time_seconds": 2.8,
+      "smoothed_emotions": {
+        "amazement": 0.1817178577184677,
+        "pain": 0.1817178577184677,
+        "sadness": 0.7883114814758301
+      },
+      "top_curves": [
+        {
+          "name": "MouthRollLower",
+          "value": 0.45446833968162537
+        },
+        {
+          "name": "TongueIn",
+          "value": 0.4229333698749542
+        },
+        {
+          "name": "MouthRollUpper",
+          "value": 0.2808944582939148
+        }
+      ]
+    }
+  ],
+  "endpoint": "127.0.0.1:52100",
+  "input_audio_sha256": "9affeabccf3326eaa211b5c71fd2a2e9e6022ff055d61666030c70802445a473",
+  "model": "v3.0-diffusion",
+  "nim_model": "multi_v3.2",
+  "schema_version": 1,
+  "semantic_boundary": "Official inference/Claire reference comparison; final MetaHuman emotion render was not rerun for this atlas."
+}

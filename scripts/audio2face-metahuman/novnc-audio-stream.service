@@ -1,0 +1,17 @@
+[Unit]
+Description=Project-local noVNC PulseAudio MP3 stream
+After=pipewire-pulse.service network-online.target
+Wants=pipewire-pulse.service
+
+[Service]
+Type=simple
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=PULSE_SERVER=unix:/run/user/1000/pulse/native
+Environment=NOVNC_AUDIO_BIND_IP=127.0.0.1
+Environment=NOVNC_AUDIO_PORT=8001
+ExecStart=/home/aim/workspace/hosang/repo/facenet/scripts/audio2face-metahuman/start-novnc-audio-stream.sh
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=default.target

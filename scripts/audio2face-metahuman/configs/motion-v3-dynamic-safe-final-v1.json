@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "mode": "enhanced",
+  "curve_application": "final_render",
+  "face_parameters": {
+    "skinStrength": 1.05,
+    "lowerFaceStrength": 1.5,
+    "lowerFaceSmoothing": 0.004,
+    "upperFaceStrength": 1.3,
+    "upperFaceSmoothing": 0.001,
+    "blinkStrength": 1.15
+  },
+  "emotion": {
+    "overall_strength": 0.9,
+    "constant": {},
+    "timecoded": []
+  },
+  "artifact_postprocess": {
+    "global_intensity": 1.0,
+    "attack": 0.82,
+    "release": 0.58,
+    "region_gains": {
+      "eyes": 1.12,
+      "jaw": 1.15,
+      "mouth": 1.08,
+      "brows": 1.18,
+      "cheeks": 1.1
+    },
+    "curve_operations": {
+      "JawOpen": {
+        "gain": 1.08,
+        "bias": 0.0,
+        "clamp": [0.0, 0.92]
+      },
+      "MouthFunnel": {
+        "gain": 1.05,
+        "bias": 0.0,
+        "clamp": [0.0, 0.9]
+      },
+      "MouthClose": {
+        "gain": 1.0,
+        "bias": 0.0,
+        "clamp": [0.0, 0.94]
+      },
+      "BrowInnerUp": {
+        "gain": 1.05,
+        "bias": 0.0,
+        "clamp": [0.0, 0.8]
+      },
+      "EyeWideLeft": {
+        "gain": 1.05,
+        "bias": 0.0,
+        "clamp": [0.0, 0.85]
+      },
+      "EyeWideRight": {
+        "gain": 1.05,
+        "bias": 0.0,
+        "clamp": [0.0, 0.85]
+      }
+    }
+  }
+}

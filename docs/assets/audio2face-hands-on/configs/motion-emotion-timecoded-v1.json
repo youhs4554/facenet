@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "mode": "enhanced",
+  "curve_application": "artifact_only",
+  "emotion": {
+    "overall_strength": 0.9,
+    "constant": {},
+    "timecoded": [
+      {"time_seconds": 0.0, "values": {"joy": 0.7}},
+      {"time_seconds": 1.8, "values": {"sadness": 0.7}}
+    ]
+  }
+}

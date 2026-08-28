@@ -1,0 +1,32 @@
+services:
+  geometry:
+    image: a2f-v3-geometry-sdk:cuda12.8-trt10.13
+    build:
+      context: .
+      dockerfile: Dockerfile
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    pids_limit: 512
+    network_mode: none
+    user: "${A2F_UID:-1000}:${A2F_GID:-1000}"
+    gpus:
+      - driver: nvidia
+        device_ids: ["1"]
+        capabilities: [gpu]
+    environment:
+      CUDA_VISIBLE_DEVICES: "0"
+      A2F_SDK_RUN_ID: "${A2F_SDK_RUN_ID:-inspect}"
+      A2F_SDK_IMAGE_DIGEST: "${A2F_SDK_IMAGE_DIGEST:-unrecorded-inspect-only}"
+      A2F_SDK_PRECISION_PROFILE: "${A2F_SDK_PRECISION_PROFILE:-official}"
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=2g
+    volumes:
+      - ../../../.tools/audio2face3d/v3/models/Audio2Face-3D-v3.0-b741327:/models:ro
+      - ../../../.tools/audio2face3d/official-cli-runs/20260827-165227-v30-dynamic-final-r3/input.nim.pcm16-mono-16khz.wav:/input/test.wav:ro
+      - ../../../.tools/audio2face3d/official-cli-runs/20260827-165227-v30-dynamic-final-r3/official-nvidia-client/output_000001/a2f_3d_smoothed_emotion_output.csv:/input/emotions.csv:ro
+      - ../../../.tools/audio2face3d/official-cli-runs/20260827-165227-v30-dynamic-final-r3/effective-nvidia-request.yml:/input/request.yml:ro
+      - ../../../.tools/audio2face3d/official-cli-runs/20260827-165227-v30-dynamic-final-r3/official-nvidia-client/output_000001/animation_frames.csv:/nim/animation_frames.csv:ro
+      - ../../../.tools/audio2face3d/sdk-v3-geometry:/output:rw

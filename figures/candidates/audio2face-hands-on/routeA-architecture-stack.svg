@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="907.2pt" height="513.36pt" viewBox="0 0 907.2 513.36" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-28T10:15:31.341269</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 513.36
+L 907.2 513.36
+L 907.2 -0
+L 0 -0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 453.6 173.854894
+Q 453.6 183.081165 453.6 190.294976
+" clip-path="url(#pf7af4e3f1b)" style="fill: none; stroke: #607086; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 456.6 184.294976
+L 453.6 190.294976
+L 450.6 184.294976
+z
+" clip-path="url(#pf7af4e3f1b)" style="fill: #607086; stroke: #607086; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 453.6 243.709294
+Q 453.6 252.935565 453.6 260.149376
+" clip-path="url(#pf7af4e3f1b)" style="fill: none; stroke: #607086; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 456.6 254.149376
+L 453.6 260.149376
+L 450.6 254.149376
+z
+" clip-path="url(#pf7af4e3f1b)" style="fill: #607086; stroke: #607086; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 453.6 313.563694
+Q 453.6 322.789965 453.6 330.003776
+" clip-path="url(#pf7af4e3f1b)" style="fill: none; stroke: #607086; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 456.6 324.003776
+L 453.6 330.003776
+L 450.6 324.003776
+z
+" clip-path="url(#pf7af4e3f1b)" style="fill: #607086; stroke: #607086; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 453.6 383.418094
+Q 453.6 392.644365 453.6 399.858176
+" clip-path="url(#pf7af4e3f1b)" style="fill: none; stroke: #607086; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 456.6 393.858176
+L 453.6 399.858176
+L 450.6 393.858176
+z
+" clip-path="url(#pf7af4e3f1b)" style="fill: #607086; stroke: #607086; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 24px; font-family: 'NanumGothic'; text-anchor: start; fill: #152235" x="42.912" y="42.1272" transform="rotate(-0 42.912 42.1272)">Audio2Face CLI — 검증 가능한 artifact stack</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'NanumGothic'; text-anchor: start; fill: #607086" x="42.912" y="67.0752" transform="rotate(-0 42.912 67.0752)">각 층의 output이 다음 층의 input이며 SHA·timecode·frame gate로 연결된다</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 161.6544 177.84432
+L 745.5456 177.84432
+Q 767.8656 177.84432 767.8656 165.37032
+L 767.8656 130.94208
+Q 767.8656 118.46808 745.5456 118.46808
+L 161.6544 118.46808
+Q 139.3344 118.46808 139.3344 130.94208
+L 139.3344 165.37032
+Q 139.3344 177.84432 161.6544 177.84432
+z
+" clip-path="url(#pf7af4e3f1b)" style="fill: #ffffff; stroke: #607086; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'NanumGothic'; text-anchor: middle; fill: #152235" x="453.6" y="147.856654" transform="rotate(-0 453.6 147.856654)">CLI control</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 9px; font-family: 'NanumGothic'; text-anchor: middle; fill: #607086" x="453.6" y="161.960976" transform="rotate(-0 453.6 161.960976)">avatar · shot · motion · emotion · render options</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 197.3664 247.69872
+L 709.8336 247.69872
+Q 732.1536 247.69872 732.1536 235.22472
+L 732.1536 200.79648
+Q 732.1536 188.32248 709.8336 188.32248
+L 197.3664 188.32248
+Q 175.0464 188.32248 175.0464 200.79648
+L 175.0464 235.22472
+Q 175.0464 247.69872 197.3664 247.69872
+z
+" clip-path="url(#pf7af4e3f1b)" style="fill: #ffffff; stroke: #2775ca; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'NanumGothic'; text-anchor: middle; fill: #152235" x="453.6" y="217.711054" transform="rotate(-0 453.6 217.711054)">NVIDIA inference</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'NanumGothic'; text-anchor: middle; fill: #607086" x="453.6" y="231.810454" transform="rotate(-0 453.6 231.810454)">v3 multi_v3.2 / A2F-68 / emotion tracks</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 233.0784 317.55312
+L 674.1216 317.55312
+Q 696.4416 317.55312 696.4416 305.07912
+L 696.4416 270.65088
+Q 696.4416 258.17688 674.1216 258.17688
+L 233.0784 258.17688
+Q 210.7584 258.17688 210.7584 270.65088
+L 210.7584 305.07912
+Q 210.7584 317.55312 233.0784 317.55312
+z
+" clip-path="url(#pf7af4e3f1b)" style="fill: #ffffff; stroke: #17a398; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'NanumGothic'; text-anchor: middle; fill: #152235" x="453.6" y="287.565454" transform="rotate(-0 453.6 287.565454)">ACE capture</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'NanumGothic'; text-anchor: middle; fill: #607086" x="453.6" y="301.664854" transform="rotate(-0 453.6 301.664854)">MetaHuman Face_AnimBP / Take Recorder / one face track</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 268.7904 387.40752
+L 638.4096 387.40752
+Q 660.7296 387.40752 660.7296 374.93352
+L 660.7296 340.50528
+Q 660.7296 328.03128 638.4096 328.03128
+L 268.7904 328.03128
+Q 246.4704 328.03128 246.4704 340.50528
+L 246.4704 374.93352
+Q 246.4704 387.40752 268.7904 387.40752
+z
+" clip-path="url(#pf7af4e3f1b)" style="fill: #ffffff; stroke: #e49b2f; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'NanumGothic'; text-anchor: middle; fill: #152235" x="453.6" y="357.419855" transform="rotate(-0 453.6 357.419855)">MRQ render</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9px; font-family: 'NanumGothic'; text-anchor: middle; fill: #607086" x="453.6" y="371.591676" transform="rotate(-0 453.6 371.591676)">camera preset or custom transform / 109 PNG frames</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 304.5024 457.26192
+L 602.6976 457.26192
+Q 625.0176 457.26192 625.0176 444.78792
+L 625.0176 410.35968
+Q 625.0176 397.88568 602.6976 397.88568
+L 304.5024 397.88568
+Q 282.1824 397.88568 282.1824 410.35968
+L 282.1824 444.78792
+Q 282.1824 457.26192 304.5024 457.26192
+z
+" clip-path="url(#pf7af4e3f1b)" style="fill: #ffffff; stroke: #2e9d62; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'NanumGothic'; text-anchor: middle; fill: #152235" x="453.6" y="427.357692" transform="rotate(-0 453.6 427.357692)">Verified delivery</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'NanumGothic'; text-anchor: middle; fill: #607086" x="453.6" y="441.441857" transform="rotate(-0 453.6 441.441857)">H.264 + AAC / triptych / manifest</text>
+   </g>
+   <g id="text_13">
+    <g id="patch_11">
+     <path d="M 43.438703 469.177347
+L 78.097297 469.177347
+Q 83.597297 469.177347 83.597297 463.677347
+L 83.597297 428.892253
+Q 83.597297 423.392253 78.097297 423.392253
+L 43.438703 423.392253
+Q 37.938703 423.392253 37.938703 428.892253
+L 37.938703 463.677347
+Q 37.938703 469.177347 43.438703 469.177347
+z
+" style="fill: #ffffff; stroke: #2775ca; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 11px; font-family: 'NanumGothic'; fill: #2775ca" transform="translate(45.879328 437.647566)">GPU1</text>
+    <text style="font-size: 11px; font-family: 'NanumGothic'; fill: #2775ca" transform="translate(43.438703 449.826284)">A4500</text>
+    <text style="font-size: 11px; font-family: 'NanumGothic'; fill: #2775ca" transform="translate(50.108313 462.005003)">NIM</text>
+   </g>
+   <g id="text_14">
+    <g id="patch_12">
+     <path d="M 794.696047 349.426947
+L 844.599953 349.426947
+Q 850.099953 349.426947 850.099953 343.926947
+L 850.099953 309.141853
+Q 850.099953 303.641853 844.599953 303.641853
+L 794.696047 303.641853
+Q 789.196047 303.641853 789.196047 309.141853
+L 789.196047 343.926947
+Q 789.196047 349.426947 794.696047 349.426947
+z
+" style="fill: #ffffff; stroke: #e49b2f; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 11px; font-family: 'NanumGothic'; fill: #e49b2f" transform="translate(804.759328 317.897166)">GPU0</text>
+    <text style="font-size: 11px; font-family: 'NanumGothic'; fill: #e49b2f" transform="translate(794.696047 330.075884)">RTX 5000</text>
+    <text style="font-size: 11px; font-family: 'NanumGothic'; fill: #e49b2f" transform="translate(797.339484 342.254603)">UE/MRQ</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pf7af4e3f1b">
+   <rect x="7.2" y="7.2" width="892.8" height="498.96"/>
+  </clipPath>
+ </defs>
+</svg>

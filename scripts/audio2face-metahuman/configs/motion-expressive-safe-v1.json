@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "mode": "enhanced",
+  "curve_application": "final_render",
+  "face_parameters": {
+    "lowerFaceStrength": 1.35,
+    "lowerFaceSmoothing": 0.005,
+    "upperFaceStrength": 1.1,
+    "upperFaceSmoothing": 0.001
+  },
+  "emotion": {
+    "overall_strength": 0.75,
+    "constant": {},
+    "timecoded": []
+  },
+  "artifact_postprocess": {
+    "global_intensity": 1.0,
+    "attack": 0.7,
+    "release": 0.45,
+    "region_gains": {
+      "eyes": 1.05,
+      "jaw": 1.05,
+      "mouth": 1.05
+    },
+    "curve_operations": {
+      "JawOpen": {
+        "gain": 1.05,
+        "bias": 0.0,
+        "clamp": [0.0, 1.0]
+      }
+    }
+  }
+}

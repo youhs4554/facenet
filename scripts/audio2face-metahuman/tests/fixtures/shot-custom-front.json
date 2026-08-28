@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "shots": [
+    {
+      "id": "custom-front-50mm",
+      "camera": {
+        "coordinate_space": "avatar_head",
+        "location_cm": [0.0, 120.0, -8.0],
+        "rotation_deg": [3.8, -90.0, 0.0],
+        "focal_length_mm": 50.0,
+        "aperture": 8.0,
+        "focus_distance_cm": 120.0
+      }
+    }
+  ]
+}

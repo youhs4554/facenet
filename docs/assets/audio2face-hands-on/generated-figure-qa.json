@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "role": "conceptual_tutorial_schematics_not_empirical_evidence",
+  "concept": {
+    "path": "figures/concept-overview-general-generated-v3.png",
+    "sha256": "38e6df68b469c9eac883818d2d53ab57aa6917361b8db44cf5824f4d95af30ce",
+    "semantic_blueprint": "figures/concept-overview-routeA-blueprint.png",
+    "text_audit": "pass",
+    "numeric_audit": "pass",
+    "arrow_audit": [
+      "Audio + choices -> Audio-driven face",
+      "Audio-driven face -> Selected MetaHuman",
+      "Selected MetaHuman -> Camera + render",
+      "Camera + render -> Video + artifacts"
+    ],
+    "invented_metrics": false
+  },
+  "architecture": {
+    "path": "figures/cli-architecture-novice-generated-v3.png",
+    "sha256": "77fa45bb2d11c3d0b1d95b5007b76c91fe644defad1af46f169f30880e2aa7fc",
+    "semantic_blueprint": "figures/cli-architecture-routeA-blueprint.png",
+    "text_audit": "pass",
+    "numeric_audit": "pass",
+    "arrow_audit": [
+      "Choose input -> Generate face motion",
+      "Generate face motion -> Animate MetaHuman",
+      "Animate MetaHuman -> Render video",
+      "Render video -> Check results"
+    ],
+    "forbidden_arrows_absent": [
+      "reverse arrows",
+      "feedback loops"
+    ],
+    "invented_metrics": false
+  }
+}
