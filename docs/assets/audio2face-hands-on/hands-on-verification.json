@@ -1,50 +1,98 @@
 {
   "actual_emotion_render": "results/07-emotion-metahuman-render.json",
   "all_links_exist": true,
+  "authoritative_head_motion": {
+    "audio_codec": "aac",
+    "av_start_delta_ms": 0.0,
+    "comparison_sha256": "e96a58e6527358010b8b74c66124993402390d7c25eabda237723ca91402d800",
+    "contact_sheet_sha256": "b318a96afa5460b72c882f01f9dfdee10af0378b6b3205c947593dc833984a45",
+    "face_correlation": 0.808418692329001,
+    "face_lag_frames": 0,
+    "final_mp4": "/home/aim/workspace/hosang/repo/facenet/.tools/audio2face3d/official-cli-runs/20260829-110741-head-motion-sync-final-r7/taro-a2f-head-motion-sync-final-r7-v30-diffusion-final.mp4",
+    "final_mp4_sha256": "c2142899f35deb4aacdd898e47957a667f4d225f23b96d0729549d5c8ad4935f",
+    "fps": 30,
+    "frames": 109,
+    "head_lag_frames": -1,
+    "head_zero_lag_mean_r2": 0.9941569862248157,
+    "implementation": "local-run-owned-baked-body-animsequence",
+    "official_nvidia_output": false,
+    "run_id": "20260829-110741-head-motion-sync-final-r7",
+    "status": "success",
+    "video_codec": "h264"
+  },
   "document": "/home/aim/workspace/hosang/repo/facenet/docs/audio2face-metahuman-cli-hands-on.ko.md",
-  "line_count": 715,
-  "linked_image_count": 16,
+  "document_sha256": "ecab9980e431b1ef6771dde4d9c9342ce36868fab4c671a75bbe8d9e3c233479",
+  "line_count": 901,
+  "linked_image_count": 18,
   "linked_images": [
     {
-      "height": 941,
-      "relative_path": "assets/audio2face-hands-on/figures/concept-overview-general-generated-v3.png",
-      "sha256": "38e6df68b469c9eac883818d2d53ab57aa6917361b8db44cf5824f4d95af30ce",
-      "size_bytes": 1508548,
-      "width": 1672
+      "height": 472,
+      "relative_path": "assets/audio2face-hands-on/screenshots/01-cli-help-head-motion.png",
+      "sha256": "dc853003b435a0154fbee48f6ad920fe5e29338994ca8242d6537ffec28272a8",
+      "size_bytes": 71026,
+      "width": 1634
     },
     {
       "height": 941,
-      "relative_path": "assets/audio2face-hands-on/figures/cli-architecture-novice-generated-v3.png",
+      "relative_path": "assets/audio2face-hands-on/figures/concept-overview-general-generated-v3.png",
       "sha256": "77fa45bb2d11c3d0b1d95b5007b76c91fe644defad1af46f169f30880e2aa7fc",
       "size_bytes": 1380280,
       "width": 1672
     },
     {
-      "height": 1080,
-      "relative_path": "assets/audio2face-hands-on/vnc/01-cli-help.png",
-      "sha256": "1e1d5bf7d1b335a5a970ad2dbe05609b6a7ebca95568b0f1821ab30bb0b79e58",
-      "size_bytes": 1353668,
-      "width": 1920
+      "height": 941,
+      "relative_path": "assets/audio2face-hands-on/figures/cli-architecture-novice-generated-v3.png",
+      "sha256": "8c2938da8fb44c9323964290f367b4beedf8dc512ca7af3cda05e737587ad029",
+      "size_bytes": 1300460,
+      "width": 1672
+    },
+    {
+      "height": 335,
+      "relative_path": "assets/audio2face-hands-on/screenshots/02-runtime-preflight.png",
+      "sha256": "efc26a9ba7b5f99e8f4715eb66df58a8e36299a785b480460c7c282be59d7830",
+      "size_bytes": 49182,
+      "width": 1634
+    },
+    {
+      "height": 505,
+      "relative_path": "assets/audio2face-hands-on/screenshots/03-baseline-progress.png",
+      "sha256": "76bd423a031ad614598a7457cd2b477736be8fdccd35b25307c462b055b98492",
+      "size_bytes": 99902,
+      "width": 1754
+    },
+    {
+      "height": 560,
+      "relative_path": "assets/audio2face-hands-on/screenshots/04-head-motion-progress.png",
+      "sha256": "9927cd3579383cba643e190735b95a0765ceac1aa3d328f7fce0e58167bbbe04",
+      "size_bytes": 117614,
+      "width": 1850
+    },
+    {
+      "height": 270,
+      "relative_path": "assets/audio2face-hands-on/screenshots/05-head-motion-manifest.png",
+      "sha256": "3e1d1d724578b713fb154c8fd4742aeb26cc7d73861999db5d34a7e8c3c83f46",
+      "size_bytes": 42931,
+      "width": 1754
+    },
+    {
+      "height": 1052,
+      "relative_path": "assets/audio2face-hands-on/screenshots/06-unreal-run-owned-sequence.png",
+      "sha256": "19710efdb3c1f07b7f4620578f13d2b5ad13118ae15a8a9755873403e1194e5e",
+      "size_bytes": 601745,
+      "width": 1640
+    },
+    {
+      "height": 932,
+      "relative_path": "assets/audio2face-hands-on/screenshots/07-head-motion-off-on-result.png",
+      "sha256": "513b3c45c263c469e162b88617778567a4b24d495658d6d952a7a1c2f37d08c8",
+      "size_bytes": 516194,
+      "width": 1952
     },
     {
       "height": 1080,
-      "relative_path": "assets/audio2face-hands-on/vnc/02-preflight-health.png",
-      "sha256": "0c5796a74f92bb74b5dc3e8c913287f3200a3676bc25e2e0b929442d29444b5b",
-      "size_bytes": 947098,
-      "width": 1920
-    },
-    {
-      "height": 1080,
-      "relative_path": "assets/audio2face-hands-on/vnc/03-inference-progress.png",
-      "sha256": "4074a6b5f743f44c91ddaa9a1f5bce91101e0155cf85bd27f356c61539a14d09",
-      "size_bytes": 856199,
-      "width": 1920
-    },
-    {
-      "height": 1080,
-      "relative_path": "assets/audio2face-hands-on/vnc/04-inference-complete.png",
-      "sha256": "2f22bde65e4e35acea2716c866c1dccacc1fab399cb1be0d837fe9ff7812d2c3",
-      "size_bytes": 867633,
+      "relative_path": "assets/audio2face-hands-on/results/09-head-motion-all-avatars.png",
+      "sha256": "958aedff3ef08005088c18a9bee6b2acbc9622d2ee5ff04691aa49da00c1e668",
+      "size_bytes": 1494968,
       "width": 1920
     },
     {
@@ -62,31 +110,10 @@
       "width": 1920
     },
     {
-      "height": 720,
-      "relative_path": "assets/audio2face-hands-on/results/03-avatar-comparison.png",
-      "sha256": "3356ca925c6b2d92746a98a394dcf58e8519637c64de1ce756b211e7432d5433",
-      "size_bytes": 478249,
-      "width": 1920
-    },
-    {
       "height": 540,
       "relative_path": "assets/audio2face-hands-on/results/05-motion-intensity-ab.png",
       "sha256": "5419731d2bbe0e2b985f6e6ecaba8ce95736faefb1a8bff16a6c060383ad3200",
       "size_bytes": 661847,
-      "width": 1920
-    },
-    {
-      "height": 760,
-      "relative_path": "assets/audio2face-hands-on/results/09-face-parameter-atlas.png",
-      "sha256": "f101e4fb4b1a06c5f4fdea2a4d6f07889fd1575e1f8308907a7fdf89be92637c",
-      "size_bytes": 493895,
-      "width": 1920
-    },
-    {
-      "height": 1080,
-      "relative_path": "assets/audio2face-hands-on/results/06-ace-node-blink.png",
-      "sha256": "2981ce39003a84811554c55fc7bc67b296b2e823ee15fb47ba47514531f714e1",
-      "size_bytes": 481148,
       "width": 1920
     },
     {
@@ -97,31 +124,82 @@
       "width": 1920
     },
     {
-      "height": 1080,
-      "relative_path": "assets/audio2face-hands-on/results/08-final-triptych.png",
-      "sha256": "c23719fb203a426811fe71ff9559a9e1c2e73f3db7a2ae2e5e1a663ff21cc08b",
-      "size_bytes": 845596,
+      "height": 760,
+      "relative_path": "assets/audio2face-hands-on/results/09-face-parameter-atlas.png",
+      "sha256": "f101e4fb4b1a06c5f4fdea2a4d6f07889fd1575e1f8308907a7fdf89be92637c",
+      "size_bytes": 493895,
       "width": 1920
     },
     {
-      "height": 1080,
-      "relative_path": "assets/audio2face-hands-on/vnc/06-result-triptych.png",
-      "sha256": "46ab5fb16d76ce523dc39ccc91e244785470520dde8f756ae10000e1578d732b",
-      "size_bytes": 742672,
-      "width": 1920
+      "height": 865,
+      "relative_path": "assets/audio2face-hands-on/screenshots/08-video-verification.png",
+      "sha256": "834e788a3d95fde7d5be363b911edadf6712a5bc0841970ef3e82111602d3725",
+      "size_bytes": 90978,
+      "width": 1754
     },
     {
-      "height": 1080,
-      "relative_path": "assets/audio2face-hands-on/vnc/05-ffprobe-verification.png",
-      "sha256": "833fdcc81616b185e0107e8ae40fbef7b134bea9dca4623d006d65945a4c8997",
-      "size_bytes": 899431,
-      "width": 1920
+      "height": 942,
+      "relative_path": "assets/audio2face-hands-on/screenshots/09-off-on-viewer.png",
+      "sha256": "497f36a1fb32b692d09200bd30404c4e86ccb0340b7301eea747cdcb39c40987",
+      "size_bytes": 353864,
+      "width": 1672
     }
+  ],
+  "no_commit": true,
+  "official_lookup_fallback": "Context7 tools unavailable; official vendor pages and installed NVIDIA/Epic source used.",
+  "official_sources": [
+    "https://docs.nvidia.com/ace/audio2face-3d-microservice/latest/text/support-matrix.html",
+    "https://docs.nvidia.com/ace/ace-unreal-plugin/2.5/ace-unreal-plugin-audio2face.html",
+    "https://dev.epicgames.com/documentation/en-us/unreal-engine/take-recorder-in-unreal-engine?application_version=5.6",
+    "https://dev.epicgames.com/documentation/en-us/unreal-engine/using-command-line-rendering-with-move-render-queue-in-unreal-engine?application_version=5.6"
   ],
   "removed_from_learning_path": [
     "results/04-model-v23-v30.png",
-    "results/07-emotion-conditioning-atlas.png"
+    "results/07-emotion-conditioning-atlas.png",
+    "vnc/01-cli-help.png",
+    "vnc/02-preflight-health.png",
+    "vnc/03-inference-progress.png",
+    "vnc/04-inference-complete.png",
+    "vnc/05-ffprobe-verification.png",
+    "vnc/06-result-triptych.png"
   ],
-  "schema_version": 2,
-  "tests": "30 focused tests, 34 subtests passed"
+  "schema_version": 3,
+  "screenshot_provenance": {
+    "count": 9,
+    "generative_pixels_used": false,
+    "path": "docs/assets/audio2face-hands-on/screenshots/screenshot-manifest.json",
+    "sha256": "f0210b3f920770978d24b8b589c17d548aae87e07e518a71a8d52547e731e554",
+    "visual_inspection": "9/9 PASS at final crop scale"
+  },
+  "tests": {
+    "bash_blocks": "PASS",
+    "compileall": "PASS",
+    "document_contract": "14 passed, 156 subtests passed",
+    "focused": "136 passed, 253 subtests passed",
+    "full": "221 passed, 269 subtests passed",
+    "link_integrity": "PASS",
+    "screenshot_hash_dimension_contract": "PASS"
+  },
+  "ue_gui_capture": {
+    "editor_exit": "QUIT_EDITOR graceful exit",
+    "evidence_log": ".tools/audio2face-metahuman/KairosSample/Saved/Logs/KairosSample.log",
+    "frame": 60,
+    "observed_at_kst": "2026-08-29T18:43:31+09:00",
+    "run_id": "20260829-110741-head-motion-sync-final-r7",
+    "safe_process_overrides": [
+      "-DisablePlugins=Bridge,Fab",
+      "-ini:Engine:[SystemSettings]:r.CEFGPUAcceleration=0",
+      "-ini:EditorPerProjectUserSettings:[/Script/UnrealEd.EditorLoadingSavingSettings]:RestoreOpenAssetTabsOnRestart=NeverRestore"
+    ],
+    "screenshot": "docs/assets/audio2face-hands-on/screenshots/06-unreal-run-owned-sequence.png",
+    "sha256": "19710efdb3c1f07b7f4620578f13d2b5ad13118ae15a8a9755873403e1194e5e",
+    "source_asset_saved": false,
+    "status": "pass",
+    "surface": "UE 5.6 FinalSequence + Taro viewport + Camera Cut/MetaHuman/HeadMotion tracks"
+  },
+  "unique_linked_image_count": 17,
+  "writing_contract": {
+    "path": "docs/assets/audio2face-hands-on/hands-on-writing-contract.md",
+    "sha256": "50073f55a499daf1c9006994ff9251a568cf2769dce82e4a3d18a59efd2341cd"
+  }
 }

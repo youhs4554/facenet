@@ -264,7 +264,8 @@ def validate_shot_document(document: Any) -> list[dict[str, Any]]:
 
 
 def validate_resume(
-    manifest: dict[str, Any], *, input_sha256: str, config_sha256: str
+    manifest: dict[str, Any], *, input_sha256: str, config_sha256: str,
+    head_motion_lineage: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     completion = (manifest.get("status"), manifest.get("exit_code"))
     if completion not in {
@@ -278,6 +279,19 @@ def validate_resume(
     versions = manifest.get("versions") or {}
     if versions.get("official_claire_config_sha256") != config_sha256:
         raise ResumeError("resume config hash does not match")
+    requested_head = head_motion_lineage or {"enabled": False}
+    source_head = manifest.get("head_motion_lineage")
+    if requested_head.get("enabled") and isinstance(source_head, dict):
+        for key in (
+            "enabled",
+            "profile",
+            "config_sha256",
+            "samples_sha256",
+            "fps",
+            "frame_count",
+        ):
+            if source_head.get(key) != requested_head.get(key):
+                raise ResumeError(f"resume head-motion {key} mismatch")
     inference = manifest.get("official_nvidia_inference")
     if not isinstance(inference, dict) or not inference.get("output_dir"):
         raise ResumeError("resume manifest has no successful NVIDIA inference")

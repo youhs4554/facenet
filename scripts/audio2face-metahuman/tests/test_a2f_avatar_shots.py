@@ -282,6 +282,66 @@ class ResumeAndManifestTests(unittest.TestCase):
         )
         self.assertEqual(reused["output_dir"], "/run/output_000001")
 
+    def test_old_resume_manifest_reuses_only_inference_and_can_generate_new_head_motion(self):
+        manifest = {
+            "status": "success",
+            "exit_code": 0,
+            "input_sha256": "input-hash",
+            "versions": {"official_claire_config_sha256": "config-hash"},
+            "official_nvidia_inference": {"output_dir": "/run/output_000001"},
+        }
+        reused = self.module.validate_resume(
+            manifest,
+            input_sha256="input-hash",
+            config_sha256="config-hash",
+            head_motion_lineage={"enabled": False},
+        )
+        self.assertEqual(reused["output_dir"], "/run/output_000001")
+        reused = self.module.validate_resume(
+            manifest,
+            input_sha256="input-hash",
+            config_sha256="config-hash",
+            head_motion_lineage={
+                "enabled": True,
+                "profile": "subtle-conversational",
+                "config_sha256": "d" * 64,
+                "samples_sha256": "e" * 64,
+                "fps": 30,
+                "frame_count": 109,
+            },
+        )
+        self.assertEqual(reused["output_dir"], "/run/output_000001")
+
+    def test_resume_rejects_head_motion_sample_or_timeline_mismatch(self):
+        head = {
+            "schema_version": 1,
+            "enabled": True,
+            "profile": "subtle-conversational",
+            "config_sha256": "d" * 64,
+            "samples_sha256": "e" * 64,
+            "fps": 30,
+            "frame_count": 109,
+        }
+        manifest = {
+            "status": "success",
+            "exit_code": 0,
+            "input_sha256": "input-hash",
+            "versions": {"official_claire_config_sha256": "config-hash"},
+            "official_nvidia_inference": {"output_dir": "/run/output_000001"},
+            "head_motion_lineage": head,
+        }
+        for key, value in {
+            "samples_sha256": "f" * 64,
+            "fps": 60,
+            "frame_count": 218,
+        }.items():
+            with self.subTest(key=key), self.assertRaises(self.module.ResumeError):
+                self.module.validate_resume(
+                    manifest,
+                    input_sha256="input-hash",
+                    config_sha256="config-hash",
+                    head_motion_lineage=dict(head, **{key: value}),
+                )
     def test_manifest_v2_keeps_legacy_single_shot_fields(self):
         verification = {"final_mp4": "/run/final.mp4", "video_frames": 120}
         manifest = self.module.apply_manifest_v2(

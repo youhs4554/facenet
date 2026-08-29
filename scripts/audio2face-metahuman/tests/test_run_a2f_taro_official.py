@@ -8,13 +8,21 @@ from unittest import mock
 
 
 SCRIPT = Path(__file__).resolve().parents[1] / "run-a2f-metahuman.py"
-CAPTURE_SCRIPT = (
+UNREAL_MIRROR = Path(__file__).resolve().parents[1] / "unreal"
+CAPTURE_SCRIPT = UNREAL_MIRROR / "a2f_metahuman_capture.py"
+EDITOR_LIBRARY_CPP = UNREAL_MIRROR / "KairosDemoEditorLibrary.cpp"
+EDITOR_LIBRARY_HEADER = UNREAL_MIRROR / "KairosDemoEditorLibrary.h"
+DEPLOYED_CAPTURE_SCRIPT = (
     Path(__file__).resolve().parents[3]
     / ".tools/audio2face-metahuman/KairosSample/Content/Python/a2f_metahuman_capture.py"
 )
-EDITOR_LIBRARY_CPP = (
+DEPLOYED_EDITOR_LIBRARY_CPP = (
     Path(__file__).resolve().parents[3]
     / ".tools/audio2face-metahuman/KairosSample/Source/KairosSample/Private/KairosDemoEditorLibrary.cpp"
+)
+DEPLOYED_EDITOR_LIBRARY_HEADER = (
+    Path(__file__).resolve().parents[3]
+    / ".tools/audio2face-metahuman/KairosSample/Source/KairosSample/Public/KairosDemoEditorLibrary.h"
 )
 
 
@@ -29,6 +37,26 @@ class OfficialA2FPipelineTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.module = load_module()
+
+    def test_tracked_unreal_helpers_match_the_deployed_project(self):
+        if not all(
+            path.is_file()
+            for path in (
+                DEPLOYED_CAPTURE_SCRIPT,
+                DEPLOYED_EDITOR_LIBRARY_CPP,
+                DEPLOYED_EDITOR_LIBRARY_HEADER,
+            )
+        ):
+            self.skipTest("project-local KairosSample is not installed")
+        self.assertEqual(CAPTURE_SCRIPT.read_bytes(), DEPLOYED_CAPTURE_SCRIPT.read_bytes())
+        self.assertEqual(
+            EDITOR_LIBRARY_CPP.read_bytes(),
+            DEPLOYED_EDITOR_LIBRARY_CPP.read_bytes(),
+        )
+        self.assertEqual(
+            EDITOR_LIBRARY_HEADER.read_bytes(),
+            DEPLOYED_EDITOR_LIBRARY_HEADER.read_bytes(),
+        )
 
     def test_nvidia_command_calls_the_pinned_official_sample(self):
         command = self.module.build_inference_command(
@@ -218,6 +246,319 @@ class OfficialA2FPipelineTests(unittest.TestCase):
         )
         self.assertEqual(legacy.a2f_model, "v2.3-regression")
         self.assertTrue(legacy.a2f_model_explicit)
+
+    def test_head_motion_cli_defaults_off_and_accepts_only_supported_profiles(self):
+        defaults = self.module.parse_args(["input.wav"])
+        self.assertEqual(defaults.head_motion, "off")
+        self.assertIsNone(defaults.head_motion_strength)
+        for profile in ("off", "subtle-conversational"):
+            with self.subTest(profile=profile):
+                args = self.module.parse_args(
+                    ["input.wav", "--head-motion", profile]
+                )
+                self.assertEqual(args.head_motion, profile)
+        equals_form = self.module.parse_args(
+            ["input.wav", "--head-motion=subtle-conversational"]
+        )
+        self.assertTrue(equals_form.head_motion_explicit)
+        calibration = self.module.parse_args(
+            ["input.wav", "--head-motion-calibration-manifest", "/run/calibration.json"]
+        )
+        self.assertEqual(
+            calibration.head_motion_calibration_manifest,
+            Path("/run/calibration.json"),
+        )
+
+    def test_head_motion_strength_requires_enabled_profile_and_stays_bounded(self):
+        with self.assertRaises(ValueError):
+            self.module.validate_cli_limits(
+                self.module.parse_args(
+                    ["input.wav", "--head-motion-strength", "0.5"]
+                )
+            )
+        with self.assertRaises(ValueError):
+            self.module.validate_cli_limits(
+                self.module.parse_args(
+                    [
+                        "input.wav",
+                        "--head-motion",
+                        "off",
+                        "--head-motion-strength",
+                        "0.5",
+                    ]
+                )
+            )
+        for value in ("-0.01", "1.51", "nan", "inf", "-inf"):
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                self.module.validate_cli_limits(
+                    self.module.parse_args(
+                        [
+                            "input.wav",
+                            "--head-motion",
+                            "subtle-conversational",
+                            "--head-motion-strength",
+                            value,
+                        ]
+                    )
+                )
+        valid = self.module.parse_args(
+            [
+                "input.wav",
+                "--head-motion",
+                "subtle-conversational",
+                "--head-motion-strength",
+                "1.5",
+            ]
+        )
+        self.module.validate_cli_limits(valid)
+
+    def test_head_motion_rejects_finalize_only_and_caller_owned_sequence(self):
+        for extra in (
+            ["--finalize-only", "--frames-dir", "/run/frames"],
+            ["--level-sequence", "/Game/Cinematics/Caller.Take"],
+        ):
+            with self.subTest(extra=extra):
+                args = self.module.parse_args(
+                    [
+                        "input.wav",
+                        "--head-motion",
+                        "subtle-conversational",
+                        *extra,
+                    ]
+                )
+                with self.assertRaises(ValueError):
+                    self.module.validate_cli_limits(args)
+
+    def test_head_motion_uses_same_avatar_shot_verified_resume_lag(self):
+        resume = {
+            "run_id": "baseline",
+            "expected_frames": 109,
+            "avatar": {
+                "requested": "Taro",
+                "object_path": "/Game/MetaHumans/Taro/BP_Taro.BP_Taro",
+            },
+            "shots": [{"id": "close-up-front", "preset": "close-up-front"}],
+            "verification": {
+                "content_sync": {"status": "aligned", "lag_frames": 0},
+                "content_sync_correction": {
+                    "applied": True,
+                    "lag_frames": 5,
+                    "lag_ms": 166.667,
+                },
+            },
+        }
+        result = self.module.resolve_head_motion_render_calibration(
+            resume_manifest=resume,
+            avatar="Taro",
+            shots=[{"id": "close-up-front", "preset": "close-up-front"}],
+            fps=30,
+        )
+        self.assertEqual(result["video_advance_frames"], 5)
+        self.assertEqual(result["source_run_id"], "baseline")
+        self.assertEqual(result["source"], "verified-resume-content-sync")
+
+    def test_head_motion_calibration_rejects_missing_or_cross_avatar_evidence(self):
+        base = {
+            "run_id": "baseline",
+            "expected_frames": 109,
+            "avatar": {"requested": "Taro"},
+            "shots": [{"id": "close-up-front"}],
+            "verification": {
+                "content_sync": {"status": "aligned"},
+                "content_sync_correction": {"applied": True, "lag_frames": 5},
+            },
+        }
+        with self.assertRaises(ValueError):
+            self.module.resolve_head_motion_render_calibration(
+                resume_manifest=None,
+                avatar="Taro",
+                shots=[{"id": "close-up-front"}],
+                fps=30,
+            )
+        with self.assertRaises(ValueError):
+            self.module.resolve_head_motion_render_calibration(
+                resume_manifest=base,
+                avatar="Keiji",
+                shots=[{"id": "close-up-front"}],
+                fps=30,
+            )
+        with self.assertRaises(ValueError):
+            self.module.resolve_head_motion_render_calibration(
+                resume_manifest=base,
+                avatar="Taro",
+                shots=[{"id": "profile-left"}],
+                fps=30,
+            )
+
+    def test_head_motion_calibration_accepts_proven_prior_attempt_observation(self):
+        observed = {
+            "run_id": "jesse-attempt",
+            "expected_frames": 109,
+            "input_sha256": "a" * 64,
+            "a2f_model": {"id": "v3.0-diffusion"},
+            "capture": {
+                "avatar": {"requested": "Jesse", "asset_name": "BP_Jesse"},
+                "shots": [{"id": "close-up-front"}],
+            },
+            "head_motion_sync_observation": {
+                "status": "measured",
+                "measured_video_advance_frames": 7,
+                "correlation": 0.92,
+                "minimum_confidence": 0.75,
+            },
+        }
+        result = self.module.resolve_head_motion_render_calibration(
+            resume_manifest=observed,
+            avatar="Jesse",
+            shots=[{"id": "close-up-front"}],
+            fps=30,
+            input_sha256="a" * 64,
+            model_id="v3.0-diffusion",
+        )
+        self.assertEqual(result["video_advance_frames"], 7)
+        self.assertEqual(result["source"], "verified-prior-head-motion-attempt")
+
+    def test_head_motion_final_gate_requires_measured_correction_match_calibration(self):
+        exact = self.module.validate_head_motion_render_correction(
+            expected_video_advance_frames=5,
+            correction={"applied": True, "lag_frames": 5},
+        )
+        self.assertEqual(exact["residual_lag_frames"], 0)
+        within_tolerance = self.module.validate_head_motion_render_correction(
+            expected_video_advance_frames=5,
+            correction={"applied": True, "lag_frames": 6},
+        )
+        self.assertEqual(within_tolerance["residual_lag_frames"], -1)
+        self.assertEqual(within_tolerance["tolerance_frames"], 1)
+        for correction in (
+            {"applied": False},
+            {"applied": True, "lag_frames": 3},
+            {"applied": True, "lag_frames": 7},
+            {"applied": True, "lag_frames": -5},
+        ):
+            with self.subTest(correction=correction), self.assertRaises(ValueError):
+                self.module.validate_head_motion_render_correction(
+                    expected_video_advance_frames=5,
+                    correction=correction,
+                )
+
+    def test_head_motion_is_handed_from_cli_to_capture_config_and_status(self):
+        cli_source = SCRIPT.read_text(encoding="utf-8")
+        capture_source = CAPTURE_SCRIPT.read_text(encoding="utf-8")
+        self.assertIn('"head_motion":', cli_source)
+        self.assertIn('"head_motion_lineage":', cli_source)
+        self.assertIn('self.config.get("head_motion"', capture_source)
+        self.assertIn("render_sync_calibration", cli_source)
+        self.assertIn("render_sync_compensation", capture_source)
+        self.assertIn("head_motion_lineage", capture_source)
+        self.assertIn("local-run-owned-baked-body-animsequence", cli_source)
+        self.assertNotIn("local-run-owned-additive-fk-control-rig", cli_source)
+
+    def test_ue_preflight_blocks_known_keiji_hazard_collision_and_bad_adapter(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            output_dir = Path(temp_dir) / "new-run"
+            base = {
+                "avatar": "Taro",
+                "avatar_visual_profile": "source",
+                "graphics_adapter": 0,
+                "graphics_adapter_name": "Quadro RTX 5000",
+                "active_unreal_processes": [],
+                "output_dir": output_dir,
+            }
+            report = self.module.validate_ue_preflight(**base)
+            self.assertEqual(report["graphics_adapter"], 0)
+            self.assertEqual(report["graphics_adapter_name"], "Quadro RTX 5000")
+            for overrides in (
+                {"avatar": "Keiji", "avatar_visual_profile": "source"},
+                {
+                    "avatar": "/Game/MetaHumans/Keiji/BP_Keiji.BP_Keiji",
+                    "avatar_visual_profile": "source",
+                },
+                {"graphics_adapter_name": "NVIDIA RTX A4500"},
+                {"graphics_adapter": 1},
+                {"active_unreal_processes": [{"pid": 123, "name": "UnrealEditor"}]},
+                {"output_dir": Path(temp_dir)},
+            ):
+                with self.subTest(overrides=overrides), self.assertRaises(ValueError):
+                    self.module.validate_ue_preflight(**{**base, **overrides})
+
+    def test_capture_source_contract_uses_run_owned_baked_body_animation(self):
+        source = CAPTURE_SCRIPT.read_text(encoding="utf-8")
+        for token in (
+            "run-owned",
+            "Body",
+            "neck_01",
+            "neck_02",
+            '"head"',
+            "find_body_animation",
+            "duplicate_asset",
+            "apply_head_rotations_to_body_animation",
+            "MovieSceneSkeletalAnimationTrack",
+            "baked_body_animation",
+            "baked_face_animation",
+            "head_motion_bake",
+            "head_motion_readback",
+            "source_asset_modified",
+            "face_track_count",
+            "face_animation_tracks",
+            "fixed_camera",
+            "camera_transform",
+            "camera",
+        ):
+            with self.subTest(token=token):
+                self.assertIn(token, source)
+        self.assertNotIn("unreal.FKControlRig", source)
+        self.assertNotIn("find_or_create_control_rig_track", source)
+
+    def test_cpp_bake_uses_native_animation_data_controller_bone_tracks(self):
+        source = EDITOR_LIBRARY_CPP.read_text(encoding="utf-8")
+        for token in (
+            "ApplyHeadRotationsToBodyAnimation",
+            "IAnimationDataController::FScopedBracket",
+            "AddBoneCurve",
+            "GetBoneTrackTransforms",
+            "SetBoneTrackKeys",
+            "NotifyPopulated",
+            "GetReferenceSkeleton",
+            "GetBodyAnimationBoneRotationDeltas",
+            "AngularDistance",
+        ):
+            with self.subTest(token=token):
+                self.assertIn(token, source)
+
+    def test_body_bake_preserves_master_clock_and_face_track(self):
+        source = CAPTURE_SCRIPT.read_text(encoding="utf-8")
+        self.assertIn("sequence_offset_ticks", source)
+        self.assertIn('"start_frame_offset"', source)
+        self.assertIn("face_animation_tracks", source)
+        self.assertIn("body_animation_tracks", source)
+        self.assertIn("face_track_count", source)
+        self.assertIn("authored_max_delta_by_bone_deg", source)
+        self.assertIn("authored_nonzero_bones", source)
+        self.assertIn('"application_verification": "post-render-required"', source)
+
+    def test_face_head_bake_precedes_force_custom_face_track(self):
+        source = CAPTURE_SCRIPT.read_text(encoding="utf-8")
+        apply_call = "self.apply_head_motion("
+        face_binding = "face_binding = sequence.add_possessable(self.editor_face)"
+        self.assertIn('unreal.Name("head")', source)
+        self.assertIn("[1.0]", source)
+        self.assertIn('"baked_face_animation"', source)
+        self.assertLess(source.index(apply_call), source.index(face_binding))
+
+    def test_capture_validates_baked_body_data_before_render(self):
+        source = CAPTURE_SCRIPT.read_text(encoding="utf-8")
+        self.assertIn("get_body_animation_bone_rotation_deltas", source)
+        self.assertIn("authored_max_delta_by_bone_deg", source)
+        self.assertIn('"application_verification": "post-render-required"', source)
+        self.assertNotIn("body.get_bone_transform(", source)
+
+    def test_capture_nonzero_bone_gate_is_order_independent(self):
+        source = CAPTURE_SCRIPT.read_text(encoding="utf-8")
+        self.assertIn(
+            "if set(authored_nonzero_bones) != set(bones):", source
+        )
+        self.assertNotIn("if authored_nonzero_bones != bones:", source)
 
     def test_model_selection_preserves_legacy_endpoint_and_routes_v3_side_by_side(self):
         self.assertEqual(

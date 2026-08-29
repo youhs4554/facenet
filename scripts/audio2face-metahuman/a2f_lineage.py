@@ -21,6 +21,7 @@ LINEAGE_FIELDS = (
     "frame_count",
 )
 SHA256_PATTERN = re.compile(r"^[0-9a-f]{64}$")
+OPTIONAL_LINEAGE_FIELDS = ("head_motion_lineage",)
 
 
 class LineageError(ValueError):
@@ -28,7 +29,7 @@ class LineageError(ValueError):
 
 
 def make_lineage(**values: Any) -> dict[str, Any]:
-    unknown = set(values) - set(LINEAGE_FIELDS)
+    unknown = set(values) - set(LINEAGE_FIELDS) - set(OPTIONAL_LINEAGE_FIELDS)
     missing = set(LINEAGE_FIELDS) - set(values)
     if unknown or missing:
         raise LineageError(
@@ -58,14 +59,61 @@ def make_lineage(**values: Any) -> dict[str, Any]:
         value = values[key]
         if not isinstance(value, int) or isinstance(value, bool) or value <= 0:
             raise LineageError(f"lineage {key} must be a positive integer")
-    return {"schema_version": 1, **{key: values[key] for key in LINEAGE_FIELDS}}
+    result = {"schema_version": 1, **{key: values[key] for key in LINEAGE_FIELDS}}
+    if "head_motion_lineage" in values:
+        head = values["head_motion_lineage"]
+        if not isinstance(head, dict):
+            raise LineageError("head_motion_lineage must be an object")
+        result["head_motion_lineage"] = make_head_motion_lineage(
+            **{
+                key: head.get(key)
+                for key in (
+                    "enabled",
+                    "profile",
+                    "config_sha256",
+                    "samples_sha256",
+                    "fps",
+                    "frame_count",
+                )
+            }
+        )
+    return result
+
+
+def make_head_motion_lineage(**values: Any) -> dict[str, Any]:
+    ordered = (
+        "enabled",
+        "profile",
+        "config_sha256",
+        "samples_sha256",
+        "fps",
+        "frame_count",
+    )
+    if set(values) != set(ordered):
+        raise LineageError("head motion lineage fields are incomplete or unknown")
+    if values["enabled"] is not True:
+        raise LineageError("head motion lineage is only emitted when enabled")
+    if values["profile"] != "subtle-conversational":
+        raise LineageError("head motion lineage profile is unsupported")
+    for key in ("config_sha256", "samples_sha256"):
+        if not isinstance(values[key], str) or not SHA256_PATTERN.fullmatch(values[key]):
+            raise LineageError(f"head motion lineage {key} must be SHA-256")
+    for key in ("fps", "frame_count"):
+        if not isinstance(values[key], int) or isinstance(values[key], bool) or values[key] <= 0:
+            raise LineageError(f"head motion lineage {key} must be positive integer")
+    return {"schema_version": 1, **{key: values[key] for key in ordered}}
 
 
 def validate_compositor_lineage(
     expected: dict[str, Any], components: dict[str, dict[str, Any]]
 ) -> dict[str, Any]:
     expected_normalized = make_lineage(
-        **{key: expected.get(key) for key in LINEAGE_FIELDS}
+        **{key: expected.get(key) for key in LINEAGE_FIELDS},
+        **(
+            {"head_motion_lineage": expected.get("head_motion_lineage")}
+            if "head_motion_lineage" in expected
+            else {}
+        ),
     )
     if expected_normalized["curve_source"] == "raw-ace-reinference":
         raise LineageError(
@@ -80,7 +128,12 @@ def validate_compositor_lineage(
     component_records = {}
     for role in sorted(required_roles):
         candidate = make_lineage(
-            **{key: components[role].get(key) for key in LINEAGE_FIELDS}
+            **{key: components[role].get(key) for key in LINEAGE_FIELDS},
+            **(
+                {"head_motion_lineage": components[role].get("head_motion_lineage")}
+                if "head_motion_lineage" in components[role]
+                else {}
+            ),
         )
         mismatches = {
             key: {
@@ -90,6 +143,13 @@ def validate_compositor_lineage(
             for key in LINEAGE_FIELDS
             if candidate[key] != expected_normalized[key]
         }
+        if candidate.get("head_motion_lineage") != expected_normalized.get(
+            "head_motion_lineage"
+        ):
+            mismatches["head_motion_lineage"] = {
+                "expected": expected_normalized.get("head_motion_lineage"),
+                "actual": candidate.get("head_motion_lineage"),
+            }
         if mismatches:
             raise LineageError(f"{role} lineage mismatch: {mismatches}")
         component_records[role] = candidate

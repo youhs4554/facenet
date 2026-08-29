@@ -323,6 +323,41 @@ def build_avatar_sync_correction_command(
     ]
 
 
+def attach_head_motion_frame_mapping(
+    records: list[dict[str, Any]],
+    applied_frames: list[dict[str, Any]],
+    *,
+    video_advance_frames: int,
+    fps: int,
+) -> list[dict[str, Any]]:
+    """Attach exact applied-head provenance after avatar video correction."""
+    if (
+        fps <= 0
+        or len(records) != len(applied_frames)
+        or video_advance_frames < 0
+        or video_advance_frames * 2 >= len(records)
+    ):
+        raise A2FSyncError("head-motion frame mapping inputs are incompatible")
+    result = []
+    for output_index, record in enumerate(records):
+        raw_index = min(output_index + video_advance_frames, len(records) - 1)
+        applied = applied_frames[raw_index]
+        source_index = applied.get("source_frame_index")
+        item = dict(record)
+        item["head_motion"] = {
+            "avatar_raw_frame": raw_index,
+            "source_frame_index": source_index,
+            "source_time_seconds": (
+                None if source_index is None else int(source_index) / float(fps)
+            ),
+            "render_sync_scale": float(applied.get("render_sync_scale", 1.0)),
+            "neutral_settle": source_index is None
+            or float(applied.get("render_sync_scale", 1.0)) < 1.0,
+        }
+        result.append(item)
+    return result
+
+
 def build_master_frame_map(
     *,
     raw_frames: list[dict[str, Any]],

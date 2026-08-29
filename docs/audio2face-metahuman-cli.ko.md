@@ -271,12 +271,87 @@ SHA-256: b330e4789ea8d2f98fb0653ef99a17c346dbd6428d037e946a2209b520aec914
 - <https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/TakeRecorderSubsystem?application_version=5.6>
 - <https://dev.epicgames.com/documentation/en-us/unreal-engine/using-command-line-rendering-with-move-render-queue-in-unreal-engine?application_version=5.6>
 
+## 로컬 자연스러운 머리 움직임
+
+NVIDIA A2F/ACE 2.5가 머리 움직임을 생성하는 기능은 아니다. 이 기능은 입력 WAV의 음성 activity에서 저주파 pitch/yaw/roll sample을 결정적으로 만들고, Take Recorder가 만든 run-owned Body/Face `AnimSequence` 복사본에 Epic `IAnimationDataController`로 목·머리 회전 키를 bake하는 로컬 확장이다. MetaHuman 원본 Blueprint·animation·camera·actor root는 수정하지 않는다.
+
+```bash
+scripts/audio2face-metahuman/run-a2f-metahuman.py \
+  /home/aim/Downloads/test.wav \
+  --resume .tools/audio2face3d/official-cli-runs/20260828-085258-hands-on-default-v30/manifest.json \
+  --avatar Taro \
+  --shot close-up-front \
+  --motion-config scripts/audio2face-metahuman/configs/motion-head-subtle-v1.json \
+  --head-motion subtle-conversational \
+  --head-motion-strength 1.0 \
+  --name taro-head-motion
+```
+
+- `--head-motion`: `off`(기본값) 또는 `subtle-conversational`
+- `--head-motion-strength`: 활성 profile에서만 `0.0–1.5`
+- config preset: `scripts/audio2face-metahuman/configs/motion-head-subtle-v1.json`
+- sample/CSV/metrics와 별도 SHA lineage를 `<run>/head-motion/`에 저장한다.
+- Body의 `neck_01 → neck_02 → head`에는 각각 20%/30%/50%, 독립 Face mesh의 `head`에는 동일 master clock의 100% 회전을 적용한다.
+- `--finalize-only`와 caller-owned `--level-sequence`는 적용할 UE stage가 없어 활성 시 거부한다.
+- Keiji는 `source` clothing Vulkan PSO guard 때문에 `face-focused-vulkan-safe` 없이는 launch하지 않는다.
+
+검증된 Taro ON run은 `20260829-110741-head-motion-sync-final-r7`이다. 동일 inference·음성·얼굴 curve·고정 카메라의 OFF/ON을 비교했다. 머리 움직임은 같은 avatar/shot baseline의 실측 content-sync lag를 `--resume` manifest에서 가져와 bone bake를 반대 방향으로 보상한다. 측정값과 최종 보정값이 다르면 exit `44`로 실패하므로 고정된 magic offset을 추측하지 않는다.
+
+| 검증 | 결과 |
+| --- | --- |
+| 본 키 | Body 327 keys(109×3), Face head 109 samples; `neck_01` 0.342°, `neck_02` 0.513°, `head` 0.855° authored max delta |
+| 실제 렌더 움직임 | OFF 대비 머리 회전 RMS 0.154°, p95 0.296°; 화면 이동 RMS x 1.42 px, y 4.40 px |
+| 영상 | H.264/AAC, 1920×1080, 30 fps, 109 frames, full decode PASS |
+| 동기 | A/V start 0 ms, JawOpen content lag 0 frame, correlation 0.808 |
+| 보존 | 카메라 transform 동일, actor-root track 없음, Face curve SHA와 단일 Face track 동일 |
+| 머리 master clock | source-audio 기준 optical best lag -1 frame(허용 ±1), zero-lag multivariate R² 0.994 |
+
+확인할 파일:
+
+```text
+.tools/audio2face3d/official-cli-runs/20260829-110741-head-motion-sync-final-r7/
+  taro-a2f-head-motion-sync-final-r7-v30-diffusion-final.mp4
+  head-motion-off-on-comparison.mp4
+  head-motion-off-on-contact-sheet.png
+  head-motion-final-verification.json
+```
+
+새 오디오에서는 먼저 같은 avatar/shot으로 기본(head OFF) run을 한 번 만든 뒤, 그 manifest를 위 명령의 `--resume`에 지정한다. 이 baseline은 얼굴의 실제 render latency를 측정하는 calibration이며, NIM inference와 face curve도 hash 검증 후 재사용한다.
+
+실행별 얼굴 latency가 baseline과 2 frames 이상 달라 strict gate가 중단되면, 실패 run이 남긴 검증된 observation을 다음 bounded retry에 명시할 수 있다.
+
+```bash
+--head-motion-calibration-manifest /absolute/path/to/head-motion-retry-calibration.json
+```
+
+이 옵션은 임의 숫자를 받지 않는다. 동일 input/model/avatar/shot/fps와 최소 correlation을 통과한 prior-attempt JSON만 허용하며 최종 residual은 여전히 ±1 frame 이하여야 한다.
+
+### 로컬 MetaHuman 전체 검증
+
+프로젝트에 설치된 네 MetaHuman을 모두 실제 렌더했다. Taro는 source, clothing Vulkan 이력이 있는 나머지는 run-owned `face-focused-vulkan-safe`를 사용했다.
+
+| Avatar | Shot | Face lag / correlation | Head lag / R² | 결과 |
+| --- | --- | --- | --- | --- |
+| Taro | close-up-front | 0 / 0.808 | -1 / 0.995 | PASS |
+| Keiji | medium-three-quarter-left | 0 / 0.825 | 0 / 0.996 | PASS |
+| Sook-ja | medium-three-quarter-left | 0 / 0.956 | 0 / 0.998 | PASS |
+| Jesse | close-up-front | 0 / 0.938 | 0 / 0.998 | PASS |
+
+네 결과 모두 H.264/AAC 1920×1080, 30 fps, 109 frames, A/V 0 ms, full decode PASS이며 `neck_01/neck_02/head` authored delta가 nonzero다.
+
+```text
+.tools/audio2face3d/official-cli-runs/20260829-head-motion-all-avatars/
+  all-avatars-head-motion-on.mp4
+  all-avatars-head-motion-on-atlas.png
+  all-avatars-head-motion-verification.json
+```
+
 ## 알려진 한계
 
 - Claire 저해상도 surface는 clean geometry 진단용이라 눈·치아·헤어와 MetaHuman 고해상도 피부를 재현하지 않는다.
 - 설치된 ACE 2.5는 16개 extended tongue curve를 최종 MetaHuman render에 직접 소비하지 않으므로 final-render postprocess 대상에서 거부한다. raw/effective artifact와 mannequin에는 보존된다.
 - v3 direct geometry의 skin/jaw/tongue/eye 정보는 NIM solver의 68 blendshape로 변환된 뒤 이 경로에 들어오므로 일부 세부 정보가 손실될 수 있다.
-- 설치된 ACE 2.5 `FAnimNode_ApplyACEAnimation`은 `HeadBone`을 노출하지만 구현 소스가 `not yet implemented`/`#if 0`이므로 head motion을 지원한다고 표시하지 않는다.
+- 설치된 ACE 2.5 `FAnimNode_ApplyACEAnimation`의 `HeadBone`은 `not yet implemented`/`#if 0`이다. 위 opt-in 경로는 NVIDIA가 생성한 head motion이 아니라 별도 local AnimSequence bake extension이다.
 - 이 입력의 official solver `TongueOut`은 전 프레임 0이라 `tongueStrength`만 높여도 혀가 보이지 않는다. extended tongue 16개를 MetaHuman에 억지로 bake하지 않는다.
 - UE 5.6 Linux/Vulkan 별도 Editor 시작 SIGSEGV가 간헐적이다. CLI는 bounded timeout/failure manifest를 남기며 기존 사용자 UnrealEditor나 성공 run을 종료·수정하지 않는다.
 

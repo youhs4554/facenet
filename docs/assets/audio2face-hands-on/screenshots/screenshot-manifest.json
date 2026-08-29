@@ -1,0 +1,300 @@
+{
+  "disclosure": "All screenshots use real terminal/GUI or actual MRQ pixels. Only cropping and a uniform external border were applied; no generative pixels or avatar beautification were used.",
+  "generated_at_kst": "2026-08-29T18:46:08.015446+09:00",
+  "generator": "generate_hands_on_screenshots.py",
+  "resolved_gui_capture": {
+    "editor_exit": "QUIT_EDITOR graceful exit",
+    "evidence_log_path": ".tools/audio2face-metahuman/KairosSample/Saved/Logs/KairosSample.log",
+    "observed_at_kst": "2026-08-29T18:43:31+09:00",
+    "root_cause": "Bridge/Fab restored a CEF surface whose Linux ANGLE Vulkan initialization failed; force-closing the child window caused the prior X11/LocalizableMessage shutdown failure.",
+    "safe_process_overrides": [
+      "-DisablePlugins=Bridge,Fab",
+      "-ini:Engine:[SystemSettings]:r.CEFGPUAcceleration=0",
+      "-ini:EditorPerProjectUserSettings:[/Script/UnrealEd.EditorLoadingSavingSettings]:RestoreOpenAssetTabsOnRestart=NeverRestore"
+    ],
+    "source_assets_saved": false,
+    "status": "pass"
+  },
+  "schema_version": 1,
+  "screenshots": [
+    {
+      "associated_run": null,
+      "capture_timestamp_kst": "2026-08-29T17:33:42.772045+09:00",
+      "crop_rectangle_xywh": [
+        0,
+        560,
+        1602,
+        440
+      ],
+      "deterministic_composition": false,
+      "empirical_avatar_pixels_altered": false,
+      "generative_pixels_used": false,
+      "output_dimensions": [
+        1634,
+        472
+      ],
+      "output_path": "screenshots/01-cli-help-head-motion.png",
+      "output_sha256": "dc853003b435a0154fbee48f6ad920fe5e29338994ca8242d6537ffec28272a8",
+      "real_gui_capture": false,
+      "real_terminal_capture": true,
+      "semantic_stage": "CLI help and head-motion controls",
+      "source_capture_path": "screenshots/source/01-cli-help-full.png",
+      "source_dimensions": [
+        1602,
+        1024
+      ],
+      "source_sha256": "d9b114bfef0ef956883dccec7a33b438d275af9a3fc6613f25cf192ba43c6212",
+      "surface": "canonical CLI --help",
+      "terminal_command_or_gui_surface": "scripts/audio2face-metahuman/run-a2f-metahuman.py --help"
+    },
+    {
+      "associated_run": null,
+      "capture_timestamp_kst": "2026-08-29T17:34:11.814861+09:00",
+      "crop_rectangle_xywh": [
+        0,
+        27,
+        1602,
+        303
+      ],
+      "deterministic_composition": false,
+      "empirical_avatar_pixels_altered": false,
+      "generative_pixels_used": false,
+      "output_dimensions": [
+        1634,
+        335
+      ],
+      "output_path": "screenshots/02-runtime-preflight.png",
+      "output_sha256": "efc26a9ba7b5f99e8f4715eb66df58a8e36299a785b480460c7c282be59d7830",
+      "real_gui_capture": false,
+      "real_terminal_capture": true,
+      "semantic_stage": "input, NIM, and GPU preflight",
+      "source_capture_path": "screenshots/source/02-preflight-full.png",
+      "source_dimensions": [
+        1602,
+        765
+      ],
+      "source_sha256": "dae22f924e99e348a52af6597024eeba7fd84793fc272e0e162059f1e1567fc1",
+      "surface": "read-only terminal preflight",
+      "terminal_command_or_gui_surface": "ffprobe + docker ps + nvidia-smi"
+    },
+    {
+      "associated_run": "20260829-084624-head-motion-off-r1",
+      "capture_timestamp_kst": "2026-08-29T18:02:07.191855+09:00",
+      "crop_rectangle_xywh": [
+        0,
+        27,
+        1722,
+        473
+      ],
+      "deterministic_composition": true,
+      "empirical_avatar_pixels_altered": false,
+      "generative_pixels_used": false,
+      "output_dimensions": [
+        1754,
+        505
+      ],
+      "output_path": "screenshots/03-baseline-progress.png",
+      "output_sha256": "76bd423a031ad614598a7457cd2b477736be8fdccd35b25307c462b055b98492",
+      "real_gui_capture": false,
+      "real_terminal_capture": true,
+      "semantic_stage": "baseline facial-animation command and completed stages",
+      "source_capture_path": "screenshots/source/03-baseline-progress-full.png",
+      "source_dimensions": [
+        1722,
+        857
+      ],
+      "source_sha256": "f26300decf5593811b44f325ce9279926811354107e105e92a7f95592d599ac3",
+      "surface": "terminal replay of machine-readable progress events",
+      "terminal_command_or_gui_surface": "render_terminal_evidence.py baseline"
+    },
+    {
+      "associated_run": "20260829-110741-head-motion-sync-final-r7",
+      "capture_timestamp_kst": "2026-08-29T18:02:11.514840+09:00",
+      "crop_rectangle_xywh": [
+        0,
+        27,
+        1818,
+        528
+      ],
+      "deterministic_composition": true,
+      "empirical_avatar_pixels_altered": false,
+      "generative_pixels_used": false,
+      "output_dimensions": [
+        1850,
+        560
+      ],
+      "output_path": "screenshots/04-head-motion-progress.png",
+      "output_sha256": "9927cd3579383cba643e190735b95a0765ceac1aa3d328f7fce0e58167bbbe04",
+      "real_gui_capture": false,
+      "real_terminal_capture": true,
+      "semantic_stage": "head-motion command and completed stages",
+      "source_capture_path": "screenshots/source/04-head-motion-progress-full.png",
+      "source_dimensions": [
+        1818,
+        949
+      ],
+      "source_sha256": "8715dd88deeae9f1f6b0148eca42c60099eace2578f0d1d2b2607bf3a079c3a6",
+      "surface": "terminal replay of machine-readable progress events",
+      "terminal_command_or_gui_surface": "render_terminal_evidence.py head-motion"
+    },
+    {
+      "associated_run": "20260829-110741-head-motion-sync-final-r7",
+      "capture_timestamp_kst": "2026-08-29T18:05:17.752336+09:00",
+      "crop_rectangle_xywh": [
+        0,
+        27,
+        1722,
+        238
+      ],
+      "deterministic_composition": true,
+      "empirical_avatar_pixels_altered": false,
+      "generative_pixels_used": false,
+      "output_dimensions": [
+        1754,
+        270
+      ],
+      "output_path": "screenshots/05-head-motion-manifest.png",
+      "output_sha256": "3e1d1d724578b713fb154c8fd4742aeb26cc7d73861999db5d34a7e8c3c83f46",
+      "real_gui_capture": false,
+      "real_terminal_capture": true,
+      "semantic_stage": "head-motion success and bone-authoring summary",
+      "source_capture_path": "screenshots/source/05-head-motion-manifest-full.png",
+      "source_dimensions": [
+        1818,
+        650
+      ],
+      "source_sha256": "7023682d7ec07959c27c27a7a2cc8f7140f2f849b0dd0ab687c1e46b56af960b",
+      "surface": "terminal projection of manifest and final verification JSON",
+      "terminal_command_or_gui_surface": "render_terminal_evidence.py manifest"
+    },
+    {
+      "associated_run": "20260829-110741-head-motion-sync-final-r7",
+      "capture_timestamp_kst": "2026-08-29T18:45:31.284421+09:00",
+      "crop_rectangle_xywh": [
+        0,
+        0,
+        1608,
+        1020
+      ],
+      "deterministic_composition": false,
+      "empirical_avatar_pixels_altered": false,
+      "generative_pixels_used": false,
+      "output_dimensions": [
+        1640,
+        1052
+      ],
+      "output_path": "screenshots/06-unreal-run-owned-sequence.png",
+      "output_sha256": "19710efdb3c1f07b7f4620578f13d2b5ad13118ae15a8a9755873403e1194e5e",
+      "real_gui_capture": true,
+      "real_terminal_capture": false,
+      "semantic_stage": "run-owned Unreal FinalSequence, viewport, and animation tracks",
+      "source_capture_path": "screenshots/source/06-unreal-run-owned-sequence-full.png",
+      "source_dimensions": [
+        1920,
+        1053
+      ],
+      "source_sha256": "182748b0a40b20b0c5a6d20220c11c7d1f41afb7d80310e8e88b53018888c07a",
+      "surface": "UE 5.6 VNC window with r7 FinalSequence at frame 60",
+      "terminal_command_or_gui_surface": "UnrealEditor -DisablePlugins=Bridge,Fab + per-process CEF/restore overrides"
+    },
+    {
+      "associated_run": "20260829-110741-head-motion-sync-final-r7",
+      "capture_timestamp_kst": "2026-08-29T17:43:09.524305+09:00",
+      "crop_rectangle_xywh": [
+        0,
+        95,
+        1920,
+        900
+      ],
+      "deterministic_composition": true,
+      "empirical_avatar_pixels_altered": false,
+      "generative_pixels_used": false,
+      "output_dimensions": [
+        1952,
+        932
+      ],
+      "output_path": "screenshots/07-head-motion-off-on-result.png",
+      "output_sha256": "513b3c45c263c469e162b88617778567a4b24d495658d6d952a7a1c2f37d08c8",
+      "real_gui_capture": false,
+      "real_terminal_capture": false,
+      "semantic_stage": "actual OFF/ON MetaHuman render comparison",
+      "source_capture_path": "screenshots/source/07-head-motion-off-on-contact-sheet-full.png",
+      "source_dimensions": [
+        1920,
+        1080
+      ],
+      "source_sha256": "b318a96afa5460b72c882f01f9dfdee10af0378b6b3205c947593dc833984a45",
+      "surface": "deterministic contact sheet of actual MRQ pixels",
+      "terminal_command_or_gui_surface": "existing r7 head-motion-off-on-contact-sheet.png"
+    },
+    {
+      "associated_run": "20260829-110741-head-motion-sync-final-r7",
+      "capture_timestamp_kst": "2026-08-29T18:05:26.370319+09:00",
+      "crop_rectangle_xywh": [
+        0,
+        27,
+        1722,
+        833
+      ],
+      "deterministic_composition": false,
+      "empirical_avatar_pixels_altered": false,
+      "generative_pixels_used": false,
+      "output_dimensions": [
+        1754,
+        865
+      ],
+      "output_path": "screenshots/08-video-verification.png",
+      "output_sha256": "834e788a3d95fde7d5be363b911edadf6712a5bc0841970ef3e82111602d3725",
+      "real_gui_capture": false,
+      "real_terminal_capture": true,
+      "semantic_stage": "ffprobe, decode, A/V, and facial-content verification",
+      "source_capture_path": "screenshots/source/08-verification-full.png",
+      "source_dimensions": [
+        1915,
+        995
+      ],
+      "source_sha256": "dd6e1e256d8bf70be5abc9aacbe1fc688642d6fa528174e2d519f6c6404b6fcb",
+      "surface": "project-local ffprobe/ffmpeg terminal verification",
+      "terminal_command_or_gui_surface": "render_terminal_evidence.py verification"
+    },
+    {
+      "associated_run": "20260829-110741-head-motion-sync-final-r7",
+      "capture_timestamp_kst": "2026-08-29T17:42:07.784379+09:00",
+      "crop_rectangle_xywh": [
+        0,
+        0,
+        1640,
+        910
+      ],
+      "deterministic_composition": false,
+      "empirical_avatar_pixels_altered": false,
+      "generative_pixels_used": false,
+      "output_dimensions": [
+        1672,
+        942
+      ],
+      "output_path": "screenshots/09-off-on-viewer.png",
+      "output_sha256": "497f36a1fb32b692d09200bd30404c4e86ccb0340b7301eea747cdcb39c40987",
+      "real_gui_capture": true,
+      "real_terminal_capture": false,
+      "semantic_stage": "clean GUI review of actual OFF/ON result",
+      "source_capture_path": "screenshots/source/09-off-on-viewer-full.png",
+      "source_dimensions": [
+        1640,
+        930
+      ],
+      "source_sha256": "ebda6e1256545f6400015d32166287cb157a9648bb15382157ea06e0d9915a0d",
+      "surface": "GNOME Image Viewer window on VNC DISPLAY=:1",
+      "terminal_command_or_gui_surface": "eog r7/head-motion-off-on-contact-sheet.png"
+    }
+  ],
+  "superseded_attempts": [
+    {
+      "capture_retained": false,
+      "evidence_log_path": ".tools/audio2face-metahuman/KairosSample/Saved/Logs/KairosSample.log",
+      "observed_at_kst": "2026-08-29T17:40:55+09:00",
+      "path": null,
+      "reason": "UE 5.6 CEF/ANGLE Vulkan initialization produced a black viewport and the editor later exited with SIGSEGV; this capture was not retained or presented as successful GUI evidence."
+    }
+  ]
+}

@@ -118,4 +118,55 @@
 - [x] Publish the Korean weekly meeting note with portable links and representative evidence figures.
 - [x] Re-run focused and full Audio2Face documentation/unit verification and validate every local Markdown link.
 - [x] Refocus the meeting note on completed work and verified outcomes instead of file inventory and implementation details.
+- [x] Add the verified four-shot MetaHuman render montage to the weekly result summary.
+- [x] Add verified avatar-selection, emotion and motion-intensity result comparisons to the weekly summary.
 - [x] Record the 2026-08-28 Gate 2 approval and commit the approved Audio2Face hands-on scope.
+
+# Audio2Face Natural Head Motion — 2026-08-28
+
+- [x] Classify the feature as large and activate the ECC `orch-add-feature` gated workflow.
+- [x] Verify the installed ACE 2.5 head-motion boundary and current official NVIDIA/Epic support.
+- [x] Audit the CLI/config → audio clock → run-owned UE sequence → MRQ → final video control path.
+- [x] Freeze a production-safe task list, RED tests, compatibility contract and OFF/ON evidence gates.
+- [x] Gate 1 approved on 2026-08-29; implementation Tasks 1–8 authorized without commit.
+- [x] Add Keiji Vulkan crash prevention, GPU/process/profile preflight and no-blind-retry policy to the approved plan.
+- [x] Implement deterministic bounded silence-aware samples, CLI/config, artifacts, lineage, resume contract and Vulkan/GPU/UE preflight.
+- [x] Verify a fresh fixed-camera Taro OFF capture/MRQ/H.264/AAC result with reused v3 inference.
+- [x] Prove the original UE defect: FinalSequence was never focused/evaluated, so the FK rig had no Body-bound controls; replace evaluated ControlRig getter equality with literal section-channel verification.
+- [x] Author exact run-owned Rotation X/Y/Z keys (9 channels × 109 frames) and preserve planned↔authored evidence without camera/root/source-asset fallback.
+- [x] Replace the non-evaluating FK Control Rig path with direct run-owned Body/Face AnimSequence bone-track bake and prove nonzero final rendered motion.
+- [x] Exhaust the four newly authorized, hypothesis-distinct Taro proof attempts (`r4`–`r7`) without Keiji source launch, Vulkan fatal, NIM restart, or source-asset mutation; stop further UE launches at the explicit budget.
+- [x] Identify the post-budget UE source traps and prepare tests/code: first FK section defaults to Absolute, and Epic's skeletal transform helper selects the actor's first skeletal component instead of exact MetaHuman Body.
+- [x] Run the one additionally authorized Taro proof (`20260829-095555-head-motion-on-r8-final-proof`) after helper/GPU/UE/profile/key-path preflight; preserve its pre-MRQ failure evidence and do not retry.
+- [x] Fix the final proof's direct defect offline: `SetBlendType` returns `void`/Python `None`, so validate `get_blend_type()` state instead of treating the setter return as success/failure.
+- [x] Run the user-authorized corrected state-readback path (`20260829-100409-head-motion-on-r9-state-readback`) once; preserve its exact-Body 0° failure and do not retry.
+- [x] Replace the failed FK layer with run-owned Body/Face AnimSequence bone-track bake using Epic `IAnimationDataController`.
+- [x] Build the project-local C++ wrapper and verify Body `neck_01/neck_02/head` plus Face `head` authored keys.
+- [x] Complete initial native-bake Taro ON E2E (`20260829-104034-head-motion-final-e2e-r5`), then supersede it after the post-render head-timing defect was found.
+- [x] Produce and verify real-pixel OFF/ON comparison, contact sheet, optical motion metrics and final verification JSON.
+- [x] Fix the post-render +5-frame correction defect: bind compensation to a verified same-avatar/shot baseline, reject calibration mismatch, and record per-frame source-head mapping.
+- [x] Complete synchronized canonical proof `20260829-110741-head-motion-sync-final-r7`: face lag 0, head optical lag -1 within ±1, zero-lag R² 0.994, A/V/decode PASS.
+- [x] Complete independent final code review (WATCH/APPROVE) and gate review (Gate 2 READY/APPROVE); blockers 0.
+- [x] Run head-motion E2E for every local MetaHuman: Taro, Keiji, Sook-ja and Jesse.
+- [x] Preserve Vulkan-safe visual profiles for Keiji/Sook-ja/Jesse and never launch Keiji source clothing.
+- [x] Add provenance-checked prior-attempt calibration retry for Jesse's measured capture-latency variation; retain ±1 final head-sync gate.
+- [x] Produce the four-avatar H.264/AAC comparison video, atlas, per-avatar OFF/ON contact sheets and aggregate verification JSON.
+- [x] Gate 2 review and commit approval granted by the user on 2026-08-29.
+- [x] Produce ON MetaHuman MP4, OFF/ON comparison/contact sheet and final head-transform metrics after the stronger AnimSequence authoring + real-pixel verification gate passes.
+- [x] Document the local-vs-NVIDIA boundary, public controls, safety policy, RED/GREEN evidence and completed result without claiming NVIDIA-generated head motion.
+
+# Audio2Face CLI Hands-on Official-Quality Rewrite — 2026-08-29
+
+- [x] Read ECC documentation/source/click-path/verification/safety skills and nature-writing methods fragments.
+- [x] Freeze the Korean terminology ledger, one-sentence argument, official-source boundary and worked-example evidence.
+- [x] Audit every canonical CLI flag/default/range and map each major reader action to state/artifact/result/recovery.
+- [x] Capture and preserve clean numbered terminal/GUI screenshot sources without credentials or unrelated desktop content.
+- [x] Add a reproducible screenshot crop/composition script and SHA/dimension provenance manifest.
+- [x] Rewrite the hands-on guide into the 15-stage novice workflow with purpose/command/state/artifact/pass/recovery/boundary blocks.
+- [x] Integrate the verified local head-motion path, calibration/resume contract, Taro r7 evidence and cross-avatar boundary.
+- [x] Update hands-on verification metadata and documentation contract tests.
+- [x] Run image/link/secret/diff visual QA plus focused/full Audio2Face tests.
+- [x] Prepare review handoff; independent source and final gate reviews APPROVE, and Gate 2 commit approval was granted on 2026-08-29.
+- [x] Reproduce the remaining UE GUI capture defect and isolate Bridge/Fab CEF surface restoration from the run-owned sequence itself.
+- [x] Capture the real r7 Taro viewport + FinalSequence + Camera Cut/MetaHuman/HeadMotion tracks with per-process-only plugin/config overrides.
+- [x] Replace the terminal substitute with the clean Unreal GUI screenshot, regenerate provenance/verification metadata, and exit the editor gracefully without saving source assets.

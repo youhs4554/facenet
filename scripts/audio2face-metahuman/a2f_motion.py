@@ -15,7 +15,14 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import sys
 from typing import Any, Iterable
+
+SCRIPT_DIRECTORY = Path(__file__).resolve().parent
+if str(SCRIPT_DIRECTORY) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIRECTORY))
+
+from a2f_head_motion import resolve_head_motion_config, validate_head_motion_config
 
 
 BLENDSHAPE_NAMES = (
@@ -332,6 +339,7 @@ def resolve_motion_config() -> dict[str, Any]:
             "offsets": {},
         },
         "emotion": {"overall_strength": None, "constant": {}, "timecoded": []},
+        "head_motion": resolve_head_motion_config(),
         "artifact_postprocess": {
             "global_intensity": 1.0,
             "attack": 1.0,
@@ -348,7 +356,7 @@ def validate_motion_config(document: dict[str, Any], audio_duration: float | Non
     allowed = {
         "schema_version", "mode", "curve_application", "final_render_profile", "face_parameters",
         "nvidia_runtime_curve_parameters",
-        "emotion", "artifact_postprocess",
+        "emotion", "head_motion", "artifact_postprocess",
     }
     unknown = set(document) - allowed
     if unknown:
@@ -493,6 +501,10 @@ def validate_motion_config(document: dict[str, Any], audio_duration: float | Non
         raise MotionConfigError(
             "emotion.constant and emotion.timecoded are mutually exclusive"
         )
+
+    result["head_motion"] = validate_head_motion_config(
+        document.get("head_motion", {})
+    )
 
     post = document.get("artifact_postprocess", {})
     allowed_post = {"global_intensity", "attack", "release", "region_gains", "curve_operations"}

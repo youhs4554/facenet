@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "mode": "baseline",
+  "curve_application": "final_render",
+  "head_motion": {
+    "enabled": true,
+    "profile": "subtle-conversational",
+    "strength": 1.0,
+    "pitch_limit_deg": 2.5,
+    "yaw_limit_deg": 4.0,
+    "roll_limit_deg": 1.5,
+    "smoothing_seconds": 0.22,
+    "silence_threshold_dbfs": -42.0
+  }
+}

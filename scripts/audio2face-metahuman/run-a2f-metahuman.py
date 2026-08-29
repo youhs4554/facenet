@@ -7,6 +7,7 @@ from __future__ import annotations
 import argparse
 import csv
 import datetime as dt
+import fcntl
 import hashlib
 import ipaddress
 import json
@@ -40,6 +41,7 @@ from a2f_avatar_shots import (
 )
 from a2f_lineage import (
     LineageError,
+    make_head_motion_lineage,
     make_lineage,
     showcase_identity,
     validate_compositor_lineage,
@@ -76,9 +78,15 @@ from a2f_motion_viz import (
     render_compact_motion_frames,
     render_motion_frames,
 )
+from a2f_head_motion import (
+    generate_head_motion_series,
+    validate_head_motion_config,
+    write_head_motion_artifacts,
+)
 from a2f_progress import ProgressReporter
 from a2f_sync import (
     A2FSyncError,
+    attach_head_motion_frame_mapping,
     build_master_frame_map,
     build_avatar_sync_correction_command,
     capture_timeline_policy,
@@ -146,6 +154,143 @@ def safe_name(value: str) -> str:
     return result[:64]
 
 
+def _avatar_identity_token(value: Any) -> str:
+    token = str(value or "").strip().rstrip("/").rsplit("/", 1)[-1]
+    token = token.split(".", 1)[0].casefold()
+    return token.removeprefix("bp_")
+
+
+def resolve_head_motion_render_calibration(
+    *,
+    resume_manifest: dict[str, Any] | None,
+    avatar: str,
+    shots: list[dict[str, Any]],
+    fps: int,
+    input_sha256: str | None = None,
+    model_id: str | None = None,
+) -> dict[str, Any]:
+    """Bind head bake timing to a measured same-avatar/shot baseline."""
+    if not isinstance(resume_manifest, dict):
+        raise ValueError(
+            "head motion requires --resume from a successful same-avatar/shot baseline "
+            "so post-render content latency is measured, not guessed"
+        )
+    if input_sha256 is not None and resume_manifest.get("input_sha256") != input_sha256:
+        raise ValueError("head-motion render calibration input mismatch")
+    source_model = resume_manifest.get("a2f_model") or {}
+    source_model_id = source_model.get("id") if isinstance(source_model, dict) else source_model
+    if model_id is not None and source_model_id != model_id:
+        raise ValueError("head-motion render calibration model mismatch")
+    source_avatar = resume_manifest.get("avatar") or (
+        resume_manifest.get("capture") or {}
+    ).get("avatar") or {}
+    requested_token = _avatar_identity_token(avatar)
+    source_tokens = {
+        _avatar_identity_token(source_avatar.get(key))
+        for key in ("requested", "asset_name", "object_path")
+        if source_avatar.get(key)
+    }
+    if requested_token not in source_tokens:
+        raise ValueError("head-motion render calibration avatar mismatch")
+    requested_ids = [str(shot.get("id", "")) for shot in shots]
+    source_shot_list = resume_manifest.get("shots") or (
+        resume_manifest.get("capture") or {}
+    ).get("shots") or []
+    source_shots = {
+        str(shot.get("id", "")): shot
+        for shot in source_shot_list
+        if isinstance(shot, dict)
+    }
+    if not requested_ids or any(shot_id not in source_shots for shot_id in requested_ids):
+        raise ValueError("head-motion render calibration shot mismatch")
+    observation = resume_manifest.get("head_motion_sync_observation") or {}
+    if observation:
+        correlation = float(observation.get("correlation", 0.0))
+        minimum = float(observation.get("minimum_confidence", 1.0))
+        lag = int(observation.get("measured_video_advance_frames", -1))
+        source_frames = int(resume_manifest.get("expected_frames") or 0)
+        if (
+            observation.get("status") != "measured"
+            or not math.isfinite(correlation)
+            or correlation < minimum
+            or int(observation.get("fps", fps)) != fps
+            or source_frames < 1
+            or lag < 0
+            or lag * 2 >= source_frames
+        ):
+            raise ValueError("head-motion prior-attempt calibration evidence is invalid")
+        return {
+            "schema_version": 1,
+            "source": "verified-prior-head-motion-attempt",
+            "source_run_id": str(resume_manifest.get("run_id") or ""),
+            "avatar": requested_token,
+            "shot_ids": requested_ids,
+            "fps": fps,
+            "video_advance_frames": lag,
+            "video_advance_ms": round(lag * 1000.0 / fps, 3),
+            "correlation": correlation,
+        }
+    lags: set[int] = set()
+    for shot_id in requested_ids:
+        shot_verification = source_shots[shot_id].get("verification") or {}
+        if not shot_verification and len(requested_ids) == 1:
+            shot_verification = resume_manifest.get("verification") or {}
+        sync = shot_verification.get("content_sync") or {}
+        correction = shot_verification.get("content_sync_correction") or {}
+        if sync.get("status") != "aligned":
+            raise ValueError("head-motion render calibration has no aligned content-sync proof")
+        lag = int(correction.get("lag_frames", 0)) if correction.get("applied") else 0
+        source_frames = int(
+            resume_manifest.get("expected_frames")
+            or sync.get("frame_count")
+            or shot_verification.get("video_frames")
+            or 0
+        )
+        if source_frames < 1 or lag < 0 or lag * 2 >= source_frames:
+            raise ValueError("head-motion render calibration lag is unsupported or unsafe")
+        lags.add(lag)
+    if len(lags) != 1:
+        raise ValueError("head-motion render calibration differs across requested shots")
+    lag = lags.pop()
+    source_fps = int(
+        (resume_manifest.get("verification") or {}).get("fps")
+        or next(iter(source_shots.values())).get("verification", {}).get("fps")
+        or fps
+    )
+    if source_fps != fps:
+        raise ValueError("head-motion render calibration fps mismatch")
+    return {
+        "schema_version": 1,
+        "source": "verified-resume-content-sync",
+        "source_run_id": str(resume_manifest.get("run_id") or ""),
+        "avatar": requested_token,
+        "shot_ids": requested_ids,
+        "fps": fps,
+        "video_advance_frames": lag,
+        "video_advance_ms": round(lag * 1000.0 / fps, 3),
+    }
+
+
+def validate_head_motion_render_correction(
+    *, expected_video_advance_frames: int, correction: dict[str, Any]
+) -> dict[str, Any]:
+    actual = int(correction.get("lag_frames", 0)) if correction.get("applied") else 0
+    residual = expected_video_advance_frames - actual
+    if abs(residual) > 1:
+        raise ValueError(
+            "head-motion render timing calibration mismatch: "
+            f"expected video advance {expected_video_advance_frames}, measured {actual}"
+        )
+    return {
+        "schema_version": 1,
+        "status": "aligned",
+        "expected_video_advance_frames": expected_video_advance_frames,
+        "measured_video_advance_frames": actual,
+        "residual_lag_frames": residual,
+        "tolerance_frames": 1,
+    }
+
+
 def validate_cli_limits(args: argparse.Namespace) -> None:
     if not 1 <= args.fps <= 240:
         raise ValueError("fps must be in [1, 240]")
@@ -161,6 +306,174 @@ def validate_cli_limits(args: argparse.Namespace) -> None:
         raise ValueError("graphics-adapter must be in [0, 31]")
     if not 1 <= args.capture_timeout <= 3600 or not 1 <= args.mrq_timeout <= 3600:
         raise ValueError("capture and MRQ timeouts must be in [1, 3600]")
+    if args.head_motion_strength is not None:
+        if args.head_motion != "subtle-conversational":
+            raise ValueError("--head-motion-strength requires enabled head motion")
+        if (
+            not math.isfinite(args.head_motion_strength)
+            or not 0.0 <= args.head_motion_strength <= 1.5
+        ):
+            raise ValueError("head-motion-strength must be finite and in [0, 1.5]")
+    if args.head_motion == "subtle-conversational" and (
+        args.finalize_only or args.level_sequence
+    ):
+        raise ValueError(
+            "head motion requires the run-owned UE capture path; finalize-only and "
+            "caller-owned level sequences are unsupported"
+        )
+
+
+def validate_ue_preflight(
+    *,
+    avatar: str,
+    avatar_visual_profile: str,
+    graphics_adapter: int,
+    graphics_adapter_name: str,
+    active_unreal_processes: list[dict[str, Any]],
+    output_dir: Path,
+) -> dict[str, Any]:
+    """Pure safety policy checked before any run-owned UE launch."""
+    if graphics_adapter != 0 or graphics_adapter_name != "Quadro RTX 5000":
+        raise ValueError("UE head-motion validation requires adapter 0 Quadro RTX 5000")
+    if active_unreal_processes:
+        raise ValueError("an UnrealEditor/capture process is already active")
+    avatar_token = avatar.casefold().rstrip("/")
+    is_keiji = bool(
+        re.search(r"(?:^|/)(?:bp_)?keiji(?:\.bp_keiji)?$", avatar_token)
+    )
+    if is_keiji and avatar_visual_profile == "source":
+        raise ValueError("Keiji source clothing is blocked by the Vulkan PSO safety guard")
+    output_dir = Path(output_dir)
+    if output_dir.exists():
+        raise ValueError("UE output/run path must be new and run-owned")
+    return {
+        "schema_version": 1,
+        "graphics_adapter": graphics_adapter,
+        "graphics_adapter_name": graphics_adapter_name,
+        "avatar": avatar,
+        "avatar_visual_profile": avatar_visual_profile,
+        "active_unreal_processes": [],
+        "output_dir": str(output_dir),
+        "material_hazard": False,
+        "safe_to_launch": True,
+    }
+
+
+def collect_ue_preflight_snapshot(
+    *, avatar: str, avatar_visual_profile: str, graphics_adapter: int,
+    output_dir: Path,
+) -> dict[str, Any]:
+    gpu_text = subprocess.check_output(
+        [
+            "nvidia-smi",
+            "--query-gpu=index,uuid,name,memory.total,memory.used,memory.free,utilization.gpu",
+            "--format=csv,noheader,nounits",
+        ],
+        text=True,
+    )
+    gpus = []
+    for line in gpu_text.splitlines():
+        fields = [part.strip() for part in line.split(",")]
+        if len(fields) != 7:
+            raise ValueError("unexpected nvidia-smi GPU inventory")
+        gpus.append(
+            {
+                "index": int(fields[0]),
+                "uuid": fields[1],
+                "name": fields[2],
+                "memory_total_mib": int(fields[3]),
+                "memory_used_mib": int(fields[4]),
+                "memory_free_mib": int(fields[5]),
+                "utilization_percent": int(fields[6]),
+            }
+        )
+    adapter = next((gpu for gpu in gpus if gpu["index"] == graphics_adapter), None)
+    if adapter is None:
+        raise ValueError("graphics adapter is absent from nvidia-smi")
+    active = active_unreal_processes()
+    report = validate_ue_preflight(
+        avatar=avatar,
+        avatar_visual_profile=avatar_visual_profile,
+        graphics_adapter=graphics_adapter,
+        graphics_adapter_name=adapter["name"],
+        active_unreal_processes=active,
+        output_dir=output_dir,
+    )
+    if adapter["memory_free_mib"] < 6144:
+        raise ValueError("GPU0 has less than 6144 MiB free for bounded UE capture")
+    processes = subprocess.run(
+        [
+            "nvidia-smi",
+            "--query-compute-apps=gpu_uuid,pid,process_name,used_memory",
+            "--format=csv,noheader,nounits",
+        ],
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    ).stdout.splitlines()
+    containers = []
+    for name in ("audio2face-3d-diffusion", "audio2face-3d-pretrained"):
+        inspected = subprocess.run(
+            ["docker", "inspect", name],
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
+        if inspected.returncode == 0:
+            item = json.loads(inspected.stdout)[0]
+            containers.append(
+                {
+                    "name": name,
+                    "id": item["Id"][:12],
+                    "status": item["State"]["Status"],
+                    "pid": item["State"]["Pid"],
+                    "device_requests": item["HostConfig"].get("DeviceRequests") or [],
+                }
+            )
+    report.update(
+        {
+            "gpus": gpus,
+            "gpu_processes": processes,
+            "containers": containers,
+            "gpu0_minimum_free_mib": 6144,
+            "known_vulkan_guard": {
+                "vk_result": "VK_ERROR_UNKNOWN(-13)",
+                "not_oom": True,
+                "keiji_source_forbidden": True,
+                "safe_profile_is_rendering_workaround": True,
+            },
+        }
+    )
+    return report
+
+
+def active_unreal_processes() -> list[dict[str, Any]]:
+    active = []
+    for entry in Path("/proc").iterdir():
+        if not entry.name.isdigit() or int(entry.name) == os.getpid():
+            continue
+        try:
+            parts = (entry / "cmdline").read_bytes().split(b"\0")
+        except (FileNotFoundError, PermissionError, ProcessLookupError):
+            continue
+        executable = parts[0].decode("utf-8", errors="replace") if parts else ""
+        if "UnrealEditor" in Path(executable).name:
+            active.append(
+                {"pid": int(entry.name), "executable": Path(executable).name}
+            )
+    return sorted(active, key=lambda item: item["pid"])
+
+
+def require_no_active_unreal(stage: str) -> None:
+    active = active_unreal_processes()
+    if active:
+        raise PipelineError(
+            f"active UnrealEditor collision before {stage}: {active}",
+            ExitCode.PREFLIGHT,
+            "ue_collision",
+        )
 
 
 def parse_nim_endpoint(endpoint: str) -> tuple[str, int]:
@@ -337,6 +650,8 @@ def build_resume_command(
     nim_url: str | None = None,
     motion_config: Path | None = None,
     avatar_visual_profile: str = "source",
+    head_motion: str = "off",
+    head_motion_strength: float | None = None,
 ) -> str:
     argv = [
         str(script),
@@ -358,6 +673,10 @@ def build_resume_command(
         argv.extend(["--nim-url", nim_url])
     if motion_config is not None:
         argv.extend(["--motion-config", str(motion_config)])
+    if head_motion != "off":
+        argv.extend(["--head-motion", head_motion])
+    if head_motion_strength is not None:
+        argv.extend(["--head-motion-strength", str(head_motion_strength)])
     if shot_config is not None:
         argv.extend(["--shot-config", str(shot_config)])
     else:
@@ -432,6 +751,32 @@ def load_motion_config(
             f"invalid motion config: {exc}", ExitCode.PREFLIGHT, "motion_config"
         ) from exc
     return validate_motion_config(document, audio_duration=audio_duration)
+
+
+def apply_head_motion_cli_overrides(
+    motion_config: dict[str, Any], args: argparse.Namespace
+) -> dict[str, Any]:
+    result = dict(motion_config)
+    head = dict(result["head_motion"])
+    if args.head_motion_explicit:
+        if args.head_motion == "off":
+            head = validate_head_motion_config({})
+        else:
+            head.update(
+                {"enabled": True, "profile": "subtle-conversational"}
+            )
+    if args.head_motion_strength is not None:
+        head["strength"] = args.head_motion_strength
+    result["head_motion"] = validate_head_motion_config(head)
+    return result
+
+
+def canonical_json_sha256(payload: Any) -> str:
+    encoded = json.dumps(
+        payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False,
+        allow_nan=False,
+    ).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
 
 
 def uses_ace_node_overrides(motion_config: dict[str, Any]) -> bool:
@@ -1772,6 +2117,21 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--allow-remote-nim", action="store_true")
     parser.add_argument("--config", type=Path, default=sample_app / "config/config_claire.yml")
     parser.add_argument("--motion-config", type=Path)
+    parser.add_argument(
+        "--head-motion",
+        choices=("off", "subtle-conversational"),
+        default="off",
+        help="local run-owned head/neck motion profile (default: off)",
+    )
+    parser.add_argument("--head-motion-strength", type=float)
+    parser.add_argument(
+        "--head-motion-calibration-manifest",
+        type=Path,
+        help=(
+            "optional prior head-motion timing observation for a bounded retry; "
+            "input/model/avatar/shot/fps provenance must match"
+        ),
+    )
     parser.add_argument("--avatar", default="Taro")
     parser.add_argument(
         "--avatar-visual-profile",
@@ -1805,7 +2165,16 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--progress", choices=("auto", "always", "never"), default="auto"
     )
-    args = parser.parse_args(argv)
+    raw_argv = list(sys.argv[1:] if argv is None else argv)
+    for index, value in enumerate(raw_argv[:-1]):
+        if value == "--head-motion-strength" and raw_argv[index + 1] == "-inf":
+            raw_argv[index : index + 2] = ["--head-motion-strength=-inf"]
+            break
+    args = parser.parse_args(raw_argv)
+    args.head_motion_explicit = any(
+        token == "--head-motion" or token.startswith("--head-motion=")
+        for token in raw_argv
+    )
     args.a2f_model_explicit = args.a2f_model is not None
     if args.a2f_model is None:
         args.a2f_model = DEFAULT_MODEL_ID
@@ -1819,6 +2188,8 @@ def main(argv: list[str] | None = None) -> int:
     input_path = args.input.expanduser().resolve()
     early_resume_manifest = None
     early_resume_manifest_path = None
+    early_head_motion_calibration_manifest = None
+    early_head_motion_calibration_path = None
     if args.resume is not None:
         early_resume_path = args.resume.expanduser().resolve()
         early_resume_manifest_path = (
@@ -1850,6 +2221,21 @@ def main(argv: list[str] | None = None) -> int:
         args.model_selection_source = (
             "explicit-cli" if args.a2f_model_explicit else "canonical-default"
         )
+    if args.head_motion_calibration_manifest is not None:
+        calibration_path = args.head_motion_calibration_manifest.expanduser().resolve()
+        early_head_motion_calibration_path = calibration_path
+        try:
+            if calibration_path.stat().st_size > 1024 * 1024:
+                raise ValueError("head-motion calibration manifest exceeds 1 MiB")
+            early_head_motion_calibration_manifest = json.loads(
+                calibration_path.read_text(encoding="utf-8")
+            )
+        except (OSError, json.JSONDecodeError, ValueError) as exc:
+            print(
+                f"FAILED stage=head_motion_preflight exit=10 error={exc}",
+                file=sys.stderr,
+            )
+            return int(ExitCode.PREFLIGHT)
     args.nim_url = resolve_nim_endpoint(args.a2f_model, args.nim_url)
     if args.shot_config is not None:
         shot_config_path = args.shot_config.expanduser().resolve()
@@ -2000,6 +2386,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     config = args.config.expanduser().resolve()
     motion_artifacts = None
+    ue_lock_file = None
 
     try:
         progress.start("preflight", "Validate paths, config, input, and resume")
@@ -2031,6 +2418,24 @@ def main(argv: list[str] | None = None) -> int:
             source_probe["duration_seconds"],
             model_id=args.a2f_model,
         )
+        motion_config = apply_head_motion_cli_overrides(motion_config, args)
+        if (
+            args.head_motion_calibration_manifest is not None
+            and not motion_config["head_motion"]["enabled"]
+        ):
+            raise PipelineError(
+                "--head-motion-calibration-manifest requires enabled head motion",
+                ExitCode.PREFLIGHT,
+                "head_motion_preflight",
+            )
+        if motion_config["head_motion"]["enabled"] and (
+            args.finalize_only or args.level_sequence
+        ):
+            raise PipelineError(
+                "enabled head motion requires the run-owned UE capture path",
+                ExitCode.PREFLIGHT,
+                "head_motion_preflight",
+            )
         curve_source_identity = curve_source_identity_for_motion_config(
             motion_config
         )
@@ -2088,12 +2493,79 @@ def main(argv: list[str] | None = None) -> int:
                 ExitCode.PREFLIGHT,
                 "preflight",
             )
+        head_motion_artifacts = None
+        head_motion_lineage = None
+        head_motion_render_calibration = None
+        if motion_config["head_motion"]["enabled"]:
+            progress.start("head_motion", "Generate local audio-responsive head motion")
+            head_motion_render_calibration = resolve_head_motion_render_calibration(
+                resume_manifest=(
+                    early_head_motion_calibration_manifest
+                    or early_resume_manifest
+                ),
+                avatar=args.avatar,
+                shots=shots,
+                fps=args.fps,
+                input_sha256=input_hash,
+                model_id=args.a2f_model,
+            )
+            if early_head_motion_calibration_path is not None:
+                head_motion_render_calibration.update(
+                    {
+                        "manifest_path": str(
+                            early_head_motion_calibration_path.resolve()
+                        ),
+                        "manifest_sha256": sha256_file(
+                            early_head_motion_calibration_path
+                        ),
+                    }
+                )
+            head_series = generate_head_motion_series(
+                mux_audio,
+                motion_config["head_motion"],
+                args.fps,
+                frame_count=expected_frames,
+            )
+            head_motion_artifacts = write_head_motion_artifacts(
+                head_series,
+                run_dir / "head-motion",
+                video_advance_frames=head_motion_render_calibration[
+                    "video_advance_frames"
+                ],
+            )
+            head_motion_lineage = make_head_motion_lineage(
+                enabled=True,
+                profile=motion_config["head_motion"]["profile"],
+                config_sha256=canonical_json_sha256(motion_config["head_motion"]),
+                samples_sha256=head_motion_artifacts["samples_json"]["sha256"],
+                fps=int(args.fps),
+                frame_count=int(expected_frames),
+            )
+            if early_resume_manifest is not None and early_resume_manifest.get(
+                "head_motion_lineage"
+            ) is not None:
+                validate_resume(
+                    early_resume_manifest,
+                    input_sha256=input_hash,
+                    config_sha256=config_hash,
+                    head_motion_lineage=head_motion_lineage,
+                )
+            progress.complete(f"{expected_frames} bounded samples")
         manifest.update({
             "input_sha256": input_hash,
             "input_probe": source_probe,
             "nim_audio": str(nim_audio),
             "mux_audio": str(mux_audio),
             "expected_frames": expected_frames,
+            "head_motion": {
+                "implementation": "local-run-owned-baked-body-animsequence",
+                "official_nvidia_output": False,
+                "config": motion_config["head_motion"],
+                "artifacts": head_motion_artifacts,
+                "lineage": head_motion_lineage,
+                "render_sync_calibration": head_motion_render_calibration,
+            },
+            "head_motion_lineage": head_motion_lineage,
             "versions": collect_versions(root, request_config) if not args.finalize_only else None,
             "a2f_runtime_evidence": collect_a2f_runtime_evidence(
                 root, args.a2f_model, args.nim_url
@@ -2262,6 +2734,11 @@ def main(argv: list[str] | None = None) -> int:
                 curve_source=curve_source_identity,
                 fps=args.fps,
                 frame_count=expected_frames,
+                **(
+                    {"head_motion_lineage": head_motion_lineage}
+                    if head_motion_lineage is not None
+                    else {}
+                ),
             )
             motion_artifacts["lineage"] = compositor_lineage
             motion_artifacts["mannequin"]["lineage"] = compositor_lineage
@@ -2382,6 +2859,17 @@ def main(argv: list[str] | None = None) -> int:
                         "nvidia_runtime_curve_parameters"
                     ],
                 },
+                "head_motion": {
+                    "config": motion_config["head_motion"],
+                    "artifacts": head_motion_artifacts,
+                    "target_bones": ["neck_01", "neck_02", "head"],
+                    "bone_weights": [0.2, 0.3, 0.5],
+                    "coordinate_space": "local-bone-additive",
+                    "implementation": "local-run-owned-baked-body-animsequence",
+                    "official_nvidia_output": False,
+                    "render_sync_calibration": head_motion_render_calibration,
+                },
+                "head_motion_lineage": head_motion_lineage,
                 "curve_application": motion_config["curve_application"],
                 "timeline_policy": capture_timeline_policy(
                     motion_config["curve_application"]
@@ -2427,6 +2915,43 @@ def main(argv: list[str] | None = None) -> int:
             }
             capture_config_path = run_dir / "capture-config.json"
             atomic_write_json(capture_config_path, capture_config)
+            if motion_config["head_motion"]["enabled"]:
+                progress.start("ue_preflight", "Validate GPU, UE collision, adapter and visual profile")
+                lock_path = project.parent / "Saved/A2FMetaHumanCLI-head-motion.lock"
+                lock_path.parent.mkdir(parents=True, exist_ok=True)
+                ue_lock_file = lock_path.open("a+", encoding="utf-8")
+                try:
+                    fcntl.flock(
+                        ue_lock_file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB
+                    )
+                except BlockingIOError as exc:
+                    ue_lock_file.close()
+                    ue_lock_file = None
+                    raise PipelineError(
+                        "another head-motion UE capture/MRQ owns the project lock",
+                        ExitCode.PREFLIGHT,
+                        "ue_preflight",
+                    ) from exc
+                try:
+                    ue_preflight = collect_ue_preflight_snapshot(
+                        avatar=args.avatar,
+                        avatar_visual_profile=args.avatar_visual_profile,
+                        graphics_adapter=args.graphics_adapter,
+                        output_dir=(
+                            project.parent
+                            / "Content/Cinematics/A2FMetaHumanCLI"
+                            / asset_token
+                        ),
+                    )
+                except (OSError, subprocess.SubprocessError, ValueError, json.JSONDecodeError) as exc:
+                    raise PipelineError(
+                        f"UE safety preflight refused launch: {exc}",
+                        ExitCode.PREFLIGHT,
+                        "ue_preflight",
+                    ) from exc
+                atomic_write_json(run_dir / "head-motion-preflight.json", ue_preflight)
+                manifest["ue_preflight"] = ue_preflight
+                progress.complete("adapter0 Quadro / no collision / profile safe")
             capture_command = build_capture_command(
                 editor=editor,
                 project=project,
@@ -2443,6 +2968,8 @@ def main(argv: list[str] | None = None) -> int:
                 run_dir / "capture-command.json", {"argv": capture_command}
             )
             atomic_write_json(manifest_path, manifest)
+            if motion_config["head_motion"]["enabled"]:
+                require_no_active_unreal("head-motion capture launch")
             capture_status = run_capture_process(
                 command=capture_command,
                 environment=environment,
@@ -2564,6 +3091,10 @@ def main(argv: list[str] | None = None) -> int:
                 )
                 atomic_write_json(shot_dir / "mrq-command.json", {"argv": command})
                 atomic_write_json(manifest_path, manifest)
+                if motion_config["head_motion"]["enabled"]:
+                    require_no_active_unreal(
+                        f"head-motion MRQ launch for {shot['id']}"
+                    )
                 run_mrq_process(
                     command=command,
                     environment=environment,
@@ -2704,6 +3235,68 @@ def main(argv: list[str] | None = None) -> int:
                 else:
                     verification["content_sync"] = content_sync
                     verification["content_sync_correction"] = {"applied": False}
+                if motion_config["head_motion"]["enabled"]:
+                    expected_advance = int(
+                        head_motion_render_calibration["video_advance_frames"]
+                    )
+                    try:
+                        head_motion_sync_validation = validate_head_motion_render_correction(
+                            expected_video_advance_frames=expected_advance,
+                            correction=verification["content_sync_correction"],
+                        )
+                    except ValueError as error:
+                        observation = {
+                            "schema_version": 1,
+                            "status": "measured",
+                            "measured_video_advance_frames": int(
+                                verification["content_sync_correction"].get(
+                                    "lag_frames", 0
+                                )
+                            ),
+                            "measured_video_advance_ms": float(
+                                verification["content_sync_correction"].get(
+                                    "lag_ms", 0.0
+                                )
+                            ),
+                            "correlation": float(content_sync["correlation"]),
+                            "minimum_confidence": float(
+                                content_sync["minimum_confidence"]
+                            ),
+                            "curve": content_sync["curve"],
+                            "fps": args.fps,
+                            "frame_count": expected_frames,
+                            "source_video": verification[
+                                "content_sync_correction"
+                            ].get("pre_sync_mp4"),
+                            "reason": str(error),
+                        }
+                        observation_path = run_dir / "head-motion-sync-observation.json"
+                        atomic_write_json(observation_path, observation)
+                        observation["path"] = str(observation_path.resolve())
+                        observation["sha256"] = sha256_file(observation_path)
+                        manifest["head_motion_sync_observation"] = observation
+                        atomic_write_json(manifest_path, manifest)
+                        raise PipelineError(
+                            str(error),
+                            ExitCode.MUX_OR_VALIDATION,
+                            "head_motion_sync",
+                        ) from error
+                    verification["head_motion_sync"] = {
+                        "schema_version": 1,
+                        "status": "aligned",
+                        "master_clock": "source-audio-seconds",
+                        "render_sync_calibration": head_motion_render_calibration,
+                        "source_samples_sha256": head_motion_lineage[
+                            "samples_sha256"
+                        ],
+                        "applied_samples_sha256": head_motion_artifacts[
+                            "applied_samples_json"
+                        ]["sha256"],
+                        "video_advance_frames": expected_advance,
+                        **head_motion_sync_validation,
+                        "active_mapping": "final frame i reads compensated raw frame i+measured_L; residual is bounded to ±1",
+                        "tail_mapping": "final correction clone window uses deterministic neutral settle",
+                    }
                 if verification["content_sync"]["status"] != "aligned":
                     raise PipelineError(
                         "trusted curve source content sync is not conclusive and aligned: "
@@ -2782,6 +3375,18 @@ def main(argv: list[str] | None = None) -> int:
                         else "ACE2.5-consumed-52"
                     ),
                 )
+                if motion_config["head_motion"]["enabled"]:
+                    applied_head_document = json.loads(
+                        Path(
+                            head_motion_artifacts["applied_samples_json"]["path"]
+                        ).read_text(encoding="utf-8")
+                    )
+                    frame_map_records = attach_head_motion_frame_mapping(
+                        frame_map_records,
+                        applied_head_document["frames"],
+                        video_advance_frames=avatar_lag_frames,
+                        fps=args.fps,
+                    )
                 frame_map_record = write_frame_map_jsonl(
                     frame_map_records,
                     shot_dir
@@ -2935,6 +3540,8 @@ def main(argv: list[str] | None = None) -> int:
                 progress_outputs.append(Path(item["diagnostic_triptych"]["path"]))
         progress.finish(outputs=progress_outputs, manifest=manifest_path)
         print("SUCCESS " + " ".join(item["final_mp4"] for item in shot_results))
+        if ue_lock_file is not None:
+            ue_lock_file.close()
         return 0
     except (PipelineError, ValueError, KeyboardInterrupt) as exc:
         if isinstance(exc, KeyboardInterrupt):
@@ -2996,6 +3603,8 @@ def main(argv: list[str] | None = None) -> int:
                     else None
                 ),
                 avatar_visual_profile=args.avatar_visual_profile,
+                head_motion=args.head_motion,
+                head_motion_strength=args.head_motion_strength,
             )
             manifest["manual_action"] = {
                 "requested_avatar": args.avatar,
@@ -3024,6 +3633,8 @@ def main(argv: list[str] | None = None) -> int:
             }.get(error.stage)
             progress.fail(str(error), manifest=manifest_path, log=stage_log)
         print(f"FAILED stage={error.stage} exit={int(error.exit_code)} error={error}", file=sys.stderr)
+        if ue_lock_file is not None:
+            ue_lock_file.close()
         return int(error.exit_code)
 
 

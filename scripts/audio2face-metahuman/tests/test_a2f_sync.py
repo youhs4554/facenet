@@ -81,6 +81,38 @@ class A2FSyncTests(unittest.TestCase):
         self.assertIn("tpad=start_mode=clone:start_duration=0.100000000", graph)
         self.assertIn("trim=end_frame=109", graph)
 
+    def test_head_motion_mapping_compensates_active_frames_and_marks_tail_settle(self):
+        records = [{"frame_index": index} for index in range(10)]
+        applied = []
+        for index in range(10):
+            if index < 2:
+                source = None
+                scale = 0.0
+            elif index < 8:
+                source = index - 2
+                scale = 1.0
+            else:
+                source = index - 2
+                scale = float(9 - index)
+            applied.append(
+                {
+                    "frame_index": index,
+                    "source_frame_index": source,
+                    "render_sync_scale": scale,
+                }
+            )
+        result = self.module.attach_head_motion_frame_mapping(
+            records,
+            applied,
+            video_advance_frames=2,
+            fps=30,
+        )
+        self.assertEqual(result[0]["head_motion"]["avatar_raw_frame"], 2)
+        self.assertEqual(result[0]["head_motion"]["source_frame_index"], 0)
+        self.assertEqual(result[5]["head_motion"]["source_frame_index"], 5)
+        self.assertFalse(result[5]["head_motion"]["neutral_settle"])
+        self.assertTrue(result[-1]["head_motion"]["neutral_settle"])
+
     def test_master_frame_map_uses_audio_time_once_for_all_panels(self):
         curve_names = [f"Curve{index}" for index in range(68)]
         curve_names[17] = "JawOpen"

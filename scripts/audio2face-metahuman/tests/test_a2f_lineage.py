@@ -36,6 +36,60 @@ class A2FLineageTests(unittest.TestCase):
         values.update(overrides)
         return self.module.make_lineage(**values)
 
+    def head_motion_lineage(self, **overrides):
+        values = {
+            "enabled": True,
+            "profile": "subtle-conversational",
+            "config_sha256": "d" * 64,
+            "samples_sha256": "e" * 64,
+            "fps": 30,
+            "frame_count": 109,
+        }
+        values.update(overrides)
+        return self.module.make_head_motion_lineage(**values)
+
+    def lineage_with_head_motion(self, **overrides):
+        expected = self.lineage()
+        values = {key: expected[key] for key in self.module.LINEAGE_FIELDS}
+        values["head_motion_lineage"] = self.head_motion_lineage(**overrides)
+        return self.module.make_lineage(**values)
+
+    def test_head_motion_lineage_is_separate_versioned_record(self):
+        expected = self.lineage_with_head_motion()
+        head = expected["head_motion_lineage"]
+        self.assertEqual(head["schema_version"], 1)
+        self.assertTrue(head["enabled"])
+        self.assertEqual(head["profile"], "subtle-conversational")
+        self.assertEqual(head["config_sha256"], "d" * 64)
+        self.assertEqual(head["samples_sha256"], "e" * 64)
+        self.assertEqual(head["fps"], 30)
+        self.assertEqual(head["frame_count"], 109)
+        self.assertEqual(expected["curve_source_sha256"], "c" * 64)
+
+    def test_head_motion_lineage_mismatch_is_rejected_for_every_bound_field(self):
+        expected = self.lineage_with_head_motion()
+        for key, value in {
+            "profile": "other-profile",
+            "config_sha256": "f" * 64,
+            "samples_sha256": "0" * 64,
+            "fps": 60,
+            "frame_count": 218,
+        }.items():
+            with self.subTest(key=key), self.assertRaises(self.module.LineageError):
+                candidate = dict(expected)
+                candidate["head_motion_lineage"] = dict(
+                    expected["head_motion_lineage"], **{key: value}
+                )
+                self.module.validate_compositor_lineage(
+                    expected,
+                    {
+                        "avatar": candidate,
+                        "mannequin": dict(expected),
+                        "curve_panel": dict(expected),
+                        "audio": dict(expected),
+                    },
+                )
+
     def test_matching_avatar_mannequin_panel_and_audio_pass(self):
         expected = self.lineage()
         result = self.module.validate_compositor_lineage(
